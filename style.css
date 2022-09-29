@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 400px;
+  width: 600px;
+  background : linear-gradient(90deg, #4d29ff, #000000);
+}
+
+.container {
+  
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 16px;
+  color: #fff;
+}
+
+.website {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.3rem;
+  margin: 10px 0;
+}
+
+i {
+  font-size: 1.3rem;
+  margin: 0 5px;
+}
+
+.website:hover {
+  color: #333;
+}
+
+#message:hover {
+  cursor: copy;
+  color: #333;
+}
