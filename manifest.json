@@ -5,9 +5,11 @@
   "manifest_version": 3,
 
   "background": {
-    "service_worker": "background.js"
+    "service_worker":
+      "background.js"
+  
   },
-
+  "options_page": "./options.html",
 
   "icons": {
     "16": "icon_16.png",
@@ -26,4 +28,5 @@
     "default_icon": "icon_16.png",
     "default_popup": "popup.html"
   }
+ 
 }
