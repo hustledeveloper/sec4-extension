@@ -5,10 +5,21 @@
   "manifest_version": 3,
 
   "background": {
-    "service_worker":
-      "background.js"
-  
+    "service_worker": "background.js",
+    "type": "module" 
   },
+  "content_scripts": [
+    {   
+      "js": [
+        "popup-script.js",
+        "popup-signed-in-script.js",
+        "foreground.js"
+      ],
+      "css": ["style.css"],    
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ],
+
   "options_page": "./options.html",
 
   "icons": {
