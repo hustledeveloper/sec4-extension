@@ -1,43 +1,21 @@
 {
-  "name": "sec4everyone",
-  "description": "sec4everyone",
-  "version": "1.0.0",
-  "manifest_version": 3,
-
-  "background": {
-    "service_worker": "background.js",
-    "type": "module" 
-  },
-  "content_scripts": [
-    {   
-      "js": [
-        "popup-script.js",
-        "popup-signed-in-script.js",
-        "foreground.js"
-      ],
-      "css": ["style.css"],    
-      "matches": ["http://*/*", "https://*/*"]
-    }
-  ],
-
-  "options_page": "./options.html",
-
-  "icons": {
-    "16": "icon_16.png",
-    "32": "icon_32.png",
-    "128": "icon_128.png"
-  },
-
-  "permissions": ["activeTab"],
-
-  "host_permissions": [
-    "http://www.securityforeveryone.com/"
-    
-  ],
-
-  "action": {
-    "default_icon": "icon_16.png",
-    "default_popup": "popup.html"
-  }
- 
+    "name": "secu4everyone",
+    "description": "secu4everyone",
+    "version": "0.1.0",
+    "manifest_version": 2,
+    "icons": {
+        "16": "icon_16.png",
+        "32": "icon_32.png",
+        "128": "icon_128.png"
+      },
+    "background": {
+        "scripts": ["./background.js"]
+    },
+    "options_page": "./options.html",
+    "browser_action": {
+        "default_popup": "./popup-sign-in.html"
+    },
+    "permissions": [
+        "identity"
+    ] 
 }
