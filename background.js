@@ -1,9 +1,11 @@
 const DISCORD_URI_ENDPOINT = 'https://discord.com/api/oauth2/authorize';
 const CLIENT_ID = encodeURIComponent('1028594481588604938');
 const RESPONSE_TYPE = encodeURIComponent('token');
-const REDIRECT_URI = encodeURIComponent('');
+const REDIRECT_URI = encodeURIComponent(chrome.identity.getRedirectURL());
 const SCOPE = encodeURIComponent('identify email');
 const STATE = encodeURIComponent('meet' + Math.random().toString(36).substring(2, 15));
+
+console.log(chrome.identity.getRedirectURL)
 
 let user_signed_in = false;
 
