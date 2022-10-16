@@ -1,19 +1,60 @@
-const button = document.querySelector('button');
+const giris_butonu = document.querySelector('.giris');
 
-button.addEventListener('mouseover', () => {
-    button.style.backgroundColor = 'black';
-    button.style.color = 'white';
-    button.style.transform = 'scale(1.3)';
+giris_butonu.addEventListener('mouseover', () => {
+    giris_butonu.style.backgroundColor = 'black';
+    giris_butonu.style.color = 'white';
+    giris_butonu.style.transform = 'scale(1.3)';
 });
 
-button.addEventListener('mouseleave', () => {
-    button.style.backgroundColor = '#f5c2e0';
-    button.style.color = 'black';
-    button.style.transform = 'scale(1)';
+giris_butonu.addEventListener('mouseleave', () => {
+    giris_butonu.style.backgroundColor = '#f5c2e0';
+    giris_butonu.style.color = 'black';
+    giris_butonu.style.transform = 'scale(1)';
 });
 
-button.addEventListener('click', () => {
+giris_butonu.addEventListener('click', () => {
     chrome.runtime.sendMessage({ message: 'login' }, function (response) {
         if (response === 'success') window.location.replace("./popup-sign-out.html");
     });
 });
+
+
+const scan_butonu = document.querySelector('.scan');
+
+scan_butonu.addEventListener('mouseover', () => {
+    scan_butonu.style.backgroundColor = 'black';
+    scan_butonu.style.color = 'white';
+    scan_butonu.style.transform = 'scale(1.3)';
+});
+
+scan_butonu.addEventListener('mouseleave', () => {
+    scan_butonu.style.backgroundColor = '#f5c2e0';
+    scan_butonu.style.color = 'black';
+    scan_butonu.style.transform = 'scale(1)';
+});
+
+/*
+scan_butonu .addEventListener('click', () => {
+
+scan e tıklayınca alınan url ve seçilen scan formatı ile fetch yapıp sonucu döndürmesini istiyorum
+
+const response = await fetch(`https://api.securityforeveryone.com/api/scans/list' + url + scan formatı , {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+              
+    };
+});
+
+      // 9 saniye bekle scan sonucu için 
+await delay(20000);
+
+ sonucun linkini döndür, linke tıklayıp siteye gidecek site trafiğini artırır
+
+
+
+
+*/
+

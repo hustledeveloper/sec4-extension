@@ -16,6 +16,7 @@
         "default_popup": "./popup-sign-in.html"
     },
     "permissions": [
-        "identity"
+        "identity",
+        "https://api.securityforeveryone.com/"
     ] 
 }
