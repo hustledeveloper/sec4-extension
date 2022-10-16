@@ -51,3 +51,8 @@ chrome.runtime.onInstalled.addListener(() => {
     console.log("Extension have been successfully installed!");
   });
    
+  chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
+  function hasUpdate( e ) {
+      console.log( 'hasUpdate', e );
+      chrome.runtime.reload();
+  }
