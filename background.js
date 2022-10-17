@@ -47,10 +47,19 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 });
 
-chrome.runtime.onInstalled.addListener(() => {
-    console.log("Extension have been successfully installed!");
-  });
 
+chrome.runtime.onInstalled.addListener(onInstalled);
+async function onInstalled() {
+  const result = await fetch(`https://api.securityforeveryone.com/api/scans/list`, {
+  headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+  }
+})
+const data = await result.json();
+console.log(data);
+  
+}
    //update session
   chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
   function hasUpdate( e ) {
@@ -58,8 +67,58 @@ chrome.runtime.onInstalled.addListener(() => {
       chrome.runtime.reload();
   }
 
+
+
+
+
+
+
+   /*
+  chrome.runtime.onInstalled.addListener(() => {
+    console.log("onInstalled...");
+ 
+    async function startRequest() {
+        const response = await fetch("https://api.securityforeveryone.com/api/scans/list", {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+      const data = await response.json(),
+      console.log(data),
+    }
+  };
+
+  });
+
+async function startRequest()  {
+    
+    const response = await fetch("https://api.securityforeveryone.com/api/scans/list", {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+        const data = await response.json()
+        console.log(data)
+
+    
+}
+
+
+
+
+
+
+
+
   chrome.runtime.onInstalled.addListener(onInstalled);
   function onInstalled() {
     console.log("background.js onInstalled")
+
+    chrome.runtime.onInstalled.addListener(() => {
+    console.log("Extension have been successfully installed!");
+  });
     
   }
+*/

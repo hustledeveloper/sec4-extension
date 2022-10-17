@@ -34,30 +34,31 @@ scan_butonu.addEventListener('mouseleave', () => {
 });
 
 /*
-scan_butonu .addEventListener('click', () => {
+ 
 
 scan e tıklayınca alınan url ve seçilen scan formatı ile fetch yapıp sonucu döndürmesini istiyorum
 
-const response = await fetch(`https://api.securityforeveryone.com/api/scans/list' + url + scan formatı , {
+sonucun linkini döndür, linke tıklayıp siteye gidecek site trafiğini artırır
+
+scan_butonu .addEventListener('click'){
+
+
+const scanComplete = async (scan) => {
+    const response = await fetch(`https://api.securityforeveryone.com/api/scans/list=${scanID+url?}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      },
-              
-    };
-});
 
-      // 9 saniye bekle scan sonucu için 
-await delay(20000);
+        },
+   
+    });
 
- sonucun linkini döndür, linke tıklayıp siteye gidecek site trafiğini artırır
-
-
-
-
-*/
-// bunun sitede search yapması lazım
+    const data = await response.json()
+    console.log(data);  
+    }
+};
+ */
 search.onchange = () => {
     link.href = `https://google.com/search?q=${encodeURIComponent(search.value)}`
- }
+ };
