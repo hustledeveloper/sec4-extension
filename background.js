@@ -61,4 +61,5 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.runtime.onInstalled.addListener(onInstalled);
   function onInstalled() {
     console.log("background.js onInstalled")
+    
   }

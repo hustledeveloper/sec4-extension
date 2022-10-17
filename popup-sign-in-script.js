@@ -7,8 +7,8 @@ giris_butonu.addEventListener('mouseover', () => {
 });
 
 giris_butonu.addEventListener('mouseleave', () => {
-    giris_butonu.style.backgroundColor = '#f5c2e0';
-    giris_butonu.style.color = 'black';
+    giris_butonu.style.backgroundColor = '#ee2c1e';
+    giris_butonu.style.color = 'white';
     giris_butonu.style.transform = 'scale(1)';
 });
 
@@ -28,8 +28,8 @@ scan_butonu.addEventListener('mouseover', () => {
 });
 
 scan_butonu.addEventListener('mouseleave', () => {
-    scan_butonu.style.backgroundColor = '#f5c2e0';
-    scan_butonu.style.color = 'black';
+    scan_butonu.style.backgroundColor = '#ee2c1e';
+    scan_butonu.style.color = 'white';
     scan_butonu.style.transform = 'scale(1)';
 });
 
