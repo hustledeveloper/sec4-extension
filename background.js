@@ -50,9 +50,15 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 chrome.runtime.onInstalled.addListener(() => {
     console.log("Extension have been successfully installed!");
   });
-   
+
+   //update session
   chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
   function hasUpdate( e ) {
       console.log( 'hasUpdate', e );
       chrome.runtime.reload();
+  }
+
+  chrome.runtime.onInstalled.addListener(onInstalled);
+  function onInstalled() {
+    console.log("background.js onInstalled")
   }
