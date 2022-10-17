@@ -57,7 +57,7 @@ await delay(20000);
 
 
 */
-
+// bunun sitede search yapması lazım
 search.onchange = () => {
     link.href = `https://google.com/search?q=${encodeURIComponent(search.value)}`
  }
