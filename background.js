@@ -50,14 +50,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 chrome.runtime.onInstalled.addListener(onInstalled);
 async function onInstalled() {
-  const result = await fetch(`https://api.securityforeveryone.com/api/scans/list`, {
+  const result = await fetch(`https://core.securityforeveryone.com/api/scans/list`, {
   headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+
   }
 })
-const data = await result.json();
-console.log(data);
+//const data = await result.json();
+console.log(result);
   
 }
    //update session
