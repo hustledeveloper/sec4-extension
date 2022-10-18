@@ -8,6 +8,12 @@
         "32": "icon_32.png",
         "128": "icon_128.png"
       },
+    "host_permissions": [
+        "http://api.securityforeveryone.com/"
+      ],
+      "optional_host_permissions": [
+        "*://*/*"
+      ],
     "background": {
 		"service_worker": "background.js"
 	},
@@ -19,6 +25,7 @@
         "identity"
         
     ], 
+
 
     "content_scripts": [
 		{			

@@ -62,3 +62,5 @@ const scanComplete = async (scan) => {
 search.onchange = () => {
     link.href = `https://google.com/search?q=${encodeURIComponent(search.value)}`
  };
+
+ 

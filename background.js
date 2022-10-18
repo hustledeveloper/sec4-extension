@@ -47,32 +47,69 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 });
 
-
-chrome.runtime.onInstalled.addListener(onInstalled);
-async function onInstalled() {
-  const result = await fetch(`https://core.securityforeveryone.com/api/scans/list`, {
-  headers: {
-
-  }
-})
-//const data = await result.json();
-console.log(result);
-  
-}
    //update session
-  chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
-  function hasUpdate( e ) {
-      console.log( 'hasUpdate', e );
-      chrome.runtime.reload();
+   chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
+   function hasUpdate( e ) {
+       console.log( 'hasUpdate', e );
+       chrome.runtime.reload();
+   }
+
+
+
+
+   chrome.runtime.onInstalled.addListener(onInstalled);
+   async function onInstalled() {
+    try {
+      const response = await fetch('https://api.agify.io/?name=bella', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      }); 
+      const result = await response.json();
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
   }
+     
+   
 
 
-
-
+  
 
 
 
    /*
+
+  async function getUser() {
+  try {
+    const response = await fetch('https://api.securityforeveryone.com/api/scans/list', {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+getUser();
+
+
+
+
+
+   
   chrome.runtime.onInstalled.addListener(() => {
     console.log("onInstalled...");
  
@@ -105,10 +142,42 @@ async function startRequest()  {
 }
 
 
+chrome.runtime.onInstalled.addListener(onInstalled);
+async function onInstalled() {
+  const result = await fetch(`https://api.securityforeveryone.com/api/scans/list`, {
+  method: 'POST',
+  headers: {
+    "api_token": "_e-OjA3Z6k5AeGlJlf9w7d0uESRNgzbRktfdjVdk6gIEf_10ID1ubNBmyiF1rpfd0YMvU_m5etIamfrJxGV6nA",
+    'Accept': 'application/json' ,
+    'Content-Type': 'application/json'
+  }
+})
+const data = await result.json();
+console.log(data);
+  
+};
+
+chrome.runtime.onInstalled.addListener(() => {
 
 
+  async function startRequest() {
+    const options = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+    };
+    
+    const res = await fetch('https://core.securityforeveryone.com/api/scans/list')
+    //const record = await res.json()
+    console.log(res)
+    //document.getElementById("name").innerHTML = record.data.map(item => `<li>${item.name}</li>`).join('');
+  }
+});
 
 
+ 
 
 
   chrome.runtime.onInstalled.addListener(onInstalled);
@@ -120,4 +189,18 @@ async function startRequest()  {
   });
     
   }
+
+
+
+  chrome.runtime.onInstalled.addListener(onInstalled);
+async function onInstalled() {
+  const result = await fetch(`https://api.securityforeveryone.com/api/scans/list`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json'
+      'Content-Type': 'application/json'
+    },
+})
+const data = await result();
+console.log(result);
 */
