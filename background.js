@@ -56,11 +56,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 
 
+//api keye ihtiyacım var ama nereye ekleyeceğimi bilmiyorum, key nerede onu da bulamadım 
 
    chrome.runtime.onInstalled.addListener(onInstalled);
    async function onInstalled() {
     try {
-      const response = await fetch('https://api.agify.io/?name=bella', {
+      const response = await fetch('https://api.securityforeveryone.com/api/scans/list', {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
