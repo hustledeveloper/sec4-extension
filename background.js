@@ -54,6 +54,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
        console.log( 'hasUpdate', e );
        chrome.runtime.reload();
    }
+   
 //https://api.securityforeveryone.com/api/scans/list
 //https://api.coinbase.com/v2/currencies 
 
@@ -66,9 +67,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2NjE4MzI0MiwianRpIjoiODc2OTNkNzktNzQ3NC00YjRjLWFmY2MtMTk4N2ZkZTUwZjM4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MzAsIm5iZiI6MTY2NjE4MzI0MiwiZXhwIjoxNjY2MTkwNDQyfQ.J2zJhnO3jlHQYwX78lzmj6CYLnxuRS0OjivBwqWkNDA'
-
-               },
+          'Authorization': 'Bearer ' + token
+      },
       }); 
       const result = await response.json();
       console.log(result);
@@ -76,11 +76,3 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       console.log(err);
     }
   }
-
-  
-
-
-  
-   /*
-yorum satırı:
-*/

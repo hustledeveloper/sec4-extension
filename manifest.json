@@ -8,8 +8,10 @@
         "32": "icon_32.png",
         "128": "icon_128.png"
       },
+      "permissions": ["tabs", "scripting", "identity", "identity"],
     "host_permissions": [
-        "http://api.securityforeveryone.com/"
+        "https://core-test.s4e.link/"
+ 
       ],
       "optional_host_permissions": [
         "*://*/*"
@@ -21,10 +23,7 @@
     "action": {
 		"default_popup": "./popup-sign-in.html"
 	},
-    "permissions": [
-        "identity"
-        
-    ], 
+
 
 
     "content_scripts": [
