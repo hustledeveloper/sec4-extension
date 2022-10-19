@@ -47,6 +47,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         sendResponse('success');
     }
 });
+
+          //'Authorization': 'Bearer ' + token
+          //'Authorization' : `Bearer ${token}`
+
 */
    //update session
    chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
@@ -61,13 +65,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
    chrome.runtime.onInstalled.addListener(onInstalled);
    async function onInstalled() {
     try {
-      const response = await fetch('https://core-test.s4e.link/api/scan-group/list', {
-        method: 'GET',
+      const response = await fetch('https://core-test.s4e.link/api/user/login', {
+        method: 'POST',
         headers: {
           
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token
+
       },
       }); 
       const result = await response.json();
