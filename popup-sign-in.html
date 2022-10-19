@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
+  body {
             width: 400px;
             height: 600px;
             margin: 0;
@@ -15,7 +15,7 @@
             background : linear-gradient(90deg, #4d29ff, #000000);
         }
 
-        div {
+  div {
   
   padding: 20px;
   display: flex;
@@ -38,6 +38,8 @@
             transition-duration: 0.3s;
             padding: 10px;
         }
+
+
     </style>
 </head>
 
@@ -54,11 +56,29 @@
         
         <input type="text" size="35" placeholder="valid asset types: DOMAIN,IPV4,URL,REQUEST" name="veri" required>
       </div>
-      
-      <div>       
-          <input type="search" id="search" size="35" placeholder="Search free a tool.."  />
-          <a href="#" id="link" target="_blank" style="color: #fff" >Search</a>
+      <div>
+
+        <form>
+          <input
+            type="search" name="search"id="search" size="35" placeholder="Search free a tool" autocomplete="off"/>
+        </form>
+
       </div>
+      <div>
+        <section>
+          <ul>
+            <li>Generic Command Injection Vulnerability Scanner</li>
+            <li>Generic CRLF Injection Vulnerability Scanner</li>
+            <li>Generic SSRF vulnerability scanner</li>
+            <li>Generic Open Redirect Vulnerability Scanner</li>
+          </ul>
+  
+          <div id="notFound">
+            <p>No Todo Found</p>
+          </div>
+        </section>
+      </div>
+      
 
       <div>
         <button type="submit"class="scan" >scan</button>

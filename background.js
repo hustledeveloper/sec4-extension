@@ -1,3 +1,4 @@
+/*
 const DISCORD_URI_ENDPOINT = 'https://discord.com/api/oauth2/authorize';
 const CLIENT_ID = encodeURIComponent('1028594481588604938');
 const RESPONSE_TYPE = encodeURIComponent('token');
@@ -46,27 +47,28 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         sendResponse('success');
     }
 });
-
+*/
    //update session
    chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
    function hasUpdate( e ) {
        console.log( 'hasUpdate', e );
        chrome.runtime.reload();
    }
-
-
-
-//api keye ihtiyacım var ama nereye ekleyeceğimi bilmiyorum, key nerede onu da bulamadım 
+//https://api.securityforeveryone.com/api/scans/list
+//https://api.coinbase.com/v2/currencies 
 
    chrome.runtime.onInstalled.addListener(onInstalled);
    async function onInstalled() {
     try {
-      const response = await fetch('https://api.securityforeveryone.com/api/scans/list', {
+      const response = await fetch('https://core-test.s4e.link/api/scan-group/list', {
         method: 'GET',
         headers: {
+          
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
+          'Content-Type': 'application/json',
+          'Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2NjE4MzI0MiwianRpIjoiODc2OTNkNzktNzQ3NC00YjRjLWFmY2MtMTk4N2ZkZTUwZjM4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MzAsIm5iZiI6MTY2NjE4MzI0MiwiZXhwIjoxNjY2MTkwNDQyfQ.J2zJhnO3jlHQYwX78lzmj6CYLnxuRS0OjivBwqWkNDA'
+
+               },
       }); 
       const result = await response.json();
       console.log(result);
@@ -75,7 +77,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
   }
 
-
+  
 
 
   
