@@ -51,18 +51,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           //'Authorization': 'Bearer ' + token
           //'Authorization' : `Bearer ${token}`
 
-*/
-   //update session
-   chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
-   function hasUpdate( e ) {
-       console.log( 'hasUpdate', e );
-       chrome.runtime.reload();
-   }
-   
-//https://api.securityforeveryone.com/api/scans/list
-//https://api.coinbase.com/v2/currencies 
 
-   chrome.runtime.onInstalled.addListener(onInstalled);
+
+
+
+
+
+
+           chrome.runtime.onInstalled.addListener(onInstalled);
    async function onInstalled() {
     try {
       const response = await fetch('https://core-test.s4e.link/api/user/login', {
@@ -80,3 +76,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       console.log(err);
     }
   }
+
+*/
+   //update session
+   chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
+   function hasUpdate( e ) {
+       console.log( 'hasUpdate', e );
+       chrome.runtime.reload();
+   }
+   
+//https://api.securityforeveryone.com/api/scans/list
+//https://api.coinbase.com/v2/currencies 
+
+ 

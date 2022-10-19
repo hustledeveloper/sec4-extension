@@ -19,4 +19,43 @@ giris_buton.addEventListener('click', () => {
 });
 
 
+const form = {
+    email: document.querySelector("#signin-email"),
+    password: document.querySelector("#signin-password"),
+    submit: document.querySelector("#signin-btn-gir"),
+    messages: document.getElementById("form-messages"),
+  };
+  let button = form.gir.addEventListener("click", (e) => {
+    e.preventDefault();
+    const login = "https://core-test.s4e.link/api/user/login";
+  
+    fetch(login, {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: form.signin-email.value,
+        password: form.signin-password.value,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // code here //
+        if (data.error) {
+          alert("Error Password or Username"); /*displays error message*/
+        } else {
+          window.open(
+            "./popup-sign-out.html"
+          ); /*opens the target page while Id & password matches*/
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
+
+ 
