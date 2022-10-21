@@ -1,3 +1,4 @@
+/*
 const giris_buton = document.querySelector('.gir');
 
 giris_buton.addEventListener('mouseover', () => {
@@ -12,20 +13,21 @@ giris_buton.addEventListener('mouseleave', () => {
     giris_buton.style.transform = 'scale(1)';
 });
 
+
 giris_buton.addEventListener('click', () => {
     chrome.runtime.sendMessage({ message: 'login' }, function (response) {
         if (response === 'success') window.location.replace("./popup-sign-out.html");
     });
 });
-
+*/
 
 const form = {
-    email: document.querySelector("#signin-email"),
-    password: document.querySelector("#signin-password"),
-    submit: document.querySelector("#signin-btn-gir"),
+    email: document.querySelector(".signin-email"),
+    password: document.querySelector(".signin-password"),
+    submit: document.querySelector(".gir"),
     messages: document.getElementById("form-messages"),
   };
-  let button = form.gir.addEventListener("click", (e) => {
+  let button = form.submit.addEventListener('click', (e) => {
     e.preventDefault();
     const login = "https://core-test.s4e.link/api/user/login";
   
@@ -36,8 +38,8 @@ const form = {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: form.signin-email.value,
-        password: form.signin-password.value,
+        email: form.email.value,
+        password: form.password.value,
       }),
     })
       .then((response) => response.json())
