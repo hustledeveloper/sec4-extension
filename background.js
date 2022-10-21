@@ -50,7 +50,24 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
           //'Authorization': 'Bearer ' + token
           //'Authorization' : `Bearer ${token}`
-
+try{
+    const response = await fetch('https://core-test.s4e.link/api/scan-group/list', {
+        method: "GET",
+        headers: {
+          'Accept': 'application/json, text/plain, ',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${token}',
+        },
+         
+    }) 
+      const result = await response.json();
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+         
+//https://api.securityforeveryone.com/api/scans/list
+//https://api.coinbase.com/v2/currencies 
+} 
 
 
 
@@ -87,12 +104,9 @@ async function onInstalled() {
        console.log( 'hasUpdate', e );
        chrome.runtime.reload();
    }
-   
-//https://api.securityforeveryone.com/api/scans/list
-//https://api.coinbase.com/v2/currencies 
+
 
 chrome.runtime.onInstalled.addListener(() => {
     console.log("Extension have been successfully installed!");
   });
     
-  
