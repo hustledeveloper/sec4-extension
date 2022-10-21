@@ -57,10 +57,17 @@ const form = {
       .catch((err) => {
         console.log(err);
       });
+              email: form.email.value,
+        password: form.password.value,
   });
   */
-
-  clickLogin = (e) => {
+  const form = {
+    email: document.querySelector("#signin-email"),
+    password: document.querySelector("#signin-password"),
+    submit: document.querySelector("#gir"),
+    messages: document.getElementById("form-messages"),
+  };
+  let button = form.submit.addEventListener('click', (e) => {
     e.preventDefault();
     fetch ('https://core-test.s4e.link/api/user/login', {
       method: "POST",
@@ -69,13 +76,14 @@ const form = {
         'Content-Type': 'application/json'
       },
        body: JSON.stringify({
-         email: this.state.idValue,
-         password: this.state.pwValue
+
+        "email": form.email.value,
+        "password": form.password.value,
       }),
   })
     .then((response) => response.json())
     .then((result) => {
-      if(result.message === 'true'){
+      if(result.message === "login: true"){
         alert("You are logged in.");
         window.open(
           "./popup-sign-out.html"
@@ -84,5 +92,4 @@ const form = {
         alert("Please check your login information");
        }
     });
-  }
-
+  });

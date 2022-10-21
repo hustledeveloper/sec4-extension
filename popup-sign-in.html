@@ -25,29 +25,16 @@
   </div>
 <div>
   
-  <form className=”login-form”>
-    <input 
-      className=”login-info” 
-      onChange={this.handleIdInput} 
-      id=”id” 
-      type=”text” 
-      placeholder=”Phone number, username or email”   
-    >
-    <input 
-      className=”login-info” 
-      onChange={this.handlePwInput} 
-      id=”password” 
-      type=”password” 
-      placeholder="Password" > 
-    <button 
-      className=”login-button” 
-      disabled={this.enableLoginButton()} 
-      id={this.changeLoginButtonStyle()} 
-      type=”submit” 
-      onClick={this.clickLogin}>
-     Login
-    </button>
-  </form>
+    <div >
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Email" id="signin-email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id="signin-password" required>
+        
+      <button type="submit" id="gir" >Login</button>
+
+    </div>
 
         <a class="website" href="https://securityforeveryone.com/" target="_blank">
           <i class="fab fa-website"></i><b style="color: #fff" >Follow us</b></a>

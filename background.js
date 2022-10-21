@@ -56,28 +56,31 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 
 
-
-
-           chrome.runtime.onInstalled.addListener(onInstalled);
-   async function onInstalled() {
-    try {
-      const response = await fetch('https://core-test.s4e.link/api/user/login', {
-        method: 'POST',
-        headers: {
-          
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-
-      },
-      }); 
-      const result = await response.json();
-      console.log(result);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
 */
+
+chrome.runtime.onInstalled.addListener(onInstalled);
+async function onInstalled() {
+ try {
+   const response = await fetch('https://core-test.s4e.link/api/user/login', {
+     method: "POST",
+     headers: {
+       'Accept': 'application/json, text/plain, */*',
+       'Content-Type': 'application/json',
+     },
+      body: JSON.stringify({
+
+       "email": "sosyal@onuraktas.net",
+       "password": "DemoDemo_1234!",
+     }),
+ }) 
+   const result = await response.json();
+   console.log(result);
+ } catch (err) {
+   console.log(err);
+ }
+}
+
+
    //update session
    chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
    function hasUpdate( e ) {
@@ -88,4 +91,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 //https://api.securityforeveryone.com/api/scans/list
 //https://api.coinbase.com/v2/currencies 
 
- 
+chrome.runtime.onInstalled.addListener(() => {
+    console.log("Extension have been successfully installed!");
+  });
+    
+  
