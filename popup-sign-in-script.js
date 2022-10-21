@@ -19,7 +19,7 @@ giris_buton.addEventListener('click', () => {
         if (response === 'success') window.location.replace("./popup-sign-out.html");
     });
 });
-*/
+
 
 const form = {
     email: document.querySelector(".signin-email"),
@@ -34,8 +34,8 @@ const form = {
     fetch(login, {
       method: "POST",
       headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
+        'Accept :application/json, text/plain',
+        'Content-Type : application/json' 
       },
       body: JSON.stringify({
         email: form.email.value,
@@ -47,17 +47,42 @@ const form = {
         console.log(data);
         // code here //
         if (data.error) {
-          alert("Error Password or Username"); /*displays error message*/
+          alert("Error Password or Username"); /*displays error message
         } else {
           window.open(
             "./popup-sign-out.html"
-          ); /*opens the target page while Id & password matches*/
+          ); /*opens the target page while Id & password matches
         }
       })
       .catch((err) => {
         console.log(err);
       });
   });
+  */
 
+  clickLogin = (e) => {
+    e.preventDefault();
+    fetch ('https://core-test.s4e.link/api/user/login', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+       body: JSON.stringify({
+         email: this.state.idValue,
+         password: this.state.pwValue
+      }),
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      if(result.message === 'true'){
+        alert("You are logged in.");
+        window.open(
+          "./popup-sign-out.html"
+        ); 
+       } else {
+        alert("Please check your login information");
+       }
+    });
+  }
 
- 
