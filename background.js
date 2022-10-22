@@ -1,3 +1,14 @@
+   //update session
+   chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
+   function hasUpdate( e ) {
+       console.log( 'hasUpdate', e );
+       chrome.runtime.reload();
+   }
+
+
+chrome.runtime.onInstalled.addListener(() => {
+    console.log("Extension have been successfully installed!");
+  });
 /* 
 //BU KISMI OAUTH2 GİRİSİ İÇİN YAPMIŞTIM
 const DISCORD_URI_ENDPOINT = 'https://discord.com/api/oauth2/authorize';
@@ -75,6 +86,7 @@ try{
 https://core.securityforeveryone.com/api/user/login  bu sitede kullanılan api herhangi bir hesapla girilemiyor
 
 https://core-test.s4e.link/api/user/login bu sadece onur beyin hesabı ile çalışıyor
+https://core.securityforeveryone.com/api/scans/list
 } 
 
 
@@ -82,7 +94,7 @@ https://core-test.s4e.link/api/user/login bu sadece onur beyin hesabı ile çal�
 
 
 */
-
+//
 chrome.runtime.onInstalled.addListener(onInstalled);
 async function onInstalled() {
  try {
@@ -104,17 +116,28 @@ async function onInstalled() {
    console.log(err);
  }
 }
+/*
+// bütün free tools tarama isimlerini alsın ve bunu search bara bağlayalım
+
+chrome.runtime.onInstalled.addListener(onInstalled);
+async function onInstalled() {
+ try {
+   const response = await fetch('https://core.securityforeveryone.com/api/scans/list', {
+     method: "POST",
+     headers: {
+       'Accept': 'application/json, text/plain',
+       'Content-Type': 'application/json',
+     },
+      body: JSON.stringify({
+     }),
+ }) 
+   const result = await response.json();
+   console.log(result);
+ } catch (err) {
+   console.log(err);
+ }
+}
+*/
 
 
-   //update session
-   chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
-   function hasUpdate( e ) {
-       console.log( 'hasUpdate', e );
-       chrome.runtime.reload();
-   }
-
-
-chrome.runtime.onInstalled.addListener(() => {
-    console.log("Extension have been successfully installed!");
-  });
     
