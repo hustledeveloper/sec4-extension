@@ -1,4 +1,5 @@
-/*
+/* 
+//BU KISMI OAUTH2 GİRİSİ İÇİN YAPMIŞTIM
 const DISCORD_URI_ENDPOINT = 'https://discord.com/api/oauth2/authorize';
 const CLIENT_ID = encodeURIComponent('1028594481588604938');
 const RESPONSE_TYPE = encodeURIComponent('token');
@@ -24,7 +25,6 @@ function create_auth_endpoint() {
     return endpoint_url;
 }
 
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.message === 'login') {
         chrome.identity.launchWebAuthFlow({
@@ -47,9 +47,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         sendResponse('success');
     }
 });
+// TOKEN YAZIM FORMATLARI
 
           //'Authorization': 'Bearer ' + token
           //'Authorization' : `Bearer ${token}`
+
+  // TOKEN İLE FETCH YAPMA      
 try{
     const response = await fetch('https://core-test.s4e.link/api/scan-group/list', {
         method: "GET",
@@ -65,8 +68,13 @@ try{
     } catch (err) {
       console.log(err);
          
-//https://api.securityforeveryone.com/api/scans/list
-//https://api.coinbase.com/v2/currencies 
+      //ALTERNATİF LİNKLER?
+
+//https://api.securityforeveryone.com/api/scans/list bu da çalışmıyor 
+
+https://core.securityforeveryone.com/api/user/login  bu sitede kullanılan api herhangi bir hesapla girilemiyor
+
+https://core-test.s4e.link/api/user/login bu sadece onur beyin hesabı ile çalışıyor
 } 
 
 

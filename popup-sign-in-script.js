@@ -1,5 +1,5 @@
-/*
-const giris_buton = document.querySelector('.gir');
+
+const giris_buton = document.querySelector('#gir');
 
 giris_buton.addEventListener('mouseover', () => {
     giris_buton.style.backgroundColor = 'black';
@@ -13,13 +13,15 @@ giris_buton.addEventListener('mouseleave', () => {
     giris_buton.style.transform = 'scale(1)';
 });
 
-
+/*
+//CLİCK FONKSİYONU ESKİ TASARIM
 giris_buton.addEventListener('click', () => {
     chrome.runtime.sendMessage({ message: 'login' }, function (response) {
         if (response === 'success') window.location.replace("./popup-sign-out.html");
     });
 });
 
+//LOGİN FONKSİYONU ESKİ TASARIM
 
 const form = {
     email: document.querySelector(".signin-email"),
@@ -57,7 +59,10 @@ const form = {
       .catch((err) => {
         console.log(err);
       });
-              email: form.email.value,
+
+
+      //LOGİN PARAMETRELERİ
+        email: form.email.value,
         password: form.password.value,
   });
   */

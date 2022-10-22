@@ -1,5 +1,5 @@
 const cikis_buton = document.querySelector('.cikis');
-
+//CİKİS BUTONU ANİMASYONU
 cikis_buton.addEventListener('mouseover', () => {
     cikis_buton.style.backgroundColor = 'black';
     cikis_buton.style.color = 'white';
@@ -11,6 +11,7 @@ cikis_buton.addEventListener('mouseleave', () => {
     cikis_buton.style.color = 'white';
     cikis_buton.style.transform = 'scale(1)';
 });
+//LOGOUT FONKSİYONU ESKİ TASARIM
 
 cikis_buton.addEventListener('click', () => {
     chrome.runtime.sendMessage({ message: 'logout' }, function (response) {
@@ -18,48 +19,7 @@ cikis_buton.addEventListener('click', () => {
     });
 });
 
-
-const scan_butonu = document.querySelector('.scan');
-
-scan_butonu.addEventListener('mouseover', () => {
-    scan_butonu.style.backgroundColor = 'black';
-    scan_butonu.style.color = 'white';
-    scan_butonu.style.transform = 'scale(1.3)';
-});
-
-scan_butonu.addEventListener('mouseleave', () => {
-    scan_butonu.style.backgroundColor = '#ee2c1e';
-    scan_butonu.style.color = 'white';
-    scan_butonu.style.transform = 'scale(1)';
-});
-
-/*
- 
-
-scan e tıklayınca alınan url ve seçilen scan formatı ile fetch yapıp sonucu döndürmesini istiyorum
-
-sonucun linkini döndür, linke tıklayıp siteye gidecek site trafiğini artırır
-
-scan_butonu .addEventListener('click'){
-
-
-const scanComplete = async (scan) => {
-    const response = await fetch(`https://api.securityforeveryone.com/api/scans/list=${scanID+url?}`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-
-        },
-   
-    });
-
-    const data = await response.json()
-    console.log(data);  
-    }
-};
- */
-
+//SEARCHBAR FONKSİYONALRI
 
 const search = document.querySelector('#search');
 const todos = document.querySelectorAll('ul li');
@@ -89,3 +49,47 @@ function filterFunctionality(e) {
     ? (notFound.style.display = 'block')
     : (notFound.style.display = 'none');
 }
+//SCAN BUTONU ANİMASYONU
+
+const scan_butonu = document.querySelector('.scan');
+
+scan_butonu.addEventListener('mouseover', () => {
+    scan_butonu.style.backgroundColor = 'black';
+    scan_butonu.style.color = 'white';
+    scan_butonu.style.transform = 'scale(1.3)';
+});
+
+scan_butonu.addEventListener('mouseleave', () => {
+    scan_butonu.style.backgroundColor = '#ee2c1e';
+    scan_butonu.style.color = 'white';
+    scan_butonu.style.transform = 'scale(1)';
+});
+
+/*
+ 
+
+scan e tıklayınca alınan url ve seçilen scan formatı ile fetch yapıp sonucu döndürmesini istiyorum
+
+sonucun linkini döndür, linke tıklayıp siteye gidecek site trafiğini artırır
+
+scan_butonu .addEventListener('click'){
+
+
+const scanComplete = async (scan) => {
+    const response = await fetch(`https://api.securityforeveryone.com/api/scans/list=${scanID+url?}`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+
+        },
+   
+    });
+
+    const data = await response.json()
+    console.log(data);  
+    }
+};
+ */
+
+
