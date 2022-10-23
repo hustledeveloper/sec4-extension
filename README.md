@@ -1,4 +1,8 @@
 # Security for Everyone Chrome Extension
+# Ne durumdayım
+Şu an background'da api testler yapıyorum, her call için fonksiyon hazırlamaya çalışıyorum, response içeriklerini anlamaya çalışıyorum.
+Extensionu api call'lar çalışmadan epey inşaa ettim aslında, bu call'ları doğru entegre ettiğimde işin büyük kısmı bitmiş olacak.
+
 
 ## Installation
 To use the Chrome extension, please follow the steps below:
@@ -29,7 +33,6 @@ giriş ekranını(popup-welcome.html)
 login olursak kullanıcı search ekranına,
 use as guest butonuna tıklarsak free search ekranına yönlendiriyor.
 bu 2 ekran da kendi search sistemlerine sahipler(free ve user olarak ayrı)
-
 
 
 
