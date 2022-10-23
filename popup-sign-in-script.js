@@ -51,9 +51,7 @@ const form = {
         if (data.error) {
           alert("Error Password or Username"); /*displays error message
         } else {
-          window.open(
-            "./popup-sign-out.html"
-          ); /*opens the target page while Id & password matches
+          window.location.replace("./popup-sign-out.html");
         }
       })
       .catch((err) => {
@@ -90,9 +88,7 @@ const form = {
     .then((result) => {
       if(result.message === "login: true"){
         alert("You are logged in.");
-        window.open(
-          "./popup-sign-out.html"
-        ); 
+        window.location.replace("./popup-sign-out.html");
        } else {
         alert("Please check your login information");
        }

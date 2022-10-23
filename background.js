@@ -116,28 +116,7 @@ async function onInstalled() {
    console.log(err);
  }
 }
-/*
-// bütün free tools tarama isimlerini alsın ve bunu search bara bağlayalım
 
-chrome.runtime.onInstalled.addListener(onInstalled);
-async function onInstalled() {
- try {
-   const response = await fetch('https://core.securityforeveryone.com/api/scans/list', {
-     method: "POST",
-     headers: {
-       'Accept': 'application/json, text/plain',
-       'Content-Type': 'application/json',
-     },
-      body: JSON.stringify({
-     }),
- }) 
-   const result = await response.json();
-   console.log(result);
- } catch (err) {
-   console.log(err);
- }
-}
-*/
 
 
     

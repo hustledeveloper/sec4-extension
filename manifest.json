@@ -21,7 +21,7 @@
 	},
     "options_page": "./options.html",
     "action": {
-		"default_popup": "./popup-sign-out.html"
+		"default_popup": "./popup-welcome.html"
 	},
 
 

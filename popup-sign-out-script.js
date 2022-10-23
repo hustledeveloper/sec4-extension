@@ -28,9 +28,7 @@ cikis_buton.addEventListener('click', (e) => {
   .then((result) => {
     if(result.message === "logout: true"){
       alert("logout.");
-      window.open(
-        "./popup-sign-in.html"
-      ); 
+      window.location.replace("./popup-sign-in.html");
      } else {
       alert("Cannot logout");
      }
@@ -51,37 +49,6 @@ scan_butonu.addEventListener('mouseleave', () => {
     scan_butonu.style.color = 'white';
     scan_butonu.style.transform = 'scale(1)';
 });
-
-/*
- 
-scan e tıklayınca alınan url ve seçilen scan formatı ile fetch yapıp sonucu döndürmesini istiyorum
-
-sonucun linkini döndür, linke tıklayıp siteye gidecek site trafiğini artırır
-
-scan_butonu .addEventListener('click'){
-
-
-const scanComplete = async (scan) => {
-    const response = await fetch(`https://api.securityforeveryone.com/api/scans/`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-
-        },
-        body: JSON.stringify({
-
-       "url": "url",
-       "slug": "scan name",
-     }),
-   
-    });
-
-    const data = await response.json()
-    console.log(data);  
-    }
-};
- */
 
 
 const search = document.querySelector('#search');
@@ -137,3 +104,28 @@ let button = form.submit.addEventListener('click', (e) => {
   });
 });
 */
+/*
+ 
+//scan e tıklayınca alınan url ve seçilen scan formatı ile fetch yapıp sonucu döndürmesini istiyorum
+//sonucun linkini döndür, linke tıklayıp siteye gidecek site trafiğini artırır
+
+scan_butonu.addEventListener('click', (e) => {
+  e.preventDefault();
+  fetch ('https://api.securityforeveryone.com/api/scans/', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+      body: JSON.stringify({
+       "url": "url",
+       "slug": "scan name",
+     }),
+   
+    });
+
+    const data = await response.json()
+    console.log(data);  
+    }
+};
+ */
