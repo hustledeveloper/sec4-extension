@@ -144,3 +144,29 @@ async function onInstalled() {
        console.log(err);
      }
     }
+
+
+    chrome.runtime.onInstalled.addListener(deneme2);
+    async function deneme2() {
+     try {
+       const response = await fetch('https://core.securityforeveryone.com/api/blog/list', {
+         method: "POST",
+         headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({     
+          "page":"1",
+          "per_page": "10",
+          "search": "",
+          "tag_slug": ""
+
+       }),
+
+     }) 
+       const result = await response.json();
+       console.log(result);
+     } catch (err) {
+       console.log(err);
+     }
+    }
