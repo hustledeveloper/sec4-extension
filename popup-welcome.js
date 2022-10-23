@@ -36,7 +36,7 @@ guest_buton.addEventListener('mouseleave', () => {
 
 guest_buton.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.replace("./popup-sign-out.html");
+    window.location.replace("./free-popup-sign-out.html");
     });
 
 
