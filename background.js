@@ -87,8 +87,7 @@ https://core.securityforeveryone.com/api/user/login  bu sitede kullanılan api ,
 https://core-test.s4e.link/api/user/login bu sadece onur beyin hesabı ile çalışıyor
 https://core.securityforeveryone.com/api/scans/list
 
-// kendi mailim ile de çalışan api yok, çalışan tek login apisi onur beyin adresi ile çalışıyor
-get ile veri çeken, token almayan apiler çalışıyor:
+
 
 https://core-test.s4e.link/api/health-check
 https://core-test.s4e.link/api/blog/feed
@@ -162,6 +161,43 @@ async function onInstalled() {
           "tag_slug": ""
 
        }),
+
+     }) 
+       const result = await response.json();
+       console.log(result);
+     } catch (err) {
+       console.log(err);
+     }
+    }
+
+    chrome.runtime.onInstalled.addListener(deneme3);
+    async function deneme3() {
+     try {
+       const response = await fetch('https://core-test.s4e.link/api/blog/feed', {
+         method: "GET",
+         headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json',
+         },
+
+
+     }) 
+       const result = await response.json();
+       console.log(result);
+     } catch (err) {
+       console.log(err);
+     }
+    }
+    chrome.runtime.onInstalled.addListener(deneme4);
+    async function deneme4() {
+     try {
+       const response = await fetch('https://core.securityforeveryone.com/api/blog/feed', {
+         method: "GET",
+         headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json',
+         },
+
 
      }) 
        const result = await response.json();
