@@ -9,80 +9,6 @@
 chrome.runtime.onInstalled.addListener(() => {
     console.log("Extension have been successfully installed!");
   });
-/* 
-// TOKEN YAZIM FORMATLARI
-
-          //'Authorization': 'Bearer ' + token
-          //'Authorization' : `Bearer ${token}`
-
-  // TOKEN İLE FETCH YAPMA      
-try{
-    const response = await fetch('https://core-test.s4e.link/api/scan-group/list', {
-        method: "GET",
-        headers: {
-          'Accept': 'application/json, text/plain, ',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ${token}',
-        },
-         
-    }) 
-      const result = await response.json();
-      console.log(result);
-    } catch (err) {
-      console.log(err);
-         
-      //ALTERNATİF LİNKLER?
-
-//https://api.securityforeveryone.com/api/scans/list bu da çalışmıyor 
-https://core.securityforeveryone.com/api/user/login  bu sitede kullanılan api 
-herhangi bir hesapla girilemiyor
-https://core-test.s4e.link/api/user/login bu sadece onur beyin hesabı ile çalışıyor
-https://core.securityforeveryone.com/api/scans/list
-
-// kendi mailim ile de çalışan api yok, çalışan tek login apisi onur beyin adresi ile çalışıyor
-get ile veri çeken, token almayan apiler çalışıyor:
-
-https://core-test.s4e.link/api/health-check
-https://core-test.s4e.link/api/blog/feed
-https://core-test.s4e.link/api/sitemap/sitemap
-bunlar çalışıyor.
-       "email": "faruk008887@gmail.com",
-       "password": "Ankara.832",
-} 
-
-*/
-//bu fonksiyon extension kurulduğunda otomatik çalışıp bir api call yolluyor, test yapmak için kullanıyorum
-chrome.runtime.onInstalled.addListener(onInstalled);
-async function onInstalled() {
- try {
-   const response = await fetch('https://core.securityforeveryone.com/api/user/login ', {
-     method: "POST",
-     headers: {
-       'Accept': 'application/json, text/plain, */*',
-       'Content-Type': 'application/json',
-     },
-      body: JSON.stringify({     
-        
-        "email": "faruk008887@gmail.com",
-        "password": "Ankara.832",
-     }),
- }) 
-   const result = await response.json();
-   console.log(result);
- } catch (err) {
-   console.log(err);
- }
-}
-
-
-
-
-
-
-
-
-
-
 
 
 /*
@@ -135,5 +61,81 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 });
 */
+/* 
+// TOKEN YAZIM FORMATLARI
 
-    
+          //'Authorization': 'Bearer ' + token
+          //'Authorization' : `Bearer ${token}`
+
+  // TOKEN İLE FETCH YAPMA      
+try{
+    const response = await fetch('https://core-test.s4e.link/api/scan-group/list', {
+        method: "GET",
+        headers: {
+          'Accept': 'application/json, text/plain, ',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${token}',
+        },
+         
+    }) 
+      const result = await response.json();
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+         
+https://core.securityforeveryone.com/api/user/login  bu sitede kullanılan api , benim hesapla da çalışıyor
+https://core-test.s4e.link/api/user/login bu sadece onur beyin hesabı ile çalışıyor
+https://core.securityforeveryone.com/api/scans/list
+
+// kendi mailim ile de çalışan api yok, çalışan tek login apisi onur beyin adresi ile çalışıyor
+get ile veri çeken, token almayan apiler çalışıyor:
+
+https://core-test.s4e.link/api/health-check
+https://core-test.s4e.link/api/blog/feed
+https://core-test.s4e.link/api/sitemap/sitemap
+bunlar çalışıyor.
+       "email": "faruk008887@gmail.com",
+       "password": "Ankara.832",
+} 
+
+*/
+chrome.runtime.onInstalled.addListener(onInstalled);
+async function onInstalled() {
+ try {
+   const response = await fetch('https://core.securityforeveryone.com/api/user/login ', {
+     method: "POST",
+     headers: {
+       'Accept': 'application/json, text/plain, */*',
+       'Content-Type': 'application/json',
+     },
+      body: JSON.stringify({     
+
+        "email": "faruk008887@gmail.com",
+        "password": "Ankara.832",
+     }),
+ }) 
+   const result = await response.json();
+   console.log(result);
+ } catch (err) {
+   console.log(err);
+ }
+}
+
+
+    chrome.runtime.onInstalled.addListener(deneme);
+    async function deneme() {
+     try {
+       const response = await fetch('https://core-test.s4e.link/api/blog/feed', {
+         method: "GET",
+         headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json',
+         },
+
+     }) 
+       const result = await response.json();
+       console.log(result);
+     } catch (err) {
+       console.log(err);
+     }
+    }
