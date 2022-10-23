@@ -10,6 +10,81 @@ chrome.runtime.onInstalled.addListener(() => {
     console.log("Extension have been successfully installed!");
   });
 /* 
+// TOKEN YAZIM FORMATLARI
+
+          //'Authorization': 'Bearer ' + token
+          //'Authorization' : `Bearer ${token}`
+
+  // TOKEN İLE FETCH YAPMA      
+try{
+    const response = await fetch('https://core-test.s4e.link/api/scan-group/list', {
+        method: "GET",
+        headers: {
+          'Accept': 'application/json, text/plain, ',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${token}',
+        },
+         
+    }) 
+      const result = await response.json();
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+         
+      //ALTERNATİF LİNKLER?
+
+//https://api.securityforeveryone.com/api/scans/list bu da çalışmıyor 
+https://core.securityforeveryone.com/api/user/login  bu sitede kullanılan api herhangi bir hesapla girilemiyor
+https://core-test.s4e.link/api/user/login bu sadece onur beyin hesabı ile çalışıyor
+https://core.securityforeveryone.com/api/scans/list
+
+// kendi mailim ile de çalışan api yok, çalışan tek login apisi onur beyin adresi ile çalışıyor
+get ile veri çeken, token almayan apiler çalışıyor:
+
+https://core-test.s4e.link/api/health-check
+https://core-test.s4e.link/api/blog/feed
+https://core-test.s4e.link/api/sitemap/sitemap
+bunlar çalışıyor.
+       "email": "faruk008887@gmail.com",
+       "password": "832.Besni",
+} 
+
+*/
+//bu fonksiyon extension kurulduğunda otomatik çalışıp bir api call yolluyor, test yapmak için kullanıyorum
+chrome.runtime.onInstalled.addListener(onInstalled);
+async function onInstalled() {
+ try {
+   const response = await fetch('https://core-test.s4e.link/api/user/login', {
+     method: "POST",
+     headers: {
+       'Accept': 'application/json, text/plain, */*',
+       'Content-Type': 'application/json',
+     },
+      body: JSON.stringify({
+
+       "email": "sosyal@onuraktas.net",
+       "password": "DemoDemo_1234!",
+     }),
+ }) 
+   const result = await response.json();
+   console.log(result);
+ } catch (err) {
+   console.log(err);
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 //BU KISMI OAUTH2 GİRİSİ İÇİN YAPMIŞTIM
 const DISCORD_URI_ENDPOINT = 'https://discord.com/api/oauth2/authorize';
 const CLIENT_ID = encodeURIComponent('1028594481588604938');
@@ -58,69 +133,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         sendResponse('success');
     }
 });
-// TOKEN YAZIM FORMATLARI
-
-          //'Authorization': 'Bearer ' + token
-          //'Authorization' : `Bearer ${token}`
-
-  // TOKEN İLE FETCH YAPMA      
-try{
-    const response = await fetch('https://core-test.s4e.link/api/scan-group/list', {
-        method: "GET",
-        headers: {
-          'Accept': 'application/json, text/plain, ',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ${token}',
-        },
-         
-    }) 
-      const result = await response.json();
-      console.log(result);
-    } catch (err) {
-      console.log(err);
-         
-      //ALTERNATİF LİNKLER?
-
-//https://api.securityforeveryone.com/api/scans/list bu da çalışmıyor 
-https://core.securityforeveryone.com/api/user/login  bu sitede kullanılan api herhangi bir hesapla girilemiyor
-https://core-test.s4e.link/api/user/login bu sadece onur beyin hesabı ile çalışıyor
-https://core.securityforeveryone.com/api/scans/list
-
-// kendi mailim ile de çalışan api yok, çalışan tek login apisi onur beyin adresi ile çalışıyor
-get ile veri çeken, token almayan apiler çalışıyor:
-
-https://core-test.s4e.link/api/health-check
-https://core-test.s4e.link/api/blog/feed
-https://core-test.s4e.link/api/sitemap/sitemap
-bunlar çalışıyor.
-       "email": "faruk008887@gmail.com",
-       "password": "832.Besni",
-} 
-
 */
-//
-chrome.runtime.onInstalled.addListener(onInstalled);
-async function onInstalled() {
- try {
-   const response = await fetch('https://core-test.s4e.link/api/user/login', {
-     method: "POST",
-     headers: {
-       'Accept': 'application/json, text/plain, */*',
-       'Content-Type': 'application/json',
-     },
-      body: JSON.stringify({
-
-       "email": "sosyal@onuraktas.net",
-       "password": "DemoDemo_1234!",
-     }),
- }) 
-   const result = await response.json();
-   console.log(result);
- } catch (err) {
-   console.log(err);
- }
-}
-
-
 
     
