@@ -1,11 +1,11 @@
-   //update session
+   //update olunca kullanıcıya bildirim gönderen fonksiyon(bunu lokalde deneme imkanım yok ama çalışıyordur muhtemelen)
    chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
    function hasUpdate( e ) {
        console.log( 'hasUpdate', e );
        chrome.runtime.reload();
    }
 
-
+//extension yüklenince konsola bildirim gönderen fonksiyon
 chrome.runtime.onInstalled.addListener(() => {
     console.log("Extension have been successfully installed!");
   });
@@ -82,16 +82,20 @@ try{
       //ALTERNATİF LİNKLER?
 
 //https://api.securityforeveryone.com/api/scans/list bu da çalışmıyor 
-
 https://core.securityforeveryone.com/api/user/login  bu sitede kullanılan api herhangi bir hesapla girilemiyor
-
 https://core-test.s4e.link/api/user/login bu sadece onur beyin hesabı ile çalışıyor
 https://core.securityforeveryone.com/api/scans/list
+
+// kendi mailim ile de çalışan api yok, çalışan tek login apisi onur beyin adresi ile çalışıyor
+get ile veri çeken, token almayan apiler çalışıyor:
+
+https://core-test.s4e.link/api/health-check
+https://core-test.s4e.link/api/blog/feed
+https://core-test.s4e.link/api/sitemap/sitemap
+bunlar çalışıyor.
+       "email": "faruk008887@gmail.com",
+       "password": "832.Besni",
 } 
-
-
-
-
 
 */
 //
