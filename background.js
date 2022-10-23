@@ -125,12 +125,17 @@ async function onInstalled() {
     chrome.runtime.onInstalled.addListener(deneme);
     async function deneme() {
      try {
-       const response = await fetch('https://core-test.s4e.link/api/blog/feed', {
-         method: "GET",
+       const response = await fetch('https://core.securityforeveryone.com/api/scans/list', {
+         method: "POST",
          headers: {
            'Accept': 'application/json, text/plain, */*',
            'Content-Type': 'application/json',
          },
+         body: JSON.stringify({     
+          "page":"1",
+          "per_page": "10",
+
+       }),
 
      }) 
        const result = await response.json();
