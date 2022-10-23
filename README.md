@@ -29,9 +29,7 @@ giriş ekranını(popup-welcome.html)
 login olursak kullanıcı search ekranına,
 use as guest butonuna tıklarsak free search ekranına yönlendiriyor.
 bu 2 ekran da kendi search sistemlerine sahipler(free ve user olarak ayrı)
-# extension'ın güncel durumu
-login olamiyorum hala, login olmadan diğer api'ler de çalışmıyor, bunu çözsem tüm sistemi işlevsel hale getiricem ama çözemedim.
-Onun dışında aslında büyük oranda tamamlandı sayılır, login olsam kısa sürede diğer apileri de kullanır temeli bitiririm.
+
 
 
 

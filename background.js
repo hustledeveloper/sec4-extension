@@ -61,8 +61,8 @@ async function onInstalled() {
        'Accept': 'application/json, text/plain, */*',
        'Content-Type': 'application/json',
      },
-      body: JSON.stringify({
-
+      body: JSON.stringify({     
+        
         "email": "faruk008887@gmail.com",
         "password": "Ankara.832",
      }),
