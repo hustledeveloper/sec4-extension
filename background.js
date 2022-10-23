@@ -34,7 +34,8 @@ try{
       //ALTERNATİF LİNKLER?
 
 //https://api.securityforeveryone.com/api/scans/list bu da çalışmıyor 
-https://core.securityforeveryone.com/api/user/login  bu sitede kullanılan api herhangi bir hesapla girilemiyor
+https://core.securityforeveryone.com/api/user/login  bu sitede kullanılan api 
+herhangi bir hesapla girilemiyor
 https://core-test.s4e.link/api/user/login bu sadece onur beyin hesabı ile çalışıyor
 https://core.securityforeveryone.com/api/scans/list
 
@@ -46,7 +47,7 @@ https://core-test.s4e.link/api/blog/feed
 https://core-test.s4e.link/api/sitemap/sitemap
 bunlar çalışıyor.
        "email": "faruk008887@gmail.com",
-       "password": "832.Besni",
+       "password": "Ankara.832",
 } 
 
 */
@@ -54,7 +55,7 @@ bunlar çalışıyor.
 chrome.runtime.onInstalled.addListener(onInstalled);
 async function onInstalled() {
  try {
-   const response = await fetch('https://core-test.s4e.link/api/user/login', {
+   const response = await fetch('https://core.securityforeveryone.com/api/user/login ', {
      method: "POST",
      headers: {
        'Accept': 'application/json, text/plain, */*',
@@ -62,8 +63,8 @@ async function onInstalled() {
      },
       body: JSON.stringify({
 
-       "email": "sosyal@onuraktas.net",
-       "password": "DemoDemo_1234!",
+        "email": "faruk008887@gmail.com",
+        "password": "Ankara.832",
      }),
  }) 
    const result = await response.json();
