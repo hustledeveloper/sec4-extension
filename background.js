@@ -141,10 +141,9 @@ async function deneme4() {
 
 //"value":["Must be greater than or equal to 1 and less than or equal to 100."]}
 //şimdilik ilk 100 ile çalış, hepsini sonra halledersin nasıl yapılıyorsa
-// yapmak istediğim scan listesini alıp(bu tamam) bunu kendi arama sistemime bağlamak, bunun için
 
-//ya scan list api call'ıne query: "generic" gibi query vererek aramaya yapcaz, gelen sonucu alcaz
-//ya da konser reposundaki gibi yapcaz galiba 
+//harf harf arma yapma girilen kelimeyi ara şimdilik
+
 //search yaparken tıklanan kelimeye göre tool getiren arama call'ı
     chrome.runtime.onInstalled.addListener(deneme);
     async function deneme() {
