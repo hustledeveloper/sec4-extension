@@ -120,6 +120,31 @@ async function onInstalled() {
  }
 }
 
+chrome.runtime.onInstalled.addListener(deneme4);
+async function deneme4() {
+ try {
+   const response = await fetch('https://core.securityforeveryone.com/api/blog/feed', {
+     method: "GET",
+     headers: {
+       'Accept': 'application/json, text/plain, */*',
+       'Content-Type': 'application/json',
+     },
+
+
+ }) 
+   const result = await response.json();
+   console.log(result);
+ } catch (err) {
+   console.log(err);
+ }
+}
+
+//"value":["Must be greater than or equal to 1 and less than or equal to 100."]}
+//şimdilik ilk 100 ile çalış, hepsini sonra halledersin nasıl yapılıyorsa
+// yapmak istediğim scan listesini alıp(bu tamam) bunu kendi arama sistemime bağlamak, bunun için
+
+//ya scan list api call'ıne query: "generic" gibi query vererek aramaya yapcaz, gelen sonucu alcaz
+//ya da konser reposundaki gibi yapcaz galiba 
 
     chrome.runtime.onInstalled.addListener(deneme);
     async function deneme() {
@@ -132,7 +157,7 @@ async function onInstalled() {
          },
          body: JSON.stringify({     
           "page":"1",
-          "per_page": "10",
+          "per_page": "100",
 
        }),
 
@@ -145,64 +170,6 @@ async function onInstalled() {
     }
 
 
-    chrome.runtime.onInstalled.addListener(deneme2);
-    async function deneme2() {
-     try {
-       const response = await fetch('https://core.securityforeveryone.com/api/blog/list', {
-         method: "POST",
-         headers: {
-           'Accept': 'application/json, text/plain, */*',
-           'Content-Type': 'application/json',
-         },
-         body: JSON.stringify({     
-          "page":"1",
-          "per_page": "10",
-          "search": "",
-          "tag_slug": ""
+ 
 
-       }),
-
-     }) 
-       const result = await response.json();
-       console.log(result);
-     } catch (err) {
-       console.log(err);
-     }
-    }
-
-    chrome.runtime.onInstalled.addListener(deneme3);
-    async function deneme3() {
-     try {
-       const response = await fetch('https://core-test.s4e.link/api/blog/feed', {
-         method: "GET",
-         headers: {
-           'Accept': 'application/json, text/plain, */*',
-           'Content-Type': 'application/json',
-         },
-
-
-     }) 
-       const result = await response.json();
-       console.log(result);
-     } catch (err) {
-       console.log(err);
-     }
-    }
-    chrome.runtime.onInstalled.addListener(deneme4);
-    async function deneme4() {
-     try {
-       const response = await fetch('https://core.securityforeveryone.com/api/blog/feed', {
-         method: "GET",
-         headers: {
-           'Accept': 'application/json, text/plain, */*',
-           'Content-Type': 'application/json',
-         },
-
-
-     }) 
-       const result = await response.json();
-       console.log(result);
-     } catch (err) {
-       console.log(err);
-     }
-    }
+ 
