@@ -72,7 +72,7 @@ const form = {
   };
   let button = form.submit.addEventListener('click', (e) => {
     e.preventDefault();
-    fetch ('https://core-test.s4e.link/api/user/login', {
+    fetch ('https://core.securityforeveryone.com/api/user/login', {
       method: "POST",
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -80,8 +80,8 @@ const form = {
       },
        body: JSON.stringify({
 
-        "email": form.email.value,
-        "password": form.password.value,
+        "email": "faruk008887@gmail.com",
+        "password": "Ankara.832",
       }),
   })
     .then((response) => response.json())
@@ -92,6 +92,7 @@ const form = {
        } else {
         alert("Please check your login information");
        }
+       console.log(result);
     });
   });
 
