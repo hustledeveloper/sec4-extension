@@ -145,7 +145,7 @@ async function deneme4() {
 
 //ya scan list api call'ıne query: "generic" gibi query vererek aramaya yapcaz, gelen sonucu alcaz
 //ya da konser reposundaki gibi yapcaz galiba 
-
+//search yaparken tıklanan kelimeye göre tool getiren arama call'ı
     chrome.runtime.onInstalled.addListener(deneme);
     async function deneme() {
      try {
@@ -157,7 +157,8 @@ async function deneme4() {
          },
          body: JSON.stringify({     
           "page":"1",
-          "per_page": "100",
+          "per_page": "10",
+          "query": "Generic "
 
        }),
 
@@ -168,7 +169,29 @@ async function deneme4() {
        console.log(err);
      }
     }
+//search sonucu istenen apiye giden call
+    chrome.runtime.onInstalled.addListener(deneme);
+    async function deneme() {
+     try {
+       const response = await fetch('https://core.securityforeveryone.com/api/scans/detail', {
+         method: "POST",
+         headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({     
+          "slug": "command-injection-vulnerability-scanner"
 
+
+       }),
+
+     }) 
+       const result = await response.json();
+       console.log(result);
+     } catch (err) {
+       console.log(err);
+     }
+    }
 
  
 
