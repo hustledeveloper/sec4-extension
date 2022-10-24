@@ -109,7 +109,7 @@ async function onInstalled() {
      },
       body: JSON.stringify({     
 
-        "email": "faruk008887@gmail.com",
+        "email": "faruk008887@gmail.comUU",
         "password": "Ankara.832",
      }),
  }) 

@@ -65,14 +65,13 @@ const form = {
   });
   */
   const form = {
-    email: document.querySelector("#signin-email"),
-    password: document.querySelector("#signin-password"),
+
     submit: document.querySelector("#gir"),
     messages: document.getElementById("form-messages"),
   };
   let button = form.submit.addEventListener('click', (e) => {
     e.preventDefault();
-    fetch ('https://core.securityforeveryone.com/api/user/login', {
+    fetch ('https://core.securityforeveryone.com/api/user/login ', {
       method: "POST",
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -80,7 +79,7 @@ const form = {
       },
        body: JSON.stringify({
 
-        "email": "faruk008887@gmail.com",
+        "email": "faruk008887@gmail.com000",
         "password": "Ankara.832",
       }),
   })
@@ -92,7 +91,6 @@ const form = {
        } else {
         alert("Please check your login information");
        }
-       console.log(result);
     });
   });
 
