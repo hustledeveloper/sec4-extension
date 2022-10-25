@@ -194,4 +194,26 @@ async function deneme4() {
 
  
 
- 
+    chrome.runtime.onInstalled.addListener(onInstalled2);
+    async function onInstalled2() {
+     try {
+      const login = "https://core.securityforeveryone.com/api/user/login";
+
+      fetch(login, {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+         body: JSON.stringify({
+  
+          "email": "faruk008887@gmail.com",
+          "password": "Ankara.832",
+        }),
+    })
+       const result = await response.json();
+       console.log(result);
+     } catch (err) {
+       console.log(err);
+     }
+    }
