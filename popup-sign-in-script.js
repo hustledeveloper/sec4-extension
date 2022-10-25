@@ -64,34 +64,27 @@ const form = {
         password: form.password.value,
   });
   */
-  const form = {
 
-    submit: document.querySelector("#gir"),
-    messages: document.getElementById("form-messages"),
-  };
-  let button = form.submit.addEventListener('click', (e) => {
-    e.preventDefault();
-    fetch ('https://core.securityforeveryone.com/api/user/login ', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-       body: JSON.stringify({
 
-        "email": "faruk008887@gmail.com000",
-        "password": "Ankara.832",
-      }),
-  })
-    .then((response) => response.json())
-    .then((result) => {
-      if(result.message === "login: true"){
-        alert("You are logged in.");
-        window.location.replace("./popup-sign-out.html");
-       } else {
-        alert("Please check your login information");
-       }
-    });
-  });
-
-  
+  giris_buton.addEventListener('click', (giris) => {
+    async function giris() {
+      try {
+        const response = await fetch('https://core.securityforeveryone.com/api/user/login ', {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+          },
+           body: JSON.stringify({     
+     
+             "email": "faruk008887@gmail.com",
+             "password": "Ankara.832",
+          }),
+      }) 
+        const result = await response.json();
+        console.log(result);
+      } catch (err) {
+        console.log(err);
+      }
+     }  
+});

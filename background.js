@@ -109,7 +109,7 @@ async function onInstalled() {
      },
       body: JSON.stringify({     
 
-        "email": "faruk008887@gmail.comUU",
+        "email": "faruk008887@gmail.com",
         "password": "Ankara.832",
      }),
  }) 
@@ -145,8 +145,8 @@ async function deneme4() {
 //harf harf arma yapma girilen kelimeyi ara şimdilik
 
 //search yaparken tıklanan kelimeye göre tool getiren arama call'ı
-    chrome.runtime.onInstalled.addListener(deneme);
-    async function deneme() {
+    chrome.runtime.onInstalled.addListener(deneme6);
+    async function deneme6() {
      try {
        const response = await fetch('https://core.securityforeveryone.com/api/scans/list', {
          method: "POST",
@@ -169,8 +169,8 @@ async function deneme4() {
      }
     }
 //search sonucu istenen apiye giden call
-    chrome.runtime.onInstalled.addListener(deneme);
-    async function deneme() {
+    chrome.runtime.onInstalled.addListener(deneme5);
+    async function deneme5() {
      try {
        const response = await fetch('https://core.securityforeveryone.com/api/scans/detail', {
          method: "POST",
