@@ -217,29 +217,40 @@ async function deneme4() {
        console.log(err);
      }
     }
-    const giris_buton = document.querySelector('#gir');
-    giris_buton.addEventListener('click', (onInstalled2) => {
-    
-      async function onInstalled2() {
-        try {
-         const login = "https://core.securityforeveryone.com/api/user/login";
-   
-         fetch(login, {
-           method: "POST",
-           headers: {
-             'Accept': 'application/json, text/plain, */*',
-             'Content-Type': 'application/json'
-           },
-            body: JSON.stringify({
+    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+      if (request.message === 'login') {
+        async function onInstalled2() {
+          try {
+           const login = "https://core.securityforeveryone.com/api/user/login";
      
-             "email": "faruk008887@gmail.com",
-             "password": "Ankara.832",
-           }),
-       })
-          const result = await response.json();
-          console.log(result);
-        } catch (err) {
-          console.log(err);
-        }
-       }
-  });
+           fetch(login, {
+             method: "POST",
+             headers: {
+               'Accept': 'application/json, text/plain, */*',
+               'Content-Type': 'application/json'
+             },
+              body: JSON.stringify({
+       
+               "email": "faruk008887@gmail.com",
+               "password": "Ankara.832",
+             }),
+         })
+            const result = await response.json();
+            if(result.message === "true"){
+              sendResponse('success');
+              window.location.replace("./popup-sign-out.html");
+            }
+          } catch (err) {
+            sendResponse('fail');
+            alert("Please check your login information");
+          }
+         }
+    
+      } else if (request.message === 'logout') {
+        //buraya da logout fetch girilecek sonra
+          user_signed_in = false;
+    
+          sendResponse('success');
+      }
+      onInstalled2();
+    });

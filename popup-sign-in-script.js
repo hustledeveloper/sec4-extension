@@ -12,83 +12,8 @@ giris_buton.addEventListener('mouseleave', () => {
     giris_buton.style.color = 'white';
     giris_buton.style.transform = 'scale(1)';
 });
-
-/*
-//CLİCK FONKSİYONU ESKİ TASARIM
 giris_buton.addEventListener('click', () => {
-    chrome.runtime.sendMessage({ message: 'login' }, function (response) {
-        if (response === 'success') window.location.replace("./popup-sign-out.html");
-    });
-});
-
-//LOGİN FONKSİYONU ESKİ TASARIM
-
-const form = {
-    email: document.querySelector(".signin-email"),
-    password: document.querySelector(".signin-password"),
-    submit: document.querySelector(".gir"),
-    messages: document.getElementById("form-messages"),
-  };
-  let button = form.submit.addEventListener('click', (e) => {
-    e.preventDefault();
-    const login = "https://core-test.s4e.link/api/user/login";
-  
-    fetch(login, {
-      method: "POST",
-      headers: {
-        'Accept :application/json, text/plain',
-        'Content-Type : application/json' 
-      },
-      body: JSON.stringify({
-        email: form.email.value,
-        password: form.password.value,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        // code here //
-        if (data.error) {
-          alert("Error Password or Username"); /*displays error message
-        } else {
-          window.location.replace("./popup-sign-out.html");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-
-      //LOGİN PARAMETRELERİ
-        email: form.email.value,
-        password: form.password.value,
+  chrome.runtime.sendMessage({ message: 'login' }, function (response) {
+      if (response === 'success') window.location.replace("./popup-sign-out.html");
   });
-  */
-
-
-
-  giris_buton.addEventListener('click', (onInstalled2) => {
-    
-    async function onInstalled2() {
-      try {
-       const login = "https://core.securityforeveryone.com/api/user/login";
- 
-       fetch(login, {
-         method: "POST",
-         headers: {
-           'Accept': 'application/json, text/plain, */*',
-           'Content-Type': 'application/json'
-         },
-          body: JSON.stringify({
-   
-           "email": "faruk008887@gmail.com",
-           "password": "Ankara.832",
-         }),
-     })
-        const result = await response.json();
-        console.log(result);
-      } catch (err) {
-        console.log(err);
-      }
-     }
 });
