@@ -65,8 +65,10 @@ const form = {
   });
   */
 
-  giris_buton.addEventListener('click', (e) => {
-    e.preventDefault(onInstalled2);
+
+
+  giris_buton.addEventListener('click', (onInstalled2) => {
+    
     async function onInstalled2() {
       try {
        const login = "https://core.securityforeveryone.com/api/user/login";
