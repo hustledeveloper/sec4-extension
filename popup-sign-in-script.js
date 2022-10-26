@@ -15,5 +15,7 @@ giris_buton.addEventListener('mouseleave', () => {
 giris_buton.addEventListener('click', () => {
   chrome.runtime.sendMessage({ message: 'login' }, function (response) {
       if (response === 'success') window.location.replace("./popup-sign-out.html");
+      else if(response === 'fail') alert("Please check your login information");
+
   });
 });z

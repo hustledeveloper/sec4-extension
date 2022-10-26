@@ -238,13 +238,13 @@ async function deneme4() {
          })
             const result = await response.json();
             console.log(result);
-            if(result.message === "login"){
+            if(result.message === "true"){
               sendResponse('success');
               window.location.replace("./popup-sign-out.html");
             }
           } catch (err) {
             sendResponse('fail');
-            alert("Please check your login information");
+            
           }
          }
     
