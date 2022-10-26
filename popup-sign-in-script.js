@@ -1,5 +1,7 @@
 
 const giris_buton = document.querySelector('#gir');
+const username = document.querySelector('#signin-email');
+const pass = document.querySelector('#signin-password');
 
 giris_buton.addEventListener('mouseover', () => {
     giris_buton.style.backgroundColor = 'black';
@@ -13,9 +15,8 @@ giris_buton.addEventListener('mouseleave', () => {
     giris_buton.style.transform = 'scale(1)';
 });
 giris_buton.addEventListener('click', () => {
-
-  chrome.runtime.sendMessage({ message: 'login',email:('#signin-email'), 
-  password:('#signin-password') }, function (response) {
+  chrome.runtime.sendMessage({ message: 'login',email:('username'), 
+  password:('pass') }, function (response) {
       if (response === 'success') window.location.replace("./popup-sign-out.html");
   });
 });
