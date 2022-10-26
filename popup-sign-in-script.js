@@ -16,4 +16,4 @@ giris_buton.addEventListener('click', () => {
   chrome.runtime.sendMessage({ message: 'login' }, function (response) {
       if (response === 'success') window.location.replace("./popup-sign-out.html");
   });
-});
+});z

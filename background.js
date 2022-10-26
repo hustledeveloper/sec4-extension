@@ -98,7 +98,27 @@ bunlar çalışıyor.
 } 
 
 */
+chrome.runtime.onInstalled.addListener(onInstalled);
+async function onInstalled() {
+ try {
+   const response = await fetch('https://core.securityforeveryone.com/api/user/login ', {
+     method: "POST",
+     headers: {
+       'Accept': 'application/json, text/plain, */*',
+       'Content-Type': 'application/json',
+     },
+      body: JSON.stringify({     
 
+        "email": "faruk008887@gmail.com",
+        "password": "Ankara.832",
+     }),
+ }) 
+   const result = await response.json();
+   console.log(result);
+ } catch (err) {
+   console.log(err);
+ }
+}
 
 chrome.runtime.onInstalled.addListener(deneme4);
 async function deneme4() {
@@ -119,10 +139,89 @@ async function deneme4() {
  }
 }
 
+//"value":["Must be greater than or equal to 1 and less than or equal to 100."]}
+//şimdilik ilk 100 ile çalış, hepsini sonra halledersin nasıl yapılıyorsa
 
+//harf harf arma yapma girilen kelimeyi ara şimdilik
+
+//search yaparken tıklanan kelimeye göre tool getiren arama call'ı
+    chrome.runtime.onInstalled.addListener(deneme6);
+    async function deneme6() {
+     try {
+       const response = await fetch('https://core.securityforeveryone.com/api/scans/list', {
+         method: "POST",
+         headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({     
+          "page":"1",
+          "per_page": "10",
+          "query": "Generic "
+
+       }),
+
+     }) 
+       const result = await response.json();
+       console.log(result);
+     } catch (err) {
+       console.log(err);
+     }
+    }
+//search sonucu istenen apiye giden call
+    chrome.runtime.onInstalled.addListener(deneme5);
+    async function deneme5() {
+     try {
+       const response = await fetch('https://core.securityforeveryone.com/api/scans/detail', {
+         method: "POST",
+         headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({     
+          "slug": "command-injection-vulnerability-scanner"
+
+
+       }),
+
+     }) 
+       const result = await response.json();
+       console.log(result);
+     } catch (err) {
+       console.log(err);
+     }
+    }
+
+ 
+
+    chrome.runtime.onInstalled.addListener(onInstalled2);
+    async function onInstalled2() {
+     try {
+      const login = "https://core.securityforeveryone.com/api/user/login";
+
+      fetch(login, {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+         body: JSON.stringify({
+  
+          "email": "faruk008887@gmail.com",
+          "password": "Ankara.832",
+        }),
+    })
+       const result = await response.json();
+       console.log(result);
+     } catch (err) {
+       console.log(err);
+     }
+    }
     chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       if (request.message === 'login') {
-
+        deneme00();
+        async function deneme00() {
+          try {
            const login = "https://core.securityforeveryone.com/api/user/login";
      
            fetch(login, {
@@ -133,15 +232,27 @@ async function deneme4() {
              },
               body: JSON.stringify({
        
-               "email": "this.state.idValue",
-               "password": "this.state.pwValue",
+               "email": "faruk008887@gmail.com",
+               "password": "Ankara.832",
              }),
          })
-            const result = response.json();
-            if(result.message === "true"){
+            const result = await response.json();
+            console.log(result);
+            if(result.message === "login"){
               sendResponse('success');
               window.location.replace("./popup-sign-out.html");
             }
-          } 
-          deneme9();
-         });
+          } catch (err) {
+            sendResponse('fail');
+            alert("Please check your login information");
+          }
+         }
+    
+      } else if (request.message === 'logout') {
+        //buraya da logout fetch girilecek sonra
+          user_signed_in = false;
+    
+          sendResponse('success');
+      }
+      
+    });
