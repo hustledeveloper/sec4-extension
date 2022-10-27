@@ -232,8 +232,9 @@ async function deneme4() {
              },
               body: JSON.stringify({
        
-               "email": 'request.value.email',
-               "password": 'request.value.password',
+               "email": 'message.email.value',
+               "password": "message.pass.value",
+               
              }),
          })
             const result = await response.json();
