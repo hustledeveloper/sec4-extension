@@ -8,9 +8,10 @@
         "32": "icon_32.png",
         "128": "icon_128.png"
       },
-      "permissions": ["tabs", "scripting", "identity", "identity","storage" ],
+    "permissions": ["tabs", "scripting", "identity", "storage" ],
+
     "host_permissions": [
-        "https://core-test.s4e.link/"
+        "https://core.securityforeveryone.com/api"
  
       ],
       "optional_host_permissions": [

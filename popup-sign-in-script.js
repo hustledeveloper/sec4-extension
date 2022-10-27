@@ -1,40 +1,22 @@
+document.querySelector('form').addEventListener('submit', event => {
+    event.preventDefault();
 
-const giris_buton = document.querySelector('#gir');
-const email = document.querySelector('#signin-email').value;
-const pass = document.querySelector('#signin-password').value;
+    const email = document.querySelector('#username').value;
+    const pass = document.querySelector('#password').value;
 
-
-giris_buton.addEventListener('mouseover', () => {
-    giris_buton.style.backgroundColor = 'black';
-    giris_buton.style.color = 'white';
-    giris_buton.style.transform = 'scale(1.3)';
-});
-
-giris_buton.addEventListener('mouseleave', () => {
-    giris_buton.style.backgroundColor = '#ee2c1e';
-    giris_buton.style.color = 'white';
-    giris_buton.style.transform = 'scale(1)';
-});
-giris_buton.addEventListener('click', () => {
-  chrome.runtime.sendMessage({ message: 'login',
-  payload: { email,pass }},function (response) {
-      if (response === 'success') window.location.replace("./popup-sign-out.html");
+    if (email && password) {
+        chrome.runtime.sendMessage({ message: 'login', 
+      payload: { email, pass }},
+      function (response) {
+          if (response === 'success')
+              window.location.replace('./popup-sign-out.html');
   });
+    } else {
+        document.querySelector('#username').placeholder = "Enter a username.";
+        document.querySelector('#password').placeholder = "Enter a password.";
+        document.querySelector('#username').style.backgroundColor = 'red';
+        document.querySelector('#password').style.backgroundColor = 'red';
+        document.querySelector('#username').classList.add('white_placeholder');
+        document.querySelector('#password').classList.add('white_placeholder');
+    }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
