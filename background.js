@@ -228,12 +228,12 @@ async function deneme4() {
              method: "POST",
              headers: {
                'Accept': 'application/json, text/plain, */*',
-               'Content-Type': 'application/json'
+               'Content-Type': 'application/json',
              },
               body: JSON.stringify({
-       
-               "email": 'message.email.value',
-               "password": "message.pass.value",
+                
+                email: request.message.payload.email,
+                password: request.message.payload.pass,
                
              }),
          })
