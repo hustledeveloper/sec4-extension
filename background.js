@@ -138,9 +138,13 @@ function flip_user_status(signIn, user_info) {
         console.log(user_info.password)
         return fetch('https://core.securityforeveryone.com/api/user/login', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({"username": "user_info.email", 
-                    "password": "user_info.password"})
+            headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              "username": "user_info.email", 
+              "password": "user_info.password"})
         })
             .then(res => {
                 return new Promise(resolve => {
