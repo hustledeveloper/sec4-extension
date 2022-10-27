@@ -10,29 +10,7 @@ chrome.runtime.onInstalled.addListener(() => {
     console.log("Extension have been successfully installed!");
   });
 
-/* 
-// TOKEN YAZIM FORMATLARI
-
-          //'Authorization': 'Bearer ' + token
-          //'Authorization' : `Bearer ${token}`
-
-  // TOKEN İLE FETCH YAPMA      
-try{
-    const response = await fetch('https://core-test.s4e.link/api/scan-group/list', {
-        method: "GET",
-        headers: {
-          'Accept': 'application/json, text/plain, ',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ${token}',
-        },
-         
-    }) 
-      const result = await response.json();
-      console.log(result);
-    } catch (err) {
-      console.log(err);
-*/
-
+//api call örnekleri
 
 chrome.runtime.onInstalled.addListener(deneme4);
 async function deneme4() {
@@ -133,6 +111,9 @@ async function deneme4() {
     }
 //login bölümü
 
+
+
+
 let user_signed_in = false;
 let return_session = false;
 
@@ -218,12 +199,12 @@ chrome.action.onClicked.addListener(function () {
             .then(res => {
                 if (res.userStatus) {
                     if (return_session) {
-                        chrome.browserAction.setPopup({popup: "/popup-welcome.html"});
+                        chrome.action.setPopup({popup: "/popup-welcome.html"});
                     } else {
-                        chrome.browserAction.setPopup({popup: "/popup-sign-out.html"});
+                        chrome.action.setPopup({popup: "/popup-sign-out.html"});
                     }
                 } else {
-                    chrome.browserAction.setPopup({popup: "/popup-sign-in.html"});
+                    chrome.action.setPopup({popup: "/popup-sign-in.html"});
                 }
             })
             .catch(err => console.log(err));
