@@ -84,9 +84,7 @@ async function deneme4() {
      }
     }
 
- 
-
-    chrome.runtime.onInstalled.addListener(onInstalled2);
+  chrome.runtime.onInstalled.addListener(onInstalled2);
     async function onInstalled2() {
      try {
       const login = "https://core.securityforeveryone.com/api/user/login";
@@ -109,11 +107,10 @@ async function deneme4() {
        console.log(err);
      }
     }
+
+
+
 //login bölümü
-
-
-
-
 let user_signed_in = false;
 let return_session = false;
 
@@ -144,7 +141,8 @@ function flip_user_status(signIn, user_info) {
             },
             body: JSON.stringify({
               "username": "user_info.email", 
-              "password": "user_info.password"})
+              "password": "user_info.password"
+            })
         })
             .then(res => {
                 return new Promise(resolve => {
@@ -171,8 +169,10 @@ function flip_user_status(signIn, user_info) {
                 fetch('https://core.securityforeveryone.com/api/user/login', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({"username": "user_info.email", 
-                            "password": "user_info.password"})
+                    body: JSON.stringify({
+                      "username": "user_info.email", 
+                       "password": "user_info.password"
+                          })
                 })
                     .then(res => {
                         console.log(res);
@@ -214,7 +214,7 @@ chrome.action.onClicked.addListener(function () {
             .catch(err => console.log(err));
     });
     
-        chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         if (request.message === 'login') {
             flip_user_status(true, request.payload)
                 .then(res => sendResponse(res))

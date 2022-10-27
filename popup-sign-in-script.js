@@ -14,9 +14,5 @@ document.querySelector('form').addEventListener('submit', event => {
     } else {
         document.querySelector('#username').placeholder = "Enter a username.";
         document.querySelector('#password').placeholder = "Enter a password.";
-        document.querySelector('#username').style.backgroundColor = 'red';
-        document.querySelector('#password').style.backgroundColor = 'red';
-        document.querySelector('#username').classList.add('white_placeholder');
-        document.querySelector('#password').classList.add('white_placeholder');
     }
 });
