@@ -1,16 +1,17 @@
-   //update olunca kullanıcıya bildirim gönderen fonksiyon(bunu lokalde deneme imkanım yok ama çalışıyordur muhtemelen)
-   chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
-   function hasUpdate( e ) {
-       console.log( 'hasUpdate', e );
-       chrome.runtime.reload();
-   }
-
 //extension yüklenince konsola bildirim gönderen fonksiyon
 chrome.runtime.onInstalled.addListener(() => {
-    console.log("Extension have been successfully installed!");
-  });
+  console.log("Extension have been successfully installed!");
+});
+//update olunca kullanıcıya bildirim gönderen fonksiyon(bunu lokalde deneme imkanım yok ama çalışıyordur muhtemelen)
+chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
+  function hasUpdate( e ) {
+    console.log( 'hasUpdate', e );
+    chrome.runtime.reload();
+  }
+  
+//API CALL ÖRNEKLERİ
 
-//api call örnekleri
+//blog call, bloga bir şey eklenince bildirim yollanacak şekilde bir fonksiyon tasarla
 
 chrome.runtime.onInstalled.addListener(deneme4);
 async function deneme4() {
@@ -50,9 +51,7 @@ async function deneme4() {
           "page":"1",
           "per_page": "10",
           "query": "Generic "
-
        }),
-
      }) 
        const result = await response.json();
        console.log(result);
@@ -60,7 +59,7 @@ async function deneme4() {
        console.log(err);
      }
     }
-//search sonucu istenen apiye giden call
+//search sonucu istenen apiye giden call, slug kısmına seçilen searchı ekleyip detaylar döndürebiliriz
     chrome.runtime.onInstalled.addListener(deneme5);
     async function deneme5() {
      try {
@@ -72,10 +71,7 @@ async function deneme4() {
          },
          body: JSON.stringify({     
           "slug": "command-injection-vulnerability-scanner"
-
-
        }),
-
      }) 
        const result = await response.json();
        console.log(result);
@@ -83,7 +79,7 @@ async function deneme4() {
        console.log(err);
      }
     }
-
+//örnek login api call
   chrome.runtime.onInstalled.addListener(onInstalled2);
     async function onInstalled2() {
      try {
