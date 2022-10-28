@@ -69,7 +69,7 @@ document.querySelector('form').addEventListener("#scan", event => {
   const slug = document.querySelector('#scantipi').value;
 
   if (asset && slug) {
-      chrome.runtime.sendMessage({ message: 'free-search', 
+      chrome.runtime.sendMessage({ message: 'free-scan', 
     payload: { asset, slug }},
     function (response) {
         if (response === 'success')

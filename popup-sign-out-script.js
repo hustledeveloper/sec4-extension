@@ -70,7 +70,7 @@ document.querySelector('form').addEventListener("#scan", event => {
   const slug = document.querySelector('#scantipi').value;
 
   if (asset && slug) {
-      chrome.runtime.sendMessage({ message: 'premium-search', 
+      chrome.runtime.sendMessage({ message: 'premium-scan', 
     payload: { asset, slug }},
     function (response) {
         if (response === 'success')
