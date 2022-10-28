@@ -8,7 +8,7 @@ chrome.runtime.onUpdateAvailable.addListener( hasUpdate );
     console.log( 'hasUpdate', e );
     chrome.runtime.reload();
   }
-  
+
 //API CALL ÖRNEKLERİ
 
 //blog call, bloga bir şey eklenince bildirim yollanacak şekilde bir fonksiyon tasarla
@@ -106,7 +106,8 @@ async function deneme4() {
 
 
 
-//login bölümü
+//LOGIN BÖLÜMÜ
+
 let user_signed_in = false;
 let return_session = false;
 
@@ -209,7 +210,7 @@ chrome.action.onClicked.addListener(function () {
             })
             .catch(err => console.log(err));
     });
-    
+     
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         if (request.message === 'login') {
             flip_user_status(true, request.payload)
@@ -233,3 +234,66 @@ chrome.action.onClicked.addListener(function () {
                 return true;
             }
     });
+
+
+
+
+//FREE SCAN
+/* 
+// search e tıklayınca bütün free tools tarama isimlerini alsın ve bunu search bara bağlayalım
+const form = {
+  submit: document.querySelector("#search"),
+};
+let button = form.submit.addEventListener('click', (e) => {
+  e.preventDefault();
+  fetch ('https://core.securityforeveryone.com/api/scans/start-guest', {
+    method: "POST",
+    headers: {
+      'Accept': 'application/json, text/plain',
+      'Content-Type': 'application/json'
+    },
+     body: JSON.stringify({
+  "asset": "abc.com",
+  "slug": "txt-record-lookup",
+  "guest_token": "f2b946a8db1bf8e366ae9597e3ebf8b685d4d9aa710db72f79b316073085975b",
+  "time": 1635606153
+    }),
+})
+  .then((response) => response.json())
+  .then((freetools) => {
+  console.log(freetools);
+  });
+});
+*/
+
+
+
+
+
+//PREMİUM SCAN
+/*   
+// search e tıklayınca bütün free tools tarama isimlerini alsın ve bunu search bara bağlayalım
+const form = {
+  submit: document.querySelector("#search"),
+};
+let button = form.submit.addEventListener('click', (e) => {
+  e.preventDefault();
+  fetch ('https://core.securityforeveryone.com/api/scans/start-from-request', {
+    method: "POST",
+    headers: {
+      'Accept': 'application/json, text/plain',
+      'Content-Type': 'application/json'
+    },
+     body: JSON.stringify({
+  "asset": "abc.com",
+  "slug": "txt-record-lookup",
+  "guest_token": "f2b946a8db1bf8e366ae9597e3ebf8b685d4d9aa710db72f79b316073085975b",
+  "time": 1635606153
+    }),
+})
+  .then((response) => response.json())
+  .then((freetools) => {
+  console.log(freetools);
+  });
+});
+*/
