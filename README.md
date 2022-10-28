@@ -1,6 +1,7 @@
 # Security for Everyone Chrome Extension
 # Ne durumdayım
-Şu an background'da api testler yapıyorum, her call için fonksiyon hazırlamaya çalışıyorum, response içeriklerini anlamaya çalışıyorum.
+Login sistemi kurdum yeni bir tane, ama henüz uyumluluk sorunlarını çözemedim, login olunca bearer token alıp iç call'lar yaparak(scan gibi) devam edeceğim
+background'da api testler yapıyorum, her call için fonksiyon hazırlıyorum, response içeriklerini anlamaya çalışıyorum.
 Extensionu api call'lar çalışmadan epey inşaa ettim aslında, bu call'ları doğru entegre ettiğimde işin büyük kısmı bitmiş olacak.
 
 
