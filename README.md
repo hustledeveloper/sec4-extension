@@ -1,8 +1,6 @@
 # Security for Everyone Chrome Extension
 # Ne durumdayım
-Login sistemi kurdum yeni bir tane, ama henüz uyumluluk sorunlarını çözemedim, login olunca bearer token alıp iç call'lar yaparak(scan gibi) devam edeceğim
-background'da api testler yapıyorum, her call için fonksiyon hazırlıyorum, response içeriklerini anlamaya çalışıyorum.
-Extensionu api call'lar çalışmadan epey inşaa ettim aslında, bu call'ları doğru entegre ettiğimde işin büyük kısmı bitmiş olacak.
+sign in ekranındaki password ve username yerine api token koyacağım, bununla giriş yapıalcak ve api call'lar bununla yollanacak. Tokeni userin lokalinde saklanacak şekilde ayarlıycam, bu şekilde username ve passwordü sistemde saklamaktan daha güvenli bir şey de yapmış olacağım, çok daha hoş. Sonrasında scan'ler üzerinde çalışmaya devam edicem. Blog'a yeni yazı gelince bildirim atabiliyor muyum ve bu benden isteniyor mu ona bakacağım sonra bir de.
 
 
 ## Installation
