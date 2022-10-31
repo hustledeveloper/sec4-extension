@@ -137,8 +137,8 @@ function flip_user_status(signIn, user_info) {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              "username": "user_info.email", 
-              "password": "user_info.password"
+              "email": user_info.email, 
+              "password": user_info.password,
             })
         })
             .then(res => {
