@@ -234,9 +234,6 @@ chrome.action.onClicked.addListener(function () {
                 return true;
             }
     });
-
-
-
 //mesaj olarak free-scan ve premium-scan isimli dinleyiciler ve 
 //onların tetikleyeceği asset ve slug yollayan api call lar tasarla
 //FREE SCAN
