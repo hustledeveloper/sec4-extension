@@ -16,10 +16,11 @@ document.querySelector('form').addEventListener('submit', event => {
 
     const email = document.querySelector('#username').value;
     const password = document.querySelector('#password').value;
+    const apitoken = document.querySelector('#api-token').value;
 
     if (email && password) {
         chrome.runtime.sendMessage({ message: 'login', 
-      payload: { email, password }},
+      payload: { email, password, apitoken }},
       function (response) {
           if (response === 'success')
               window.location.replace('./popup-sign-out.html');

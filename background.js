@@ -130,6 +130,7 @@ function flip_user_status(signIn, user_info) {
     if (signIn) {
         console.log(user_info.email)
         console.log(user_info.password)
+        console.log(user_info.apitoken)
         return fetch('https://core.securityforeveryone.com/api/user/login', {
             method: 'POST',
             headers: {
