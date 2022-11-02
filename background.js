@@ -257,14 +257,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
   }
 });
-//mesaj olarak free-scan ve premium-scan isimli dinleyiciler ve
-//onların tetikleyeceği asset ve slug yollayan api call lar tasarla
-//FREE SCAN
-/* 
 // search e tıklayınca bütün free tools tarama isimlerini alsın ve bunu search bara bağlayalım
-const form = {
-  submit: document.querySelector("#search"),
-};
+
+//FREE SCAN fonksiyonu olacak, listener free-scan call'ı alınca buradaki fonksiyon çalışacak
+/* 
 let button = form.submit.addEventListener('click', (e) => {
   e.preventDefault();
   fetch ('https://core.securityforeveryone.com/api/scans/start-guest', {
@@ -286,12 +282,9 @@ let button = form.submit.addEventListener('click', (e) => {
 });
 */
 
-//PREMİUM SCAN
+//Premium SCAN fonksiyonu olacak, listener free-scan call'ı alınca buradaki fonksiyon çalışacak
 /*   
-// search e tıklayınca bütün free tools tarama isimlerini alsın ve bunu search bara bağlayalım
-const form = {
-  submit: document.querySelector("#search"),
-};
+
 let button = form.submit.addEventListener('click', (e) => {
   e.preventDefault();
   fetch ('https://core.securityforeveryone.com/api/scans/start-from-request', {
