@@ -1,6 +1,8 @@
 # Security for Everyone Chrome Extension
 # Ne durumdayım
-sign in ekranındaki password ve username yerine api token koyacağım, bununla giriş yapıalcak ve api call'lar bununla yollanacak. Tokeni userin lokalinde saklanacak şekilde ayarlıycam, bu şekilde username ve passwordü sistemde saklamaktan daha güvenli bir şey de yapmış olacağım, çok daha hoş. Sonrasında scan'ler üzerinde çalışmaya devam edicem. Blog'a yeni yazı gelince bildirim atabiliyor muyum ve bu benden isteniyor mu ona bakacağım sonra bir de.
+scan başlatma:
+nonmember ve memeber ekranlarda scan başlatmak için asset ve slug değerlerini alıp bunları background.js'e göndereceğim, sonra bu değerleri body kısmında ekleyerek member veya nonmember api call'lar göndererek tarama başlatacağım.
+Scan için sitedeki gibi her harfte call atan sistemi kurup slugları ekrana yollayıp seçtiren sistemi ayarlamam lazım. Kendi kurduğum scan sistemini iptal edeceğim çünkü o düz mantıkla çalışıyor.
 
 
 ## Installation
