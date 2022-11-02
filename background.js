@@ -168,8 +168,8 @@ function flip_user_status(signIn, user_info) {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
-                      "username": "user_info.email", 
-                       "password": "user_info.password"
+                      "username": user_info.email, 
+                       "password": user_info.password
                           })
                 })
                     .then(res => {
@@ -252,10 +252,9 @@ let button = form.submit.addEventListener('click', (e) => {
       'Content-Type': 'application/json'
     },
      body: JSON.stringify({
-  "asset": "abc.com",
-  "slug": "txt-record-lookup",
+  "asset": "user_info.asset,",
+  "slug": "user_info.slug,",
   "guest_token": "f2b946a8db1bf8e366ae9597e3ebf8b685d4d9aa710db72f79b316073085975b",
-  "time": 1635606153
     }),
 })
   .then((response) => response.json())
