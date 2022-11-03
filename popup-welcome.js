@@ -7,7 +7,7 @@ giris_button.addEventListener("mouseover", () => {
 });
 
 giris_button.addEventListener("mouseleave", () => {
-  giris_button.style.backgroundColor = "#ee2c1e";
+  giris_button.style.backgroundColor = "#6366F1";
   giris_button.style.color = "white";
   giris_button.style.transform = "scale(1)";
 });
@@ -25,7 +25,7 @@ guest_buton.addEventListener("mouseover", () => {
 });
 
 guest_buton.addEventListener("mouseleave", () => {
-  guest_buton.style.backgroundColor = "#ee2c1e";
+  guest_buton.style.backgroundColor = "#6366F1 ";
   guest_buton.style.color = "white";
   guest_buton.style.transform = "scale(1)";
 });

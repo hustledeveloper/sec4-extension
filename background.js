@@ -95,12 +95,14 @@ async function onInstalled2() {
     fetch(login, {
       method: "POST",
       headers: {
-        Accept: "application/json, text/plain, */*",
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: "faruk008887@gmail.com",
         password: "Ankara.832",
+        g_recaptcha_response: "string",
+        bypass_captcha: true,
       }),
     });
     const result = await response.json();

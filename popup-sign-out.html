@@ -1,56 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="mystyles.css">
+    <link rel="stylesheet" href="mystyles.css" />
     <style>
       body {
-      width: 400px;
-      height: 650px;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background : linear-gradient(90deg, #4d29ff, #000000);
-  }
-   </style>
-</head>
+        width: 400px;
+        height: 650px;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #fff;
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
     <div>
-        <h1>Security for Everyone</h1>
-        <h4>Affordable, Manageable and Understandable </h4>          
-      </div> 
-      <form>
-        <b>URL</b>       
-        <input type="text" size="35" id="url" name="url"   placeholder="valid asset types: DOMAIN,IPV4,URL,REQUEST" required>     
-        <b>Member Scans</b>     
-          <input
-            type="search" id="scantipi" name="scantipi" size="35" placeholder="Search a free or premium tool" autocomplete="off"/>           
-            <button type="submit"class="scan" >Scan</button>
-            <button type="submit" class="cikis" >Sign Out</button>      
-          </form>
-      <div>
-        <section>
-          <ul>
-            <li>Generic Command Injection Vulnerability Scanner</li>
-            <li>Generic CRLF Injection Vulnerability Scanner</li>
-            <li>Generic SSRF vulnerability scanner</li>
-            <li>Generic Open Redirect Vulnerability Scanner</li>
-          </ul>
-  
-          <div id="notFound">
-            <p>No Search Found</p>
-          </div>
-        </section>
-      </div>   
-      <div>
-        <a class="website" href="https://securityforeveryone.com/" target="_blank">
-          <i class="fab fa-website"></i><b style="color: #fff" >Follow us</b></a>
-      </div>
-      <script src="./popup-sign-out-script.js"></script>
-</body>
+      <h1>Security for Everyone</h1>
+      <h4>Affordable, Manageable and Understandable</h4>
+    </div>
+    <form>
+      <b>URL</b>
+      <input
+        type="text"
+        size="35"
+        id="url"
+        name="url"
+        placeholder="valid asset types: DOMAIN,IPV4,URL,REQUEST"
+        required
+      />
+      <b>Member Scans</b>
+      <input
+        type="search"
+        id="scantipi"
+        name="scantipi"
+        size="35"
+        placeholder="Search a free or premium tool"
+        autocomplete="off"
+      />
+      <button type="submit" class="scan">Scan</button>
+      <button type="submit" class="cikis">Sign Out</button>
+    </form>
+    <div>
+      <section>
+        <ul>
+          <li>Generic Command Injection Vulnerability Scanner</li>
+          <li>Generic CRLF Injection Vulnerability Scanner</li>
+          <li>Generic SSRF vulnerability scanner</li>
+          <li>Generic Open Redirect Vulnerability Scanner</li>
+        </ul>
 
+        <div id="notFound">
+          <p>No Search Found</p>
+        </div>
+      </section>
+    </div>
+    <div>
+      <a
+        class="website"
+        href="https://securityforeveryone.com/"
+        target="_blank"
+      >
+        <i class="fab fa-website"></i><b>Follow us</b></a
+      >
+    </div>
+    <script src="./popup-sign-out-script.js"></script>
+  </body>
 </html>
