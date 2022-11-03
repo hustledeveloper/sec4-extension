@@ -215,12 +215,12 @@ chrome.action.onClicked.addListener(function () {
     .then((res) => {
       if (res.userStatus) {
         if (return_session) {
-          chrome.action.setPopup({ popup: "/popup-welcome.html" });
+          window.location.replace("./popup-welcome.html");
         } else {
-          chrome.action.setPopup({ popup: "/popup-sign-out.html" });
+          window.location.replace("./popup-sign-out.html");
         }
       } else {
-        chrome.action.setPopup({ popup: "/popup-sign-in.html" });
+        window.location.replace("./popup-sign-in.html");
       }
     })
     .catch((err) => console.log(err));
