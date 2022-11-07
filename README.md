@@ -2,6 +2,10 @@
 
 # Yapacaklarımın listesi
 
+Branch'e eklenenler:
+5- options page eklendi, bildirim seçeneklerini alıp kaydediyor, bunu bloga ve yeni tool bildirimine bağlarım sonra
+
+Branch öncesi versiyonda olmayanlar:
 1-api token al, bunu lokalde sakla api call atarken kullan scan vs ile, bununla giriş yapılacak şekilde pass ve username menüsünü modifiye et
 chrome.storage.sync.set(
 chrome.storage.sync.get(
