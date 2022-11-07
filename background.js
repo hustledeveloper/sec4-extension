@@ -8,7 +8,7 @@ function hasUpdate(e) {
   console.log("hasUpdate", e);
   chrome.runtime.reload();
 }
-
+/* 
 //LOGIN BÖLÜMÜ
 
 let user_signed_in = false;
@@ -156,6 +156,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
   }
 });
+
+
+
+
+*/
 // search e tıklayınca bütün free tools tarama isimlerini alsın ve bunu search bara bağlayalım
 
 //FREE SCAN fonksiyonu olacak, listener free-scan call'ı alınca buradaki fonksiyon çalışacak

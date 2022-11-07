@@ -11,24 +11,22 @@ giris_buton.addEventListener("mouseleave", () => {
   giris_buton.style.color = "white";
   giris_buton.style.transform = "scale(1)";
 });
+
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const email = document.querySelector("#username").value;
-  const password = document.querySelector("#password").value;
   const apitoken = document.querySelector("#api-token").value;
 
-  if (email && password) {
+  if (apitoken) {
     chrome.runtime.sendMessage(
-      { message: "login", payload: { email, password, apitoken } },
+      { message: "login", payload: { apitoken } },
       function (response) {
         if (response === "success")
           window.location.replace("./popup-sign-out.html");
       }
     );
   } else {
-    document.querySelector("#username").placeholder = "Enter a username.";
-    document.querySelector("#password").placeholder = "Enter a password.";
+    document.querySelector("#api-token").placeholder = "Enter a api token.";
   }
 });
 
