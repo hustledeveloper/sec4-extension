@@ -9,109 +9,6 @@ function hasUpdate(e) {
   chrome.runtime.reload();
 }
 
-//API CALL ÖRNEKLERİ
-
-//blog call, bloga bir şey eklenince bildirim yollanacak şekilde bir fonksiyon tasarla
-
-chrome.runtime.onInstalled.addListener(deneme4);
-async function deneme4() {
-  try {
-    const response = await fetch(
-      "https://core.securityforeveryone.com/api/blog/feed",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-//"value":["Must be greater than or equal to 1 and less than or equal to 100."]}
-//şimdilik ilk 100 ile çalış, hepsini sonra halledersin nasıl yapılıyorsa
-
-//harf harf arma yapma girilen kelimeyi ara şimdilik
-
-//search yaparken tıklanan kelimeye göre tool getiren arama call'ı
-chrome.runtime.onInstalled.addListener(deneme6);
-async function deneme6() {
-  try {
-    const response = await fetch(
-      "https://core.securityforeveryone.com/api/scans/list",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          page: "1",
-          per_page: "10",
-          query: "Generic ",
-        }),
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
-}
-//search sonucu istenen apiye giden call, slug kısmına seçilen searchı ekleyip detaylar döndürebiliriz
-chrome.runtime.onInstalled.addListener(deneme5);
-async function deneme5() {
-  try {
-    const response = await fetch(
-      "https://core.securityforeveryone.com/api/scans/detail",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          slug: "command-injection-vulnerability-scanner",
-        }),
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
-}
-//örnek login api call
-chrome.runtime.onInstalled.addListener(onInstalled2);
-async function onInstalled2() {
-  try {
-    const login = "https://core.securityforeveryone.com/api/user/login";
-
-    fetch(login, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: "faruk008887@gmail.com",
-        password: "Ankara.832",
-        g_recaptcha_response: "string",
-        bypass_captcha: true,
-      }),
-    });
-    const result = await response.json();
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 //LOGIN BÖLÜMÜ
 
 let user_signed_in = false;
@@ -139,7 +36,7 @@ function flip_user_status(signIn, user_info) {
     return fetch("https://core.securityforeveryone.com/api/user/login", {
       method: "POST",
       headers: {
-        Accept: "application/json, text/plain, */*",
+        Accept: "application/json, text/plain, ",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
