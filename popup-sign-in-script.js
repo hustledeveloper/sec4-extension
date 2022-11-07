@@ -31,3 +31,31 @@ document.querySelector("form").addEventListener("submit", (event) => {
     document.querySelector("#password").placeholder = "Enter a password.";
   }
 });
+
+/* 
+function save_options() {
+  var token = document.getElementById("api-token").text;
+  chrome.storage.sync.set({
+    token: token,
+  });
+  chrome.storage.sync.get({
+    token: token,
+  });
+  console.log("token");
+}
+// Restores select checkbox state using the preferences
+// stored in chrome.storage.
+function restore_options() {
+  // Use default values
+  chrome.storage.sync.get(
+    {
+      token: token,
+    },
+    function (items) {
+      document.getElementById("api-token").text = items.token;
+    }
+  );
+}
+document.addEventListener("DOMContentLoaded", restore_options);
+document.getElementById("gir").addEventListener("click", save_options);
+*/
