@@ -12,7 +12,6 @@ giris_buton.addEventListener("mouseleave", () => {
   giris_buton.style.transform = "scale(1)";
 });
 
-/*
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -30,31 +29,3 @@ document.querySelector("form").addEventListener("submit", (event) => {
     document.querySelector("#api-token").placeholder = "Enter a api token.";
   }
 });
-*/
-
-function save_options() {
-  var token = document.getElementById("api-token").text;
-  chrome.storage.sync.set({
-    token: token,
-  });
-  chrome.storage.sync.get({
-    token: token,
-  });
-  console.log(token);
-}
-// Restores select checkbox state using the preferences
-// stored in chrome.storage.
-function restore_options() {
-  // Use default values
-  chrome.storage.sync.get(
-    {
-      token: "000",
-    },
-    function (items) {
-      document.getElementById("api-token").text = items.token;
-    }
-  );
-}
-
-document.addEventListener("DOMContentLoaded", restore_options);
-document.getElementById("gir").addEventListener("click", save_options);

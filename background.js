@@ -8,7 +8,7 @@ function hasUpdate(e) {
   console.log("hasUpdate", e);
   chrome.runtime.reload();
 }
-/* 
+
 //LOGIN BÖLÜMÜ
 
 let user_signed_in = false;
@@ -30,8 +30,6 @@ function is_user_signed_in() {
 
 function flip_user_status(signIn, user_info) {
   if (signIn) {
-    console.log(user_info.email);
-    console.log(user_info.password);
     console.log(user_info.apitoken);
     return fetch("https://core.securityforeveryone.com/api/user/login", {
       method: "POST",
@@ -40,8 +38,7 @@ function flip_user_status(signIn, user_info) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: user_info.email,
-        password: user_info.password,
+        apitoken: user_info.apitoken,
       }),
     })
       .then((res) => {
@@ -67,15 +64,14 @@ function flip_user_status(signIn, user_info) {
         function (response) {
           console.log(response);
           if (chrome.runtime.lastError) resolve("fail");
-
+          //buraya tokeni yollayan basit bi call ekle
           if (response.userStatus === undefined) resolve("fail");
           console.log("hi");
           fetch("https://core.securityforeveryone.com/api/user/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              username: user_info.email,
-              password: user_info.password,
+              apitoken: user_info.apitoken,
             }),
           })
             .then((res) => {
@@ -106,6 +102,12 @@ is_user_signed_in()
   })
   .catch((err) => console.log(res));
 
+//login mesajını ve api keyi alsın, kaydetsin. Çıkış yapmak istenirse sıfırlasın,
+//api keye başlangıç değeri 0 versin ki giriş yapılma olayı buna göre düzenlensin
+//optimal kullanıcı api keyi bir kere girecek ve extensionu hep o şekilde kullanacak
+//token 0 ise welcome a yolla
+//farklıysa ve api call örneği başarılı dönüş aldıysa sign out a yolla
+//restore_options kullan
 //click kontrol
 chrome.action.onClicked.addListener(function () {
   is_user_signed_in()
@@ -122,7 +124,7 @@ chrome.action.onClicked.addListener(function () {
     })
     .catch((err) => console.log(err));
 });
-
+//logini dinle tokeni kaydet, save_options kullan
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.message === "login") {
     flip_user_status(true, request.payload)
@@ -140,7 +142,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         sendResponse({
           message: "success",
           userStatus: res.userStatus,
-          user_info: res.user_info.email,
+          user_info: res.user_info.apitoken,
         });
       })
       .catch((err) => console.log(err));
@@ -156,11 +158,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
   }
 });
-
-
-
-
-*/
 // search e tıklayınca bütün free tools tarama isimlerini alsın ve bunu search bara bağlayalım
 
 //FREE SCAN fonksiyonu olacak, listener free-scan call'ı alınca buradaki fonksiyon çalışacak
@@ -209,4 +206,34 @@ let button = form.submit.addEventListener('click', (e) => {
   console.log(freetools);
   });
 });
+*/
+//YENİ FONKSİYONLARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+/*
+function save_options() {
+  var token = document.getElementById("api-token").value;
+  chrome.storage.sync.set({
+    token: token,
+  });
+  chrome.storage.sync.get({
+    token: token,
+  });
+  console.log(token);
+}
+// Restores select checkbox state using the preferences
+// stored in chrome.storage.
+function restore_options() {
+  // Use default values
+  chrome.storage.sync.get(
+    {
+      token: "0",
+    },
+    function (items) {
+      document.getElementById("api-token").value = items.token;
+    }
+  );
+}
+
+document.addEventListener("DOMContentLoaded", restore_options);
+document.getElementById("gir").addEventListener("click", save_options);
+
 */
