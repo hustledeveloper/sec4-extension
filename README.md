@@ -9,9 +9,10 @@ Branch öncesi versiyonda olmayanlar:
 1-api token al, bunu lokalde sakla api call atarken kullan scan vs ile, bununla giriş yapılacak şekilde pass ve username menüsünü modifiye et
 chrome.storage.sync.set(
 chrome.storage.sync.get(
-kullanılacak çükü api anahtarını bir kere alacak ve hep kullanacak, çıkış yapmak istediğinde bu anahtar sıfırlanacak
+kullanılacak çükü api anahtarını bir kere alacak ve hep kullanacak, çıkış yapmak istediğinde bu anahtar sıfırlanacak,
+logini değiştirmiştim, api key alıp bunu konsola yazabiliyor bunu options'taki gibi lokalde saklayıp sonra fetch callları bununla atıcam
 
-2-search için autocomplite açık kaynak bulup ekleyeceğim
+2-search için autocomplite açık kaynak bulup ekleyeceğim, buldum eklemeye çalışıyorum
 
 3-asseti aktif tab iken al
 assetin default value su aktif tab olacak, clear edip kendisi asset girebilecek
@@ -19,6 +20,7 @@ assetin default value su aktif tab olacak, clear edip kendisi asset girebilecek
 4-job slug id dönecek, ondan bizim apin report sayfasına girip detaylara baksın
 
 5-blog notification, optionsa blog bildirimi yoll/yollama koy, yeni tool geldibilirimi al /alma
+options page ekli, bildirim al alma seçeneğini kaydedip lokalde saklayabiliyor bunu blog bildirimine bağlamam lazım
 
 ## Installation
 
