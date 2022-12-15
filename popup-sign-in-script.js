@@ -17,6 +17,10 @@ document.querySelector("form").addEventListener("submit", (event) => {
 
   const apitoken = document.querySelector("#api-token").value;
 
+  //apitoken localde kaydedildi
+
+  chrome.storage.local.set({ apitoken: apitoken }).then(() => {});
+
   if (apitoken) {
     chrome.runtime.sendMessage(
       { message: "login", payload: { apitoken } },

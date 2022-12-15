@@ -22,6 +22,10 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   chrome.storage.local.get(["asseturl"]).then((result) => {
     console.log(result.asseturl);
   });
+  
+  chrome.storage.local.get(["apitoken"]).then((result) => {
+    console.log(result.apitoken);
+  });
 });
 
 //LOGIN BÖLÜMÜ
