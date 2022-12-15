@@ -9,6 +9,22 @@ function hasUpdate(e) {
   chrome.runtime.reload();
 }
 
+//aktif tab alındı, konsola yazılıyo, bunu asset olarak almam ve fetch atmam gerek
+//bunun için localde saklamalıyım
+chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  var tab = tabs[0];
+  var asseturl = tab.url;
+  console.log(asseturl);
+
+  chrome.storage.local.set({ asseturl: asseturl }).then(() => {
+    console.log(asseturl);
+  });
+
+  chrome.storage.local.get(["asseturl"]).then((result) => {
+    console.log(result.asseturl);
+  });
+});
+
 //LOGIN BÖLÜMÜ
 
 let user_signed_in = false;
