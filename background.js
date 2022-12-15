@@ -2,7 +2,8 @@
 chrome.runtime.onInstalled.addListener(() => {
   console.log("Extension have been successfully installed!");
 });
-//update olunca kullanıcıya bildirim gönderen fonksiyon(bunu lokalde deneme imkanım yok ama çalışıyordur muhtemelen)
+//update olunca kullanıcıya bildirim gönderen fonksiyon
+//bunu lokalde deneme imkanım yok ama çalışıyordur muhtemelen
 chrome.runtime.onUpdateAvailable.addListener(hasUpdate);
 function hasUpdate(e) {
   console.log("hasUpdate", e);
@@ -177,7 +178,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
   }
 });
-// search e tıklayınca bütün free tools tarama isimlerini alsın ve bunu search bara bağlayalım
 
 //FREE SCAN fonksiyonu olacak, listener free-scan call'ı alınca buradaki fonksiyon çalışacak
 /* 
@@ -202,7 +202,7 @@ let button = form.submit.addEventListener('click', (e) => {
 });
 */
 
-//Premium SCAN fonksiyonu olacak, listener free-scan call'ı alınca buradaki fonksiyon çalışacak
+//Premium SCAN fonksiyonu olacak, listener premium-scan call'ı alınca buradaki fonksiyon çalışacak
 /*   
 
 let button = form.submit.addEventListener('click', (e) => {
@@ -225,34 +225,4 @@ let button = form.submit.addEventListener('click', (e) => {
   console.log(freetools);
   });
 });
-*/
-//YENİ FONKSİYONLARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-/*
-function save_options() {
-  var token = document.getElementById("api-token").value;
-  chrome.storage.sync.set({
-    token: token,
-  });
-  chrome.storage.sync.get({
-    token: token,
-  });
-  console.log(token);
-}
-// Restores select checkbox state using the preferences
-// stored in chrome.storage.
-function restore_options() {
-  // Use default values
-  chrome.storage.sync.get(
-    {
-      token: "0",
-    },
-    function (items) {
-      document.getElementById("api-token").value = items.token;
-    }
-  );
-}
-
-document.addEventListener("DOMContentLoaded", restore_options);
-document.getElementById("gir").addEventListener("click", save_options);
-
 */
