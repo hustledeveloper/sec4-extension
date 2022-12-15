@@ -22,7 +22,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   chrome.storage.local.get(["asseturl"]).then((result) => {
     console.log(result.asseturl);
   });
-  
+  //api token localden çekildi
   chrome.storage.local.get(["apitoken"]).then((result) => {
     console.log(result.apitoken);
   });
