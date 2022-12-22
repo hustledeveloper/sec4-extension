@@ -1,26 +1,23 @@
 # Security for Everyone Chrome Extension
 
-# Yapacaklarımın listesi
+# Notlar
 
-Branch'e eklenenler:
-5- options page eklendi, bildirim seçeneklerini alıp kaydediyor, bunu bloga ve yeni tool bildirimine bağlarım sonra
+*https://core-test.s4e.link apinin çalışmama sebebi fetch atarken */\* vs kullanmam, apinin bazı linkleri eski örneğin blog eski blog yazılarını döndürüyor
 
-Branch öncesi versiyonda olmayanlar:
-1-api token al, bunu lokalde sakla api call atarken kullan scan vs ile, bununla giriş yapılacak şekilde pass ve username menüsünü modifiye et
-chrome.storage.sync.set(
-chrome.storage.sync.get(
-kullanılacak çükü api anahtarını bir kere alacak ve hep kullanacak, çıkış yapmak istediğinde bu anahtar sıfırlanacak,
-logini değiştirmiştim, api key alıp bunu konsola yazabiliyor bunu options'taki gibi lokalde saklayıp sonra fetch callları bununla atıcam
+1-blog notification için seçenekleri options'ta ayarlayıp kaydedebiliyoruz bunu siteye bağlayacağım
 
-2-search için autocomplite açık kaynak bulup ekleyeceğim, buldum eklemeye çalışıyorum
+2-api token alıyor, bunu lokalde saklayıp istendiğinde js dosyalarından veya bg'dan erişebiliyor, konsola yazabiliyor bununla fetch atabiliyor. Bu kısma ekleyeceklerim: "api tokenin 0'dan farklı olup olmamasına göre login olma kontrolü kuracağım. Ayrıca logout butonu tokeni sıfırlayacak şekilde değiştireceğim, tokeni sıfırlamak için logout a bağla token sıfırdan farklı ise oto giriş yap sıfırsa girmesini isteyecek şekilde ayarla
+2- uygundur, aslında tam login logout olduğu anlamına gelmiyor bu. ama yine de bu şekilde kullanılabilir.
 
-3-asseti aktif tab iken al
-assetin default value su aktif tab olacak, clear edip kendisi asset girebilecek
+3-search için autocomplite açık kaynak ekledim, ama siteye entegre etme kısmı kafamı çok karıştırınca onu sonraya bıraktım.
 
-4-job slug id dönecek, ondan bizim apin report sayfasına girip detaylara baksın
+4-asseti aktif tab iken alıyorum bg script'te. assetin default value su aktif tab olarak lokalde saklanıyor, consol'a yazılabiliyor veya çağrılıp başka js dosyalarından erişilebiliyor. sıfırlayıp yeni asset girip kaydetme seçeneği koyacağım.
+4-uygundur
+4-assetin default value su aktif tab olacak, clear edip kendisi asset girebilecek,aktif tabı alma butonu koy, sıfırlayıp url girip kaydetme seçeneği koy. asseti i alıp kaydeden bg, bundan messaging ile sign in popup'a mesaj yolla onu bir şekilde html e yansıt
 
-5-blog notification, optionsa blog bildirimi yoll/yollama koy, yeni tool geldibilirimi al /alma
-options page ekli, bildirim al alma seçeneğini kaydedip lokalde saklayabiliyor bunu blog bildirimine bağlamam lazım
+5-job slug id döndürme
+5- aynı şekilde bunları hallettikten sonraki adım.
+5-job slug id dönecek, ondan bizim apin report sayfasına girip detaylara baksın
 
 ## Installation
 
