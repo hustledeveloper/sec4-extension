@@ -19,6 +19,21 @@ cikis_buton.addEventListener("click", (e) => {
   window.location.replace("./popup-sign-in.html");
 });
 
+cikis_buton.addEventListener("click", (e) => {
+  e.preventDefault();
+  chrome.storage.local.get(["asseturl"]).then((result) => {
+    result.asseturl = 0;
+    console.log("Asset 0");
+  });
+});
+
+cikis_buton.addEventListener("click", (e) => {
+  e.preventDefault();
+  chrome.storage.local.set({ asseturl: asseturl }).then(() => {});
+  console.log("Asset reset to 0");
+  window.location.replace("./popup-sign-in.html");
+});
+
 const scan_butonu = document.querySelector(".scan");
 //TASARIM
 scan_butonu.addEventListener("mouseover", () => {
