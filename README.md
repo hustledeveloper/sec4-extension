@@ -1,20 +1,24 @@
 # Security for Everyone Chrome Extension
 
-# Yapacaklarımın listesi
+# Notlar
 
-1-api token al, bunu lokalde sakla api call atarken kullan scan vs ile, bununla giriş yapılacak şekilde pass ve username menüsünü modifiye et
-chrome.storage.sync.set(
-chrome.storage.sync.get(
-kullanılacak çükü api anahtarını bir kere alacak ve hep kullanacak, çıkış yapmak istediğinde bu anahtar sıfırlanacak
+_DNS A RECORD LOOKUP taraması guestte kullanılabilir, verified asset istemez, ip döndürüyor
+_https://core-test.s4e.link apinin çalışmama sebebi fetch atarken _/_ vs kullanmam
 
-2-search için autocomplite açık kaynak bulup ekleyeceğim
+1-blog notification için seçenekleri options'ta ayarlayıp kaydedebiliyoruz bunu siteye bağlamak için https://core-test.s4e.link/api/blog/feed mevcut, bu xml, rss formatında. buradan kaynak olarak kullanabilirsin.
 
-3-asseti aktif tab iken al
-assetin default value su aktif tab olacak, clear edip kendisi asset girebilecek
+2-api token alıyor, bunu lokalde saklayıp istendiğinde js dosyalarından veya bg'dan erişebiliyor, konsola yazabiliyor bununla fetch atabiliyor. Bu kısma ekleyeceklerim: "api tokenin 0'dan farklı olup olmamasına göre login olma kontrolü kuracağım. Ayrıca logout butonu tokeni sıfırlayacak şekilde değiştireceğim, tokeni sıfırlamak için logout a bağla token sıfırdan farklı ise oto giriş yap sıfırsa girmesini isteyecek şekilde ayarla 2. uygundur, aslında tam login logout olduğu anlamına gelmiyor bu. ama yine de bu şekilde kullanılabilir.
 
-4-job slug id dönecek, ondan bizim apin report sayfasına girip detaylara baksın
+3-search için autocomplite açık kaynak ekledim, ama siteye entegre etme kısmı kafamı çok karıştırınca onu sonraya bıraktım. 3. export const list = ({ page, per_page, query, scan_parent_id, min_score, max_score }) => {
+return request.post(${apiPrefix}/list, { page, per_page, query, scan_parent_id, min_score, max_score })
+} apiPrefix: api/scans/ core-test ile kullanabilirsin. burada standart page 1, per-page 100 tanımlayabilrisin. query'e arama verini girebilirsin.
 
-5-blog notification, optionsa blog bildirimi yoll/yollama koy, yeni tool geldibilirimi al /alma
+4-asseti aktif tab iken alıyorum bg script'te. assetin default value su aktif tab olarak lokalde saklanıyor, consol'a yazılabiliyor veya çağrılıp başka js dosyalarından erişilebiliyor. sıfırlayıp yeni asset girip kaydetme seçeneği koyacağım. 4. uygundur
+4-assetin default value su aktif tab olacak, clear edip kendisi asset girebilecek,aktif tabı alma butonu koy, sıfırlayıp url girip kaydetme seçeneği koy. asseti i alıp kaydeden bg, bundan messaging ile sign in popup'a mesaj yolla onu bir şekilde html e yansıt
+
+5-job slug id döndürme 5. aynı şekilde bunları hallettikten sonraki adım.
+5-job slug id dönecek, ondan bizim apin report sayfasına girip detaylara baksın
+https://app.securityforeveryone.com/reports/77d7c031-b505-4038-acf3-f31ddd702bf3 buraya gönderen link tanımla, oldukça basit, api call yolla sonuç için sonuc çıkana kadar, response farklı olunca linki user'a yolla.
 
 ## Installation
 

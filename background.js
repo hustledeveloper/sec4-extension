@@ -2,115 +2,32 @@
 chrome.runtime.onInstalled.addListener(() => {
   console.log("Extension have been successfully installed!");
 });
-//update olunca kullanıcıya bildirim gönderen fonksiyon(bunu lokalde deneme imkanım yok ama çalışıyordur muhtemelen)
+//update olunca kullanıcıya bildirim gönderen fonksiyon
+//bunu lokalde deneme imkanım yok ama çalışıyordur muhtemelen
 chrome.runtime.onUpdateAvailable.addListener(hasUpdate);
 function hasUpdate(e) {
   console.log("hasUpdate", e);
   chrome.runtime.reload();
 }
 
-//API CALL ÖRNEKLERİ
+//aktif tab alındı
 
-//blog call, bloga bir şey eklenince bildirim yollanacak şekilde bir fonksiyon tasarla
+chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  var tab = tabs[0];
+  var asseturl = tab.url;
+  //aktif tab localde kayıtlı
+  chrome.storage.local.set({ asseturl: asseturl }).then(() => {});
 
-chrome.runtime.onInstalled.addListener(deneme4);
-async function deneme4() {
-  try {
-    const response = await fetch(
-      "https://core.securityforeveryone.com/api/blog/feed",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
-}
+  //aktif tab localden çekildi
 
-//"value":["Must be greater than or equal to 1 and less than or equal to 100."]}
-//şimdilik ilk 100 ile çalış, hepsini sonra halledersin nasıl yapılıyorsa
-
-//harf harf arma yapma girilen kelimeyi ara şimdilik
-
-//search yaparken tıklanan kelimeye göre tool getiren arama call'ı
-chrome.runtime.onInstalled.addListener(deneme6);
-async function deneme6() {
-  try {
-    const response = await fetch(
-      "https://core.securityforeveryone.com/api/scans/list",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          page: "1",
-          per_page: "10",
-          query: "Generic ",
-        }),
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
-}
-//search sonucu istenen apiye giden call, slug kısmına seçilen searchı ekleyip detaylar döndürebiliriz
-chrome.runtime.onInstalled.addListener(deneme5);
-async function deneme5() {
-  try {
-    const response = await fetch(
-      "https://core.securityforeveryone.com/api/scans/detail",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          slug: "command-injection-vulnerability-scanner",
-        }),
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
-}
-//örnek login api call
-chrome.runtime.onInstalled.addListener(onInstalled2);
-async function onInstalled2() {
-  try {
-    const login = "https://core.securityforeveryone.com/api/user/login";
-
-    fetch(login, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: "faruk008887@gmail.com",
-        password: "Ankara.832",
-        g_recaptcha_response: "string",
-        bypass_captcha: true,
-      }),
-    });
-    const result = await response.json();
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
-}
+  chrome.storage.local.get(["asseturl"]).then((result) => {
+    console.log(result.asseturl);
+  });
+  //api token localden çekildi
+  chrome.storage.local.get(["apitoken"]).then((result) => {
+    console.log(result.apitoken);
+  });
+});
 
 //LOGIN BÖLÜMÜ
 
@@ -133,18 +50,15 @@ function is_user_signed_in() {
 
 function flip_user_status(signIn, user_info) {
   if (signIn) {
-    console.log(user_info.email);
-    console.log(user_info.password);
     console.log(user_info.apitoken);
     return fetch("https://core.securityforeveryone.com/api/user/login", {
       method: "POST",
       headers: {
-        Accept: "application/json, text/plain, */*",
+        Accept: "application/json, text/plain, ",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: user_info.email,
-        password: user_info.password,
+        apitoken: user_info.apitoken,
       }),
     })
       .then((res) => {
@@ -170,15 +84,14 @@ function flip_user_status(signIn, user_info) {
         function (response) {
           console.log(response);
           if (chrome.runtime.lastError) resolve("fail");
-
+          //buraya tokeni yollayan basit bi call ekle
           if (response.userStatus === undefined) resolve("fail");
           console.log("hi");
           fetch("https://core.securityforeveryone.com/api/user/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              username: user_info.email,
-              password: user_info.password,
+              apitoken: user_info.apitoken,
             }),
           })
             .then((res) => {
@@ -209,6 +122,12 @@ is_user_signed_in()
   })
   .catch((err) => console.log(res));
 
+//login mesajını ve api keyi alsın, kaydetsin. Çıkış yapmak istenirse sıfırlasın,
+//api keye başlangıç değeri 0 versin ki giriş yapılma olayı buna göre düzenlensin
+//optimal kullanıcı api keyi bir kere girecek ve extensionu hep o şekilde kullanacak
+//token 0 ise welcome a yolla
+//farklıysa ve api call örneği başarılı dönüş aldıysa sign out a yolla
+//restore_options kullan
 //click kontrol
 chrome.action.onClicked.addListener(function () {
   is_user_signed_in()
@@ -225,7 +144,7 @@ chrome.action.onClicked.addListener(function () {
     })
     .catch((err) => console.log(err));
 });
-
+//logini dinle tokeni kaydet, save_options kullan
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.message === "login") {
     flip_user_status(true, request.payload)
@@ -243,7 +162,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         sendResponse({
           message: "success",
           userStatus: res.userStatus,
-          user_info: res.user_info.email,
+          user_info: res.user_info.apitoken,
         });
       })
       .catch((err) => console.log(err));
@@ -259,7 +178,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
   }
 });
-// search e tıklayınca bütün free tools tarama isimlerini alsın ve bunu search bara bağlayalım
 
 //FREE SCAN fonksiyonu olacak, listener free-scan call'ı alınca buradaki fonksiyon çalışacak
 /* 
@@ -284,7 +202,7 @@ let button = form.submit.addEventListener('click', (e) => {
 });
 */
 
-//Premium SCAN fonksiyonu olacak, listener free-scan call'ı alınca buradaki fonksiyon çalışacak
+//Premium SCAN fonksiyonu olacak, listener premium-scan call'ı alınca buradaki fonksiyon çalışacak
 /*   
 
 let button = form.submit.addEventListener('click', (e) => {
