@@ -1,3 +1,14 @@
+// Check if the user is logged in
+chrome.storage.local.get("apitoken", function (data) {
+  if (data.apitoken !== 0) {
+    // User is logged in, do something
+    window.location.replace("./popup-sign-out.html");
+  } else {
+    // User is not logged in, redirect to login page
+    window.location.replace("./free-popup-sign-out.html");
+  }
+});
+
 const giris_button = document.querySelector("#go");
 
 giris_button.addEventListener("mouseover", () => {
