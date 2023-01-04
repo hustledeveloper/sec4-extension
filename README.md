@@ -2,9 +2,9 @@
 
 # yeni eklenenler
 
-api token sıfırlama özelliği eklendi ve logout gibi çalışıyor
-asseti aktif tab olarak alıp resetleme eklendi
-asseti elle girip kaydetme eklendi
+1. api token sıfırlama özelliği eklendi ve logout gibi çalışıyor
+2. asseti aktif tab olarak alıp resetleme eklendi
+3. asseti elle girip kaydetme eklendi
 
 # Notlar
 
