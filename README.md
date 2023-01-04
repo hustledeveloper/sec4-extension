@@ -5,6 +5,7 @@
 1. api token sıfırlama özelliği eklendi ve logout gibi çalışıyor
 2. asseti aktif tab olarak alıp resetleme eklendi
 3. asseti elle girip kaydetme eklendi
+4. login-logout kontrolü kurdum. Tokenin 0 olma durumuna göre free scan ya da memeber scan kısmına yönlendiriyor
 
 # Notlar
 
