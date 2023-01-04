@@ -18,7 +18,7 @@ return request.post(${apiPrefix}/list, { page, per_page, query, scan_parent_id, 
 4-asseti aktif tab iken alıyorum bg script'te. assetin default value su aktif tab olarak lokalde saklanıyor, consol'a yazılabiliyor veya çağrılıp başka js dosyalarından erişilebiliyor. sıfırlayıp yeni asset girip kaydetme seçeneği koyacağım. 4. uygundur
 4-assetin default value su aktif tab olacak, clear edip kendisi asset girebilecek,aktif tabı alma butonu koy, sıfırlayıp url girip kaydetme seçeneği koy. asseti i alıp kaydeden bg, bundan messaging ile sign in popup'a mesaj yolla onu bir şekilde html e yansıt
 
----
+\*\*
 
 asseti aktif tab olarak alıp resetleme eklendi
 
