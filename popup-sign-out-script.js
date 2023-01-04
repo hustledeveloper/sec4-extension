@@ -1,4 +1,24 @@
 //TASARIM
+const reset_asset_buton = document.querySelector(".reset-token");
+
+reset_asset_buton.addEventListener("mouseover", () => {
+  reset_asset_buton.style.backgroundColor = "black";
+  reset_asset_buton.style.color = "white";
+  reset_asset_buton.style.transform = "scale(1.3)";
+});
+
+reset_asset_buton.addEventListener("mouseleave", () => {
+  reset_asset_buton.style.backgroundColor = "#6366F1";
+  reset_asset_buton.style.color = "white";
+  reset_asset_buton.style.transform = "scale(1)";
+});
+reset_asset_buton.addEventListener("click", () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    var activeTab = tabs[0];
+    var asseturl = activeTab.url;
+    chrome.storage.local.set({ asseturl: asseturl }).then(() => {});
+  });
+});
 const cikis_buton = document.querySelector(".cikis");
 
 cikis_buton.addEventListener("mouseover", () => {
@@ -14,8 +34,13 @@ cikis_buton.addEventListener("mouseleave", () => {
 });
 
 //logout butonu
-cikis_buton.addEventListener("click", (e) => {
-  e.preventDefault();
+
+cikis_buton.addEventListener("click", () => {
+  let apitoken = chrome.storage.local.get(["apitoken"]);
+  apitoken = 0;
+
+  chrome.storage.local.set({ apitoken: apitoken }).then(() => {});
+  //token sıfırlandı bildirimi gönderilmeli
   window.location.replace("./popup-sign-in.html");
 });
 

@@ -14,8 +14,7 @@ cikis_buton.addEventListener("mouseleave", () => {
 });
 
 //logout butonu
-cikis_buton.addEventListener("click", (e) => {
-  e.preventDefault();
+cikis_buton.addEventListener("click", () => {
   window.location.replace("./popup-sign-in.html");
 });
 

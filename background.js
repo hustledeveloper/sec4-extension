@@ -13,11 +13,6 @@ function hasUpdate(e) {
 //aktif tab alındı
 
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-  var tab = tabs[0];
-  var asseturl = tab.url;
-  //aktif tab localde kayıtlı
-  chrome.storage.local.set({ asseturl: asseturl }).then(() => {});
-
   //aktif tab localden çekildi
 
   chrome.storage.local.get(["asseturl"]).then((result) => {
