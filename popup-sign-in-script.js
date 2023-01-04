@@ -15,7 +15,7 @@ giris_buton.addEventListener("mouseleave", () => {
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const apitoken = document.querySelector("#api-token").value;
+  let apitoken = document.querySelector("#api-token").value;
 
   //apitoken localde kaydedildi
 

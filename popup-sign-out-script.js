@@ -13,24 +13,15 @@ cikis_buton.addEventListener("mouseleave", () => {
   cikis_buton.style.transform = "scale(1)";
 });
 
-//logout butonu
-cikis_buton.addEventListener("click", (e) => {
-  e.preventDefault();
-  window.location.replace("./popup-sign-in.html");
-});
+//logout butonu, DÜZELT
 
-cikis_buton.addEventListener("click", (e) => {
-  e.preventDefault();
-  chrome.storage.local.get(["asseturl"]).then((result) => {
-    result.asseturl = 0;
-    console.log("Asset 0");
-  });
-});
+cikis_buton.addEventListener("click", () => {
+  let apitoken = chrome.storage.local.get(["apitoken"]);
+  apitoken = 0;
+  console.log("apitoken reset to 0");
 
-cikis_buton.addEventListener("click", (e) => {
-  e.preventDefault();
-  chrome.storage.local.set({ asseturl: asseturl }).then(() => {});
-  console.log("Asset reset to 0");
+  chrome.storage.local.set({ apitoken: apitoken }).then(() => {});
+  console.log("apitoken saved a 0");
   window.location.replace("./popup-sign-in.html");
 });
 
