@@ -13,15 +13,14 @@ cikis_buton.addEventListener("mouseleave", () => {
   cikis_buton.style.transform = "scale(1)";
 });
 
-//logout butonu, DÜZELT
+//logout butonu
 
 cikis_buton.addEventListener("click", () => {
   let apitoken = chrome.storage.local.get(["apitoken"]);
   apitoken = 0;
-  console.log("apitoken reset to 0");
 
   chrome.storage.local.set({ apitoken: apitoken }).then(() => {});
-  console.log("apitoken saved a 0");
+  //token sıfırlandı bildirimi gönderilmeli
   window.location.replace("./popup-sign-in.html");
 });
 
