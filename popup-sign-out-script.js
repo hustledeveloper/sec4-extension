@@ -1,3 +1,10 @@
+//asseti gösterme
+chrome.storage.local.get("asseturl", function (result) {
+  const myValue = result.asseturl;
+  const inputElement = document.getElementById("assetaktive");
+  inputElement.placeholder =  myValue;
+});
+
 //TASARIM
 const reset_asset_buton = document.querySelector(".reset-token");
 
@@ -62,7 +69,7 @@ scan_butonu.addEventListener("mouseleave", () => {
 //SCAN CLICK düzenlemeler yapılacak
 
 scan_butonu.addEventListener("click", () => {
-  const asset = document.querySelector("#asset-aktive").value;
+  const asset = document.querySelector("#assetaktive").value;
   const slug = document.querySelector("#scan-type").value;
 
   if (asset !== 0 && slug !== 0) {

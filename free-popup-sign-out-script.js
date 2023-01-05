@@ -1,3 +1,9 @@
+//asseti gösterme
+chrome.storage.local.get("asseturl", function (result) {
+  const myValue = result.asseturl;
+  const inputElement = document.getElementById("assetaktive");
+  inputElement.placeholder = myValue;
+});
 //TASARIM
 const cikis_buton = document.querySelector(".cikis");
 
