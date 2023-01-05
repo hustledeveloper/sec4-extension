@@ -8,6 +8,8 @@
 4. login-logout kontrolü kurdum. Tokenin 0 olma durumuna göre free scan ya da memeber scan kısmına yönlendiriyor
 5. eski login kısmına ait, usename ve password ile çalıması tasarladığım kısımları çıkardım, kodları biraz temizledim
 6. options kısmı 2 tane değer için notificatin on/off seçeneğine sahip, faz 2 de eklenebilir bildirimler.
+7. Tasarımı biraz toparlamaya çalıştım, güncel asset değerini arayüze ekledim.
+8. Güncelleme: Autocomplete kısmını api'a ye bağlayamadım, orada tıkanıyorum. Şu an eklentini kalan kısımları işlevsel. Bir tool seçip bununla seet'i scan edecek kısım kaldı. Autocomplete kısmını atlayıp bunu inşa etmeyi düşünüyorum sitedeki olayları örnek alarak.
 
 # ocak öncesi notları
 
