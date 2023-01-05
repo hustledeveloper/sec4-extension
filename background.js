@@ -23,21 +23,63 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     console.log(result.apitoken);
   });
 });
-
+chrome.runtime.onInstalled.addListener(deneme6);
+async function deneme6() {
+  try {
+    const response = await fetch(
+      "https://core.securityforeveryone.com/api/scans/list",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          page: "1",
+          per_page: "10",
+          query: "Generic ",
+        }),
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+}
+chrome.runtime.onInstalled.addListener(deneme4);
+async function deneme4() {
+  try {
+    const response = await fetch(
+      "https://core.securityforeveryone.com/api/blog/feed",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+}
 //FREE SCAN fonksiyonu olacak, listener free-scan call'ı alınca buradaki fonksiyon çalışacak
 /* 
 let button = form.submit.addEventListener('click', (e) => {
   e.preventDefault();
-  fetch ('https://core.securityforeveryone.com/api/scans/start-guest', {
+  fetch ('https://core.securityforeveryone.com/api/scans/list', {
     method: "POST",
     headers: {
       'Accept': 'application/json, text/plain',
       'Content-Type': 'application/json'
     },
      body: JSON.stringify({
-  "asset": "user_info.asset,",
-  "slug": "user_info.slug,",
-  "guest_token": "f2b946a8db1bf8e366ae9597e3ebf8b685d4d9aa710db72f79b316073085975b",
+  "page": "1",
+  "per_page": "100",
+  "query": "gene",
     }),
 })
   .then((response) => response.json())
