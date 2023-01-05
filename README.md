@@ -6,7 +6,7 @@
 2. asseti aktif tab olarak alıp resetleme eklendi
 3. asseti elle girip kaydetme eklendi
 4. login-logout kontrolü kurdum. Tokenin 0 olma durumuna göre free scan ya da memeber scan kısmına yönlendiriyor
-5. eski login kısmına ait, usename ve password ile çalıması tasarladığım kısımalrı çıkardım, kodları biraz temizledim
+5. eski login kısmına ait, usename ve password ile çalıması tasarladığım kısımları çıkardım, kodları biraz temizledim
 6. options kısmı 2 tane değer için notificatin on/off seçeneğine sahip, faz 2 de eklenebilir bildirimler.
 
 # ocak öncesi notları
