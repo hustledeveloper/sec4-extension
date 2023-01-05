@@ -15,10 +15,11 @@ cikis_buton.addEventListener("mouseleave", () => {
 
 //logout butonu
 cikis_buton.addEventListener("click", () => {
+  event.preventDefault();
   window.location.replace("./popup-sign-in.html");
 });
 
-const scan_butonu = document.querySelector(".scan");
+const scan_butonu = document.querySelector(".free-scan");
 //TASARIM
 scan_butonu.addEventListener("mouseover", () => {
   scan_butonu.style.backgroundColor = "black";
@@ -31,28 +32,19 @@ scan_butonu.addEventListener("mouseleave", () => {
   scan_butonu.style.color = "white";
   scan_butonu.style.transform = "scale(1)";
 });
-//SCAN CLICK
-document.querySelector("form").addEventListener("#scan", (event) => {
-  event.preventDefault();
+//SCAN CLICK düzenlemeler yapılacak
+scan_butonu.addEventListener("click", () => {
+  const asset = document.querySelector("#asset-aktive").value;
+  const slug = document.querySelector("#scan-type").value;
 
-  const asset = document.querySelector("#url").value;
-  const slug = document.querySelector("#scantipi").value;
-
-  if (asset && slug) {
-    chrome.runtime.sendMessage(
-      { message: "free-scan", payload: { asset, slug } },
-      function (response) {
-        if (response === "success")
-          window.location.replace("./popup-sign-in.html");
-        //buraya scan raporu linki konacak
-      }
-    );
+  if (asset !== 0 && slug !== 0) {
+    window.location.replace("./popup-sign-in.html");
+    //buraya scan raporu linki konacak
   } else {
     document.querySelector("#url").placeholder = "Enter an url.";
     document.querySelector("#scan").placeholder = "Enter a scan.";
   }
 });
-
 /*
 //scan e tıklayınca alınan url ve seçilen scan formatı ile fetch yapıp sonucu döndürmesini istiyorum
 //sonucun linkini döndür, linke tıklayıp siteye gidecek site trafiğini artırır

@@ -13,6 +13,7 @@ reset_asset_buton.addEventListener("mouseleave", () => {
   reset_asset_buton.style.transform = "scale(1)";
 });
 reset_asset_buton.addEventListener("click", () => {
+  event.preventDefault();
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var activeTab = tabs[0];
     var asseturl = activeTab.url;
@@ -58,22 +59,15 @@ scan_butonu.addEventListener("mouseleave", () => {
   scan_butonu.style.transform = "scale(1)";
 });
 
-//SCAN CLICK
-document.querySelector("form").addEventListener("#scan", (event) => {
-  event.preventDefault();
+//SCAN CLICK düzenlemeler yapılacak
 
-  const asset = document.querySelector("#url").value;
-  const slug = document.querySelector("#scantipi").value;
+scan_butonu.addEventListener("click", () => {
+  const asset = document.querySelector("#asset-aktive").value;
+  const slug = document.querySelector("#scan-type").value;
 
-  if (asset && slug) {
-    chrome.runtime.sendMessage(
-      { message: "premium-scan", payload: { asset, slug } },
-      function (response) {
-        if (response === "success")
-          window.location.replace("./popup-sign-in.html");
-        //buraya scan raporu linki konacak
-      }
-    );
+  if (asset !== 0 && slug !== 0) {
+    window.location.replace("./popup-sign-in.html");
+    //buraya scan raporu linki konacak
   } else {
     document.querySelector("#url").placeholder = "Enter an url.";
     document.querySelector("#scan").placeholder = "Enter a scan.";
