@@ -15,6 +15,7 @@ cikis_buton.addEventListener("mouseleave", () => {
 
 //logout butonu
 cikis_buton.addEventListener("click", () => {
+  event.preventDefault();
   window.location.replace("./popup-sign-in.html");
 });
 
@@ -31,7 +32,7 @@ scan_butonu.addEventListener("mouseleave", () => {
   scan_butonu.style.color = "white";
   scan_butonu.style.transform = "scale(1)";
 });
-//SCAN CLICK
+//SCAN CLICK bu kısımda bg login kısmı sıfırlandığı için düzenlemeler yapılacak
 document.querySelector("form").addEventListener("#scan", (event) => {
   event.preventDefault();
 

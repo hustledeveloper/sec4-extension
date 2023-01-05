@@ -13,6 +13,7 @@ reset_asset_buton.addEventListener("mouseleave", () => {
   reset_asset_buton.style.transform = "scale(1)";
 });
 reset_asset_buton.addEventListener("click", () => {
+  event.preventDefault();
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var activeTab = tabs[0];
     var asseturl = activeTab.url;
@@ -58,7 +59,8 @@ scan_butonu.addEventListener("mouseleave", () => {
   scan_butonu.style.transform = "scale(1)";
 });
 
-//SCAN CLICK
+//SCAN CLICK bu kısımda bg login kısmı sıfırlandığı için düzenlemeler yapılacak
+
 document.querySelector("form").addEventListener("#scan", (event) => {
   event.preventDefault();
 
