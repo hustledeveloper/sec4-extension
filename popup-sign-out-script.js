@@ -59,23 +59,15 @@ scan_butonu.addEventListener("mouseleave", () => {
   scan_butonu.style.transform = "scale(1)";
 });
 
-//SCAN CLICK bu kısımda bg login kısmı sıfırlandığı için düzenlemeler yapılacak
+//SCAN CLICK düzenlemeler yapılacak
 
-document.querySelector("form").addEventListener("#scan", (event) => {
-  event.preventDefault();
+scan_butonu.addEventListener("click", () => {
+  const asset = document.querySelector("#asset-aktive").value;
+  const slug = document.querySelector("#scan-type").value;
 
-  const asset = document.querySelector("#url").value;
-  const slug = document.querySelector("#scantipi").value;
-
-  if (asset && slug) {
-    chrome.runtime.sendMessage(
-      { message: "premium-scan", payload: { asset, slug } },
-      function (response) {
-        if (response === "success")
-          window.location.replace("./popup-sign-in.html");
-        //buraya scan raporu linki konacak
-      }
-    );
+  if (asset !== 0 && slug !== 0) {
+    window.location.replace("./popup-sign-in.html");
+    //buraya scan raporu linki konacak
   } else {
     document.querySelector("#url").placeholder = "Enter an url.";
     document.querySelector("#scan").placeholder = "Enter a scan.";
