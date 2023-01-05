@@ -23,6 +23,22 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     console.log(result.apitoken);
   });
 });
+
+chrome.runtime.onInstalled.addListener(deneme4);
+async function deneme4() {
+  try {
+    const response = await fetch("https://core-test.s4e.link/api/blog/feed", {
+      method: "GET",
+      headers: {
+        Accept: "application/json,",
+      },
+    });
+    const result = await response.json();
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+}
 chrome.runtime.onInstalled.addListener(deneme6);
 async function deneme6() {
   try {
@@ -31,7 +47,7 @@ async function deneme6() {
       {
         method: "POST",
         headers: {
-          Accept: "application/json, text/plain, */*",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -39,25 +55,6 @@ async function deneme6() {
           per_page: "10",
           query: "Generic ",
         }),
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
-}
-chrome.runtime.onInstalled.addListener(deneme4);
-async function deneme4() {
-  try {
-    const response = await fetch(
-      "https://core.securityforeveryone.com/api/blog/feed",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
       }
     );
     const result = await response.json();
