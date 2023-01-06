@@ -2,7 +2,12 @@ const cikis_buton = document.querySelector(".cikis");
 const reset_asset_buton = document.querySelector(".reset-token");
 const scan_butonu = document.querySelector(".scan");
 const change_asset_buton = document.querySelector(".change-asset");
-
+//SCAN CLICK düzenlemeler yapılacak
+scan_butonu.addEventListener("click", () => {
+  chrome.runtime.sendMessage("start_scan", (response) => {
+    console.log(response);
+  });
+});
 //asseti gösterme
 chrome.storage.local.get("asseturl", function (result) {
   const myValue = result.asseturl;
@@ -142,3 +147,7 @@ const suggestions = document.querySelector(".suggestions");
 searchInput.addEventListener("change", displayMatches);
 searchInput.addEventListener("keyup", displayMatches);
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
+
+
+
+

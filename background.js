@@ -76,6 +76,42 @@ async function deneme5() {
     console.log(err);
   }
 }
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message === "start_scan") {
+    let asset;
+    let slug;
+    chrome.storage.local.get(["scan_aktive"]).then((result) => {
+      slug = result.scan_aktive;
+    });
+
+    chrome.storage.local.get(["asseturl"]).then((result) => {
+      asset = result.asseturl;
+    });
+    chrome.storage.local.get(["apitoken"]).then((result) => {
+      token = result.apitoken;
+    });
+
+    fetch("https://core.securityforeveryone.com/api/scans/start-from-request", {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        asset: asset,
+        slug: slug,
+        guest_token: token,
+        time: 1635606153,
+      }),
+    })
+      .then((response) => response.json())
+      .then((freetools) => {
+        console.log(freetools);
+      });
+
+    sendResponse(freetools);
+  }
+});
 
 //Bu mehmet beyin istediği yoldu ama bunu da uyarlayamadım autocomplete
 /* 
@@ -109,38 +145,6 @@ export const list = ({
 //Bg'da attığım fetch'i sign out'taki autocomplete'e
 //implamente etmem lazım. response.json() kullanarak
 
-/* 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message === "start_scan") {
-    chrome.storage.local.get(["scan_aktive"]).then((result) => {});
-    chrome.storage.local.get(["asseturl"]).then((result) => {});
-    chrome.storage.local.get(["apitoken"]).then((result) => {});
-    const asset = asseturl.result;
-    const slug = scan_aktive.result;
-    const token = apitoken.result;
-
-    fetch("https://core.securityforeveryone.com/api/scans/start-from-request", {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        asset: asset,
-        slug: slug,
-        guest_token: token,
-        time: 1635606153,
-      }),
-    })
-      .then((response) => response.json())
-      .then((freetools) => {
-        console.log(freetools);
-      });
-
-    sendResponse(freetools);
-  }
-});
-*/
 /*
 /// bunlarla json dosyasını bg dan dışarı iletmeye çalıştım autocomplete için ama olmadı
 function sendDataToPopup(data) {
