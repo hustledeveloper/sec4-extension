@@ -1,3 +1,6 @@
+const cikis_buton = document.querySelector(".cikis");
+const scan_butonu = document.querySelector(".free-scan");
+
 //asseti gösterme
 chrome.storage.local.get("asseturl", function (result) {
   const myValue = result.asseturl;
@@ -11,7 +14,6 @@ chrome.storage.local.get("scan_aktive", function (result) {
   inputElement.innerText = myValue;
 });
 //TASARIM
-const cikis_buton = document.querySelector(".cikis");
 
 cikis_buton.addEventListener("mouseover", () => {
   cikis_buton.style.backgroundColor = "black";
@@ -31,7 +33,6 @@ cikis_buton.addEventListener("click", () => {
   window.location.replace("./popup-sign-in.html");
 });
 
-const scan_butonu = document.querySelector(".free-scan");
 //TASARIM
 scan_butonu.addEventListener("mouseover", () => {
   scan_butonu.style.backgroundColor = "black";
