@@ -1,3 +1,9 @@
+//SCAN CLICK düzenlemeler yapılacak
+scan_butonu.addEventListener("click", () => {
+  chrome.runtime.sendMessage("start_scan", (response) => {
+    console.log(response);
+  });
+});
 //asseti gösterme
 chrome.storage.local.get("asseturl", function (result) {
   const myValue = result.asseturl;
@@ -88,13 +94,7 @@ change_asset_buton.addEventListener("click", () => {
   let assetnew = document.querySelector("#new-asset").value;
   chrome.storage.local.set({ asseturl: assetnew }).then(() => {});
 });
-//SCAN CLICK düzenlemeler yapılacak
 
-scan_butonu.addEventListener("click", () => {
-  chrome.runtime.sendMessage("start_scan", (response) => {
-    console.log(response);
-  });
-});
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
 
 const endpoint =
