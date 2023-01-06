@@ -1,3 +1,7 @@
+const reset_asset_buton = document.querySelector(".reset-token");
+const change_asset_buton = document.querySelector(".change-asset");
+const scan_butonu = document.querySelector(".scan");
+const cikis_buton = document.querySelector(".cikis");
 //SCAN CLICK düzenlemeler yapılacak
 scan_butonu.addEventListener("click", () => {
   chrome.runtime.sendMessage("start_scan", (response) => {
@@ -18,7 +22,6 @@ chrome.storage.local.get("scan_aktive", function (result) {
 });
 
 //TASARIM
-const reset_asset_buton = document.querySelector(".reset-token");
 
 reset_asset_buton.addEventListener("mouseover", () => {
   reset_asset_buton.style.backgroundColor = "black";
@@ -38,7 +41,6 @@ reset_asset_buton.addEventListener("click", () => {
     chrome.storage.local.set({ asseturl: asseturl }).then(() => {});
   });
 });
-const cikis_buton = document.querySelector(".cikis");
 
 cikis_buton.addEventListener("mouseover", () => {
   cikis_buton.style.backgroundColor = "black";
@@ -63,7 +65,6 @@ cikis_buton.addEventListener("click", () => {
   window.location.replace("./popup-sign-in.html");
 });
 
-const scan_butonu = document.querySelector(".scan");
 //TASARIM
 scan_butonu.addEventListener("mouseover", () => {
   scan_butonu.style.backgroundColor = "black";
@@ -76,8 +77,6 @@ scan_butonu.addEventListener("mouseleave", () => {
   scan_butonu.style.color = "white";
   scan_butonu.style.transform = "scale(1)";
 });
-
-const change_asset_buton = document.querySelector(".change-asset");
 
 change_asset_buton.addEventListener("mouseover", () => {
   change_asset_buton.style.backgroundColor = "black";
