@@ -79,29 +79,37 @@ async function deneme5() {
   }
 }
 
-//FREE SCAN fonksiyonu olacak, listener free-scan call'ı alınca buradaki fonksiyon çalışacak
+//Bu mehmet beyin istediği yoldu ama bunu da uyarlayamadım autocomplete
 /* 
-let button = form.submit.addEventListener('click', (e) => {
-  e.preventDefault();
-  fetch ('https://core.securityforeveryone.com/api/scans/list', {
-    method: "POST",
-    headers: {
-      'Accept': 'application/json, text/plain',
-      'Content-Type': 'application/json'
-    },
-     body: JSON.stringify({
-  "page": "1",
-  "per_page": "100",
-  "query": "gene",
-    }),
-})
-  .then((response) => response.json())
-  .then((freetools) => {
-  console.log(freetools);
-  });
+scan_butonu.addEventListener("click", () => {
+  list({ page, per_page, query, scan_parent_id, min_score, max_score });
 });
-*/
+const apiPrefix = "https://core-test.s4e.link/api/scans/";
 
+const page = 1;
+const per_page = 100;
+const query = "gene";
+
+export const list = ({
+  page,
+  per_page,
+  query,
+  scan_parent_id,
+  min_score,
+  max_score,
+}) => {
+  return request.post(`${apiPrefix}/list`, {
+    page,
+    per_page,
+    query,
+    scan_parent_id,
+    min_score,
+    max_score,
+  });
+};
+*/
+//Bg'da attığım fetch'i sign out'taki autocomplete'e
+//implamente etmem lazım. response.json() kullanarak
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message === "start_scan") {
     chrome.storage.local.get(["scan_aktive"]).then((result) => {});

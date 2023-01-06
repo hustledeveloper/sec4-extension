@@ -71,6 +71,30 @@ scan_butonu.addEventListener("mouseleave", () => {
   scan_butonu.style.transform = "scale(1)";
 });
 
+const change_asset_buton = document.querySelector(".change-asset");
+
+change_asset_buton.addEventListener("mouseover", () => {
+  change_asset_buton.style.backgroundColor = "black";
+  change_asset_buton.style.color = "white";
+  change_asset_buton.style.transform = "scale(1.3)";
+});
+
+change_asset_buton.addEventListener("mouseleave", () => {
+  change_asset_buton.style.backgroundColor = "#6366F1";
+  change_asset_buton.style.color = "white";
+  change_asset_buton.style.transform = "scale(1)";
+});
+change_asset_buton.addEventListener("click", () => {
+  let assetnew = document.querySelector("#new-asset").value;
+  chrome.storage.local.set({ asseturl: assetnew }).then(() => {});
+});
+//SCAN CLICK düzenlemeler yapılacak
+
+scan_butonu.addEventListener("click", () => {
+  chrome.runtime.sendMessage("start_scan", (response) => {
+    console.log(response);
+  });
+});
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
 
 const endpoint =
@@ -124,28 +148,3 @@ const suggestions = document.querySelector(".suggestions");
 searchInput.addEventListener("change", displayMatches);
 searchInput.addEventListener("keyup", displayMatches);
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
-
-const change_asset_buton = document.querySelector(".change-asset");
-
-change_asset_buton.addEventListener("mouseover", () => {
-  change_asset_buton.style.backgroundColor = "black";
-  change_asset_buton.style.color = "white";
-  change_asset_buton.style.transform = "scale(1.3)";
-});
-
-change_asset_buton.addEventListener("mouseleave", () => {
-  change_asset_buton.style.backgroundColor = "#6366F1";
-  change_asset_buton.style.color = "white";
-  change_asset_buton.style.transform = "scale(1)";
-});
-change_asset_buton.addEventListener("click", () => {
-  let assetnew = document.querySelector("#new-asset").value;
-  chrome.storage.local.set({ asseturl: assetnew }).then(() => {});
-});
-//SCAN CLICK düzenlemeler yapılacak
-
-scan_butonu.addEventListener("click", () => {
-  chrome.runtime.sendMessage("start_scan", (response) => {
-    console.log(response);
-  });
-});

@@ -57,30 +57,7 @@ scan_butonu.addEventListener("click", () => {
     document.querySelector("#scan").placeholder = "Enter a scan.";
   }
 });
-/*
-//scan e tıklayınca alınan url ve seçilen scan formatı ile fetch yapıp sonucu döndürmesini istiyorum
-//sonucun linkini döndür, linke tıklayıp siteye gidecek site trafiğini artırır
 
-scan_butonu.addEventListener('click', (e) => {
-  e.preventDefault();
-  fetch ('https://api.securityforeveryone.com/api/scans/', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-        },
-      body: JSON.stringify({
-       "url": "url",
-       "slug": "scan name",
-     }),
-   
-    });
-
-    const data = await response.json()
-    console.log(data);  
-    }
-};
- */
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
 
 const endpoint =
