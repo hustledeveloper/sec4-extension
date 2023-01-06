@@ -20,7 +20,6 @@ reset_asset_buton.addEventListener("mouseleave", () => {
   reset_asset_buton.style.transform = "scale(1)";
 });
 reset_asset_buton.addEventListener("click", () => {
-  event.preventDefault();
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var activeTab = tabs[0];
     var asseturl = activeTab.url;
