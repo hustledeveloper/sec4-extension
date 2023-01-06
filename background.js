@@ -11,9 +11,7 @@ function hasUpdate(e) {
 }
 //default scan oluşturuldu
 chrome.storage.local.set({ scan_aktive: "a-record-lookup" }).then(() => {});
-chrome.storage.local.get(["scan_aktive"]).then((result) => {
-  console.log(result.scan_aktive);
-});
+
 //aktif tab alındı
 
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -25,6 +23,10 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   //api token localden çekildi
   chrome.storage.local.get(["apitoken"]).then((result) => {
     console.log(result.apitoken);
+  });
+
+  chrome.storage.local.get(["scan_aktive"]).then((result) => {
+    console.log(result.scan_aktive);
   });
 });
 
@@ -100,27 +102,31 @@ let button = form.submit.addEventListener('click', (e) => {
 });
 */
 
-//Premium SCAN fonksiyonu olacak, listener premium-scan call'ı alınca buradaki fonksiyon çalışacak
-/*   
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message === "start_scan") {
+    chrome.storage.local.get(["scan_aktive"]).then((result) => {});
+    chrome.storage.local.get(["asseturl"]).then((result) => {});
+    const asset = asseturl.result;
+    const slug = scan_aktive.result;
+    fetch("https://core.securityforeveryone.com/api/scans/start-from-request", {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        asset: asset,
+        slug: slug,
+        guest_token:
+          "f2b946a8db1bf8e366ae9597e3ebf8b685d4d9aa710db72f79b316073085975b",
+        time: 1635606153,
+      }),
+    })
+      .then((response) => response.json())
+      .then((freetools) => {
+        console.log(freetools);
+      });
 
-let button = form.submit.addEventListener('click', (e) => {
-  e.preventDefault();
-  fetch ('https://core.securityforeveryone.com/api/scans/start-from-request', {
-    method: "POST",
-    headers: {
-      'Accept': 'application/json, text/plain',
-      'Content-Type': 'application/json'
-    },
-     body: JSON.stringify({
-  "asset": "abc.com",
-  "slug": "txt-record-lookup",
-  "guest_token": "f2b946a8db1bf8e366ae9597e3ebf8b685d4d9aa710db72f79b316073085975b",
-  "time": 1635606153
-    }),
-})
-  .then((response) => response.json())
-  .then((freetools) => {
-  console.log(freetools);
-  });
+    sendResponse(freetools);
+  }
 });
-*/
