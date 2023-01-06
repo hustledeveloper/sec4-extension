@@ -106,8 +106,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message === "start_scan") {
     chrome.storage.local.get(["scan_aktive"]).then((result) => {});
     chrome.storage.local.get(["asseturl"]).then((result) => {});
+    chrome.storage.local.get(["apitoken"]).then((result) => {});
     const asset = asseturl.result;
     const slug = scan_aktive.result;
+    const token = apitoken.result;
+
     fetch("https://core.securityforeveryone.com/api/scans/start-from-request", {
       method: "POST",
       headers: {
@@ -117,8 +120,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       body: JSON.stringify({
         asset: asset,
         slug: slug,
-        guest_token:
-          "f2b946a8db1bf8e366ae9597e3ebf8b685d4d9aa710db72f79b316073085975b",
+        guest_token: token,
         time: 1635606153,
       }),
     })
