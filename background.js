@@ -24,21 +24,6 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   });
 });
 
-chrome.runtime.onInstalled.addListener(deneme4);
-async function deneme4() {
-  try {
-    const response = await fetch("https://core-test.s4e.link/api/blog/feed", {
-      method: "GET",
-      headers: {
-        Accept: "application/json,",
-      },
-    });
-    const result = await response.json();
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
-}
 chrome.runtime.onInstalled.addListener(deneme6);
 async function deneme6() {
   try {
