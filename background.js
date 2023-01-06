@@ -13,15 +13,11 @@ function hasUpdate(e) {
 //default scan oluşturuldu
 chrome.storage.local.set({ scan_aktive: "a-record-lookup" }).then(() => {});
 
-//aktif tab alındı
-
+//lokal veri kontrolü
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-  //aktif tab localden çekildi
-
   chrome.storage.local.get(["asseturl"]).then((result) => {
     console.log(result.asseturl);
   });
-  //api token localden çekildi
   chrome.storage.local.get(["apitoken"]).then((result) => {
     console.log(result.apitoken);
   });
@@ -80,11 +76,7 @@ async function deneme5() {
     console.log(err);
   }
 }
-function sendDataToPopup(data) {
-  chrome.runtime.sendMessage({
-    data: data,
-  });
-}
+
 //Bu mehmet beyin istediği yoldu ama bunu da uyarlayamadım autocomplete
 /* 
 scan_butonu.addEventListener("click", () => {
