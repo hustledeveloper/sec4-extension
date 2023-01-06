@@ -53,7 +53,31 @@ async function deneme6() {
         body: JSON.stringify({
           page: "1",
           per_page: "10",
-          query: "Generic ",
+          query: "Gen",
+        }),
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+//search sonucu istenen apiye giden call
+chrome.runtime.onInstalled.addListener(deneme5);
+async function deneme5() {
+  try {
+    const response = await fetch(
+      "https://core.securityforeveryone.com/api/scans/detail",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          slug: "command-injection-vulnerability-scanner",
         }),
       }
     );
