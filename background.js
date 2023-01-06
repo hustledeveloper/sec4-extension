@@ -74,12 +74,17 @@ async function deneme5() {
       }
     );
     const result = await response.json();
+
     console.log(result);
   } catch (err) {
     console.log(err);
   }
 }
-
+function sendDataToPopup(data) {
+  chrome.runtime.sendMessage({
+    data: data,
+  });
+}
 //Bu mehmet beyin istediği yoldu ama bunu da uyarlayamadım autocomplete
 /* 
 scan_butonu.addEventListener("click", () => {
@@ -111,6 +116,8 @@ export const list = ({
 */
 //Bg'da attığım fetch'i sign out'taki autocomplete'e
 //implamente etmem lazım. response.json() kullanarak
+
+/* 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message === "start_scan") {
     chrome.storage.local.get(["scan_aktive"]).then((result) => {});
@@ -141,3 +148,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     sendResponse(freetools);
   }
 });
+*/
+/*
+/// bunlarla json dosyasını bg dan dışarı iletmeye çalıştım autocomplete için ama olmadı
+function sendDataToPopup(data) {
+  chrome.runtime.sendMessage({
+    data: data,
+  });
+}
+sendDataToPopup(data);
+
+chrome.runtime.onMessage.addListener((request) => {
+  const data = request.data;
+});
+*/
