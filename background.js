@@ -9,6 +9,7 @@ function hasUpdate(e) {
   console.log("hasUpdate", e);
   chrome.runtime.reload();
 }
+
 //default scan oluşturuldu
 chrome.storage.local.set({ scan_aktive: "a-record-lookup" }).then(() => {});
 
