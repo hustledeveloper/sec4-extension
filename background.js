@@ -87,6 +87,7 @@ async function deneme5() {
     console.log(err);
   }
 }
+
 //FREE SCAN fonksiyonu olacak, listener free-scan call'ı alınca buradaki fonksiyon çalışacak
 /* 
 let button = form.submit.addEventListener('click', (e) => {
