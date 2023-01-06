@@ -151,31 +151,3 @@ change_asset_buton.addEventListener("click", () => {
   let assetnew = document.querySelector("#new-asset").value;
   chrome.storage.local.set({ asseturl: assetnew }).then(() => {});
 });
-const apiPrefix = "https://core-test.s4e.link/api/scans/";
-
-const page = 1;
-const per_page = 100;
-const query = "gene";
-const scan_parent_id = "";
-const min_score = "";
-const max_score = "";
-
-export const list = ({
-  page,
-  per_page,
-  query,
-  scan_parent_id,
-  min_score,
-  max_score,
-}) => {
-  return request.post(`${apiPrefix}/list`, {
-    page,
-    per_page,
-    query,
-    scan_parent_id,
-    min_score,
-    max_score,
-  });
-};
-
-list({ page, per_page, query, scan_parent_id, min_score, max_score });
