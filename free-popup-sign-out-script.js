@@ -4,6 +4,12 @@ chrome.storage.local.get("asseturl", function (result) {
   const inputElement = document.getElementById("assetaktive");
   inputElement.innerText = myValue;
 });
+//scan type yansıtıcı olacak bu
+chrome.storage.local.get("scan_aktive", function (result) {
+  const myValue = result.scan_aktive;
+  const inputElement = document.getElementById("scan_aktive");
+  inputElement.innerText = myValue;
+});
 //TASARIM
 const cikis_buton = document.querySelector(".cikis");
 

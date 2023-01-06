@@ -9,7 +9,11 @@ function hasUpdate(e) {
   console.log("hasUpdate", e);
   chrome.runtime.reload();
 }
-
+//default scan oluşturuldu
+chrome.storage.local.set({ scan_aktive: "a-record-lookup" }).then(() => {});
+chrome.storage.local.get(["scan_aktive"]).then((result) => {
+  console.log(result.scan_aktive);
+});
 //aktif tab alındı
 
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
