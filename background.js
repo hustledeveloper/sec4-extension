@@ -113,7 +113,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 });
 
-//Bu mehmet beyin istediği yoldu ama bunu da uyarlayamadım autocomplete
+//Bu mehmet beyin istediği yoldu ama bunu da uyarlayamadım autocomplete'e
 /* 
 scan_butonu.addEventListener("click", () => {
   list({ page, per_page, query, scan_parent_id, min_score, max_score });
@@ -146,7 +146,9 @@ export const list = ({
 //implamente etmem lazım. response.json() kullanarak
 
 /*
-/// bunlarla json dosyasını bg dan dışarı iletmeye çalıştım autocomplete için ama olmadı
+/// bunlarla attığım fetch çağrısı ile aldığım
+// json dosyasını bg dan dışarı iletmeye çalıştım autocomplete için ama olmadı
+
 function sendDataToPopup(data) {
   chrome.runtime.sendMessage({
     data: data,
