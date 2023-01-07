@@ -11,6 +11,7 @@
 7. Tasarımı biraz toparlamaya çalıştım, güncel asset değerini arayüze ekledim.
 8. Güncelleme: Autocomplete kısmını api'a ye bağlayamadım, orada tıkanıyorum. Şu an eklentini kalan kısımları işlevsel. Bir tool seçip bununla aseet'i scan edecek kısım kaldı.
 9. Autocomplete ile bg'dan attığım fetch call'ları bağlayamadım. Şimdilik bunu atlayıp eklentinin kalanını inşa edeceğim bir an önce
+10. scan kısmı için iskeleti oluşturdum, local datalardan asset, slug ve token alıp bunlarla fetch atacak bir fonksiyonu scan butonuna bağladım, eksikleri var.
 
 # ocak öncesi notları
 

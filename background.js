@@ -78,7 +78,7 @@ async function deneme5() {
 }
 //search sonucu istenen apiye giden call
 //chrome.runtime.onInstalled.addListener(deneme10);
-async function deneme10() {
+async function scan_function() {
   let asset;
   let slug;
   let token;
@@ -113,14 +113,15 @@ async function deneme10() {
     const result = await response.json();
 
     console.log(result);
-    //sendResponse(freetools);
   } catch (err) {
     console.log(err);
   }
 }
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message === "start_scan") {
-    deneme10();
+    scan_function();
+    //sendResponse(freetools);
   }
 });
 
