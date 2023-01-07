@@ -76,42 +76,47 @@ async function deneme5() {
     console.log(err);
   }
 }
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message === "start_scan") {
-    let asset;
-    let slug;
-    chrome.storage.local.get(["scan_aktive"]).then((result) => {
-      slug = result.scan_aktive;
-    });
+//search sonucu istenen apiye giden call
+chrome.runtime.onInstalled.addListener(deneme10);
+async function deneme10() {
+  let asset;
+  let slug;
+  let token;
+  await chrome.storage.local.get(["scan_aktive"]).then((result) => {
+    slug = result.scan_aktive;
+  });
 
-    chrome.storage.local.get(["asseturl"]).then((result) => {
-      asset = result.asseturl;
-    });
-    chrome.storage.local.get(["apitoken"]).then((result) => {
-      token = result.apitoken;
-    });
+  await chrome.storage.local.get(["asseturl"]).then((result) => {
+    asset = result.asseturl;
+  });
+  await chrome.storage.local.get(["apitoken"]).then((result) => {
+    token = result.apitoken;
+  });
 
-    fetch("https://core.securityforeveryone.com/api/scans/start-from-request", {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        asset: asset,
-        slug: slug,
-        guest_token: token,
-        time: 1635606153,
-      }),
-    })
-      .then((response) => response.json())
-      .then((freetools) => {
-        console.log(freetools);
-      });
+  try {
+    const response = await fetch(
+      "https://core.securityforeveryone.com/api/scans/start-from-request",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          asset: asset,
+          slug: slug,
+          guest_token: token,
+          time: 1635606153,
+        }),
+      }
+    );
+    const result = await response.json();
 
-    sendResponse(freetools);
+    console.log(result);
+  } catch (err) {
+    console.log(err);
   }
-});
+}
 
 //Bu mehmet beyin istediği yoldu ama bunu da uyarlayamadım autocomplete'e
 /* 
@@ -159,4 +164,19 @@ sendDataToPopup(data);
 chrome.runtime.onMessage.addListener((request) => {
   const data = request.data;
 });
+
+//scan sonucunu bu şekilde yeni tab olarak döndürebilirsin, 
+//job slug id'yi lokalde kayedeip çekebilirsin
+chrome.browserAction.onClicked.addListener(function() {
+    chrome.tabs.query({
+        currentWindow: true,
+        active: true
+    }, function(tab) {
+        chrome.tabs.create({
+            "url": "https://app.securityforeveryone.com/reports/77d7c031-b505-4038-acf3-f31ddd702bf3"
+        });
+    });
+});
+
+
 */
