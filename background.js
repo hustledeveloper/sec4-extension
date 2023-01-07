@@ -77,7 +77,7 @@ async function deneme5() {
   }
 }
 //search sonucu istenen apiye giden call
-chrome.runtime.onInstalled.addListener(deneme10);
+//chrome.runtime.onInstalled.addListener(deneme10);
 async function deneme10() {
   let asset;
   let slug;
@@ -113,11 +113,18 @@ async function deneme10() {
     const result = await response.json();
 
     console.log(result);
+    //sendResponse(freetools);
   } catch (err) {
     console.log(err);
   }
 }
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message === "start_scan") {
+    deneme10();
+  }
+});
 
+//TOOL SEARCH KISMI İÇİN NOT VE KODLAR
 //Bu mehmet beyin istediği yoldu ama bunu da uyarlayamadım autocomplete'e
 /* 
 scan_butonu.addEventListener("click", () => {
@@ -177,6 +184,4 @@ chrome.browserAction.onClicked.addListener(function() {
         });
     });
 });
-
-
 */
