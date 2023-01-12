@@ -173,16 +173,20 @@ chrome.runtime.onMessage.addListener((request) => {
   const data = request.data;
 });
 
-//scan sonucunu bu şekilde yeni tab olarak döndürebilirsin, 
-//job slug id'yi lokalde kayedeip çekebilirsin
-chrome.browserAction.onClicked.addListener(function() {
-    chrome.tabs.query({
-        currentWindow: true,
-        active: true
-    }, function(tab) {
-        chrome.tabs.create({
-            "url": "https://app.securityforeveryone.com/reports/77d7c031-b505-4038-acf3-f31ddd702bf3"
-        });
-    });
-});
 */
+
+//SHOW RESULT AREA
+//scan sonucunu bu şekilde yeni tab olarak döndürecek
+//job slug id'yi lokalde kaydedip de çekebilirsin?
+function openNewTab(url) {
+  chrome.tabs.create({
+    url: url,
+    active: true,
+  });
+}
+async function processData() {
+  //scan bitince job slug id içeren sonuç linkini döndürecek fonksiyon ile bağlanacak
+  //const result = await scan_edecek_fonksiyon();
+  openNewTab(result.url);
+  return result;
+}
