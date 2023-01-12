@@ -62,7 +62,7 @@ cikis_buton.addEventListener("click", () => {
 
   chrome.storage.local.set({ apitoken: apitoken }).then(() => {});
   //token sıfırlandı bildirimi gönderilmeli
-  window.location.replace("./popup-sign-in.html");
+  window.location.replace("./popup-welcome.html");
 });
 
 //TASARIM
