@@ -27,6 +27,35 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   });
 });
 
+//token check
+chrome.runtime.onInstalled.addListener(deneme10);
+async function deneme10() {
+  let token;
+  await chrome.storage.local.get(["apitoken"]).then((result) => {
+    token = result.apitoken;
+  });
+  try {
+    const response = await fetch(
+      "https://core.securityforeveryone.com/api/user/password-token-check",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: token,
+        }),
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+    //window.location.replace("./popup-sign-out.html");
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 chrome.runtime.onInstalled.addListener(deneme6);
 async function deneme6() {
   try {
@@ -122,6 +151,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message === "start_scan") {
     scan_function();
     //sendResponse(freetools);
+    //token check eklenecek message a
   }
 });
 
@@ -189,33 +219,4 @@ async function processData() {
   //const result = await scan_edecek_fonksiyon();
   openNewTab(result.url);
   return result;
-}
-
-//token check
-chrome.runtime.onInstalled.addListener(deneme10);
-async function deneme10() {
-  let token;
-  await chrome.storage.local.get(["apitoken"]).then((result) => {
-    token = result.apitoken;
-  });
-  try {
-    const response = await fetch(
-      "https://core.securityforeveryone.com/api/user/password-token-check",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          token: token,
-        }),
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-    //window.location.replace("./popup-sign-out.html");
-  } catch (err) {
-    console.log(err);
-  }
 }
