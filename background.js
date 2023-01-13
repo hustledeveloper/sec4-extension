@@ -27,34 +27,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   });
 });
 
-//token check
-chrome.runtime.onInstalled.addListener(deneme10);
-async function deneme10() {
-  let token;
-  await chrome.storage.local.get(["apitoken"]).then((result) => {
-    token = result.apitoken;
-  });
-  try {
-    const response = await fetch(
-      "https://core.securityforeveryone.com/api/user/password-token-check",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          token: token,
-        }),
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-    //window.location.replace("./popup-sign-out.html");
-  } catch (err) {
-    console.log(err);
-  }
-}
+
 
 chrome.runtime.onInstalled.addListener(deneme6);
 async function deneme6() {
@@ -152,8 +125,45 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     scan_function();
     //sendResponse(freetools);
     //token check eklenecek message a
+  } else if (message.request === "token_check") {
+    token_check_function();
   }
 });
+
+
+//token check
+chrome.runtime.onInstalled.addListener(token_check_function);
+async function token_check_function() {
+  let token;
+  await chrome.storage.local.get(["apitoken"]).then((result) => {
+    token = result.apitoken;
+  });
+  try {
+    const response = await fetch(
+      "https://core.securityforeveryone.com/api/user/password-token-check",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: token,
+        }),
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+    //window.location.replace("./popup-sign-out.html");
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+
+
+
 
 //TOOL SEARCH KISMI İÇİN NOT VE KODLAR
 //Bu mehmet beyin istediği yoldu ama bunu da uyarlayamadım autocomplete'e
