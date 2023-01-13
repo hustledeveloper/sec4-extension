@@ -1,9 +1,10 @@
 // Check if the user is logged in
+
 chrome.storage.local.get("apitoken", function (data) {
   if (data.apitoken !== 0) {
     // buraya tokenin kontrölü için bir kısım eklenecek
     //gerçek bir token mi kontrol edilecek membere sokmadan önce
-    window.location.replace("./popup-sign-out.html");
+    //bg a send message ile token check yap
   } else {
     // User is not logged in, redirect to login page
     window.location.replace("./free-popup-sign-out.html");

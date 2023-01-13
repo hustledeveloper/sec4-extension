@@ -190,3 +190,32 @@ async function processData() {
   openNewTab(result.url);
   return result;
 }
+
+//token check
+chrome.runtime.onInstalled.addListener(deneme10);
+async function deneme10() {
+  let token;
+  await chrome.storage.local.get(["apitoken"]).then((result) => {
+    token = result.apitoken;
+  });
+  try {
+    const response = await fetch(
+      "https://core.securityforeveryone.com/api/user/password-token-check",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: token,
+        }),
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+    //window.location.replace("./popup-sign-out.html");
+  } catch (err) {
+    console.log(err);
+  }
+}
