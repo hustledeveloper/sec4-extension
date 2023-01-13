@@ -27,8 +27,6 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   });
 });
 
-
-
 chrome.runtime.onInstalled.addListener(deneme6);
 async function deneme6() {
   try {
@@ -130,7 +128,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 });
 
-
 //token check
 chrome.runtime.onInstalled.addListener(token_check_function);
 async function token_check_function() {
@@ -154,16 +151,12 @@ async function token_check_function() {
     );
     const result = await response.json();
     console.log(result);
+    //responsa göre kontrol kurulmalı
     //window.location.replace("./popup-sign-out.html");
   } catch (err) {
     console.log(err);
   }
 }
-
-
-
-
-
 
 //TOOL SEARCH KISMI İÇİN NOT VE KODLAR
 //Bu mehmet beyin istediği yoldu ama bunu da uyarlayamadım autocomplete'e
