@@ -14,6 +14,8 @@
 10. scan kısmı için iskeleti oluşturdum, local datalardan asset, slug ve token alıp bunlarla fetch atacak bir fonksiyonu scan butonuna bağladım, eksikleri var.
 11. https://docs.google.com/document/d/10CAGvxgLafG2IW4dZt3gIdDNJtJoGevzmuRf--ihh5w/edit
     burada faz 2 için önerilerim ve yapılacaklar bulunmakta
+12. token için gerçek bir kontrol sistemi kurdum ve mantıklı bir şekilde login logout olunabiliyor
+13. scan kısmına devam ediyorum
 
 # ocak öncesi notları
 
