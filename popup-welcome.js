@@ -2,18 +2,21 @@
 
 chrome.storage.local.get("apitoken", function (data) {
   token3 = data.apitoken;
-  if (token3 !== 0) {
-    isValidToken(token3);
-  } else {
-    // User is not logged in, redirect to login page
-    window.location.replace("./free-popup-sign-out.html");
-  }
+  isValidToken(token3);
 });
-function isValidToken(token3) {
-  const valid = /^[a-zA-Z0-9.,;:!?()]{32,256}$/.test(token3);
-  if (valid) {
+function isValidToken(token4) {
+  // check if token is not undefined or null
+  if (token4 === undefined || token4 === null) {
+    // redirect to login page
+    window.location.replace("./free-popup-sign-out.html");
+    return;
+  }
+  // check if token length is between 32 and 256 characters
+  if (token4.length >= 32 && token4.length <= 256) {
+    // redirect to main page
     window.location.replace("./popup-sign-out.html");
   } else {
+    // redirect to login page
     window.location.replace("./free-popup-sign-out.html");
   }
 }
