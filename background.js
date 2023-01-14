@@ -76,6 +76,11 @@ async function deneme5() {
     console.log(err);
   }
 }
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message === "start_scan") {
+    scan_function();
+  }
+});
 //search sonucu istenen apiye giden call
 //chrome.runtime.onInstalled.addListener(deneme10);
 async function scan_function() {
@@ -113,17 +118,10 @@ async function scan_function() {
     const result = await response.json();
 
     console.log(result);
-    sendResponse("true");
   } catch (err) {
     console.log(err);
   }
 }
-
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message === "start_scan") {
-    scan_function();
-  }
-});
 
 /* 
 //token check daha isabetli bir token kontrolü kurmak istendiğinde kullanılabilir taslak
