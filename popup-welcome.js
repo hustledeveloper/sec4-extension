@@ -13,8 +13,15 @@ function isValidToken(mytoken) {
   }
   // check if token length is between 32 and 256 characters
   if (mytoken.length >= 32 && mytoken.length <= 256) {
-    // redirect to main page
-    window.location.replace("./popup-sign-out.html");
+    //check if token contains only uppercase and lowercase letters, numbers and underscore
+    const valid = /^[a-zA-Z0-9_]*$/.test(mytoken);
+    if (valid) {
+      // redirect to main page
+      window.location.replace("./popup-sign-out.html");
+    } else {
+      // redirect to login page
+      window.location.replace("./free-popup-sign-out.html");
+    }
   } else {
     // redirect to login page
     window.location.replace("./free-popup-sign-out.html");
