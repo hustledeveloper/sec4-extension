@@ -100,7 +100,7 @@ async function scan_function() {
 
   try {
     const response = await fetch(
-      "https://core.securityforeveryone.com/api/scans/start-from-request",
+      "https://core.securityforeveryone.com/api/v2/start",
       {
         method: "POST",
         headers: {
@@ -110,8 +110,7 @@ async function scan_function() {
         body: JSON.stringify({
           asset: asset,
           slug: slug,
-          guest_token: token,
-          time: 1635606153,
+          token: token,
         }),
       }
     );
