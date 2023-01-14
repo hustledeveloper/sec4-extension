@@ -1,18 +1,18 @@
 // Check if the user is logged in
-
+//basic token kontrolü
 chrome.storage.local.get("apitoken", function (data) {
-  token3 = data.apitoken;
-  isValidToken(token3);
+  tokenone = data.apitoken;
+  isValidToken(tokenone);
 });
-function isValidToken(token4) {
+function isValidToken(mytoken) {
   // check if token is not undefined or null
-  if (token4 === undefined || token4 === null) {
+  if (mytoken === undefined || mytoken === null) {
     // redirect to login page
     window.location.replace("./free-popup-sign-out.html");
     return;
   }
   // check if token length is between 32 and 256 characters
-  if (token4.length >= 32 && token4.length <= 256) {
+  if (mytoken.length >= 32 && mytoken.length <= 256) {
     // redirect to main page
     window.location.replace("./popup-sign-out.html");
   } else {
