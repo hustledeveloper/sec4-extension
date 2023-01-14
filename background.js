@@ -113,6 +113,7 @@ async function scan_function() {
     const result = await response.json();
 
     console.log(result);
+    sendResponse("true");
   } catch (err) {
     console.log(err);
   }
@@ -124,36 +125,31 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     //sendResponse(freetools);
     //token check eklenecek message a
   } else if (message.request === "token_check") {
-    token_check_function();
+    if (isValidToken(token)) {
+      window.location.replace("./popup-sign-out.html");
+      sendResponse("true");
+    } else {
+      //hata mesajı eklenebilir buraya
+      window.location.replace("./free-popup-sign-out.html");
+      sendResponse("false");
+    }
   }
 });
-async function token_check_function() {
-  let token;
+
+async function isValidToken(token) {
+  let token2;
   await chrome.storage.local.get(["apitoken"]).then((result) => {
-    token = result.apitoken;
+    token2 = result.apitoken;
   });
-  try {
-    const response = await fetch(
-      "https://core.securityforeveryone.com/api/user/password-token-check",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          token: token,
-        }),
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-    //responsa göre kontrol kurulmalı
-    //window.location.replace("./popup-sign-out.html");
-  } catch (err) {
-    console.log(err);
+
+  const valid = /^[a-zA-Z0-9.,;:!?()]{32,256}$/.test(token2);
+  if (valid) {
+    sendResponse("true");
+  } else {
+    sendResponse("false");
   }
 }
+
 /* 
 //token check daha isabetli bir token kontrolü kurmak istendiğinde kullanılabilir taslak
 chrome.runtime.onInstalled.addListener(token_check_function);

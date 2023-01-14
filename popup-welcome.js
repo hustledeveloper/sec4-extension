@@ -6,7 +6,6 @@ chrome.storage.local.get("apitoken", function (data) {
     //gerçek bir token mi kontrol edilecek membere sokmadan önce
     //bg a send message ile token check yap
     chrome.runtime.sendMessage("token_check", (response) => {});
-    window.location.replace("./popup-sign-out.html");
   } else {
     // User is not logged in, redirect to login page
     window.location.replace("./free-popup-sign-out.html");
