@@ -127,8 +127,35 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     token_check_function();
   }
 });
-
-//token check
+async function token_check_function() {
+  let token;
+  await chrome.storage.local.get(["apitoken"]).then((result) => {
+    token = result.apitoken;
+  });
+  try {
+    const response = await fetch(
+      "https://core.securityforeveryone.com/api/user/password-token-check",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: token,
+        }),
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+    //responsa göre kontrol kurulmalı
+    //window.location.replace("./popup-sign-out.html");
+  } catch (err) {
+    console.log(err);
+  }
+}
+/* 
+//token check daha isabetli bir token kontrolü kurmak istendiğinde kullanılabilir taslak
 chrome.runtime.onInstalled.addListener(token_check_function);
 async function token_check_function() {
   let token;
@@ -157,7 +184,7 @@ async function token_check_function() {
     console.log(err);
   }
 }
-
+*/
 //TOOL SEARCH KISMI İÇİN NOT VE KODLAR
 //Bu mehmet beyin istediği yoldu ama bunu da uyarlayamadım autocomplete'e
 /* 
