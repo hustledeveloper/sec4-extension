@@ -1,5 +1,4 @@
-// Check if the user is logged in
-//basic token kontrolü
+// Check if the user is logged in with token 
 chrome.storage.local.get("apitoken", function (data) {
   tokenone = data.apitoken;
   isValidToken(tokenone);
