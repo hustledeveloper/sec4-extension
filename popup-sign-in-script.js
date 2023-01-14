@@ -16,14 +16,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
 
   let apitoken = document.querySelector("#api-token").value;
-
   //apitoken localde kaydedildi
-
   chrome.storage.local.set({ apitoken: apitoken }).then(() => {});
-
-  if (apitoken !== 0) {
-    window.location.replace("./popup-sign-out.html");
-  } else {
-    document.querySelector("#api-token").placeholder = "Enter a api token.";
-  }
+  window.location.replace("./popup-welcome.html");
 });
