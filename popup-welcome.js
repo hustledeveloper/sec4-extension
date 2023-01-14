@@ -1,16 +1,22 @@
 // Check if the user is logged in
 
 chrome.storage.local.get("apitoken", function (data) {
-  if (data.apitoken !== 0) {
-    // buraya tokenin kontrölü için bir kısım eklenecek
-    //gerçek bir token mi kontrol edilecek membere sokmadan önce
-    //bg a send message ile token check yap
-    chrome.runtime.sendMessage("token_check", (response) => {});
+  token3 = data.apitoken;
+  if (token3 !== 0) {
+    isValidToken(token3);
   } else {
     // User is not logged in, redirect to login page
     window.location.replace("./free-popup-sign-out.html");
   }
 });
+function isValidToken(token3) {
+  const valid = /^[a-zA-Z0-9.,;:!?()]{32,256}$/.test(token3);
+  if (valid) {
+    window.location.replace("./popup-sign-out.html");
+  } else {
+    window.location.replace("./free-popup-sign-out.html");
+  }
+}
 
 const giris_button = document.querySelector("#go");
 

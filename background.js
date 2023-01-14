@@ -122,33 +122,8 @@ async function scan_function() {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message === "start_scan") {
     scan_function();
-    //sendResponse(freetools);
-    //token check eklenecek message a
-  } else if (message.request === "token_check") {
-    if (isValidToken(token)) {
-      window.location.replace("./popup-sign-out.html");
-      sendResponse("true");
-    } else {
-      //hata mesajı eklenebilir buraya
-      window.location.replace("./free-popup-sign-out.html");
-      sendResponse("false");
-    }
   }
 });
-
-async function isValidToken(token) {
-  let token2;
-  await chrome.storage.local.get(["apitoken"]).then((result) => {
-    token2 = result.apitoken;
-  });
-
-  const valid = /^[a-zA-Z0-9.,;:!?()]{32,256}$/.test(token2);
-  if (valid) {
-    sendResponse("true");
-  } else {
-    sendResponse("false");
-  }
-}
 
 /* 
 //token check daha isabetli bir token kontrolü kurmak istendiğinde kullanılabilir taslak
