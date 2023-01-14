@@ -12,6 +12,8 @@
 8. Güncelleme: Autocomplete kısmını api'a ye bağlayamadım, orada tıkanıyorum. Şu an eklentini kalan kısımları işlevsel. Bir tool seçip bununla aseet'i scan edecek kısım kaldı.
 9. Autocomplete ile bg'dan attığım fetch call'ları bağlayamadım. Şimdilik bunu atlayıp eklentinin kalanını inşa edeceğim bir an önce
 10. scan kısmı için iskeleti oluşturdum, local datalardan asset, slug ve token alıp bunlarla fetch atacak bir fonksiyonu scan butonuna bağladım, eksikleri var.
+11. https://docs.google.com/document/d/10CAGvxgLafG2IW4dZt3gIdDNJtJoGevzmuRf--ihh5w/edit
+    burada faz 2 için önerilerim ve yapılacaklar bulunmakta
 
 # ocak öncesi notları
 
