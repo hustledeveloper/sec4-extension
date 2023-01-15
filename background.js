@@ -25,6 +25,10 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   chrome.storage.local.get(["scan_aktive"]).then((result) => {
     console.log(result.scan_aktive);
   });
+
+  chrome.storage.local.get(["jobslug"], function (result) {
+    console.log(result.jobslug);
+  });
 });
 
 chrome.runtime.onInstalled.addListener(deneme6);
@@ -118,8 +122,11 @@ async function scan_function() {
         }),
       }
     );
-    const result = await response.json();
-    console.log(result);
+    const jsonData = await response.json();
+    var jobslug = jsonData.value.job_slugs[0];
+    chrome.storage.local.set({ jobslug: jobslug }, function () {
+      console.log("Value is set to " + jobslug);
+    });
   } catch (err) {
     console.log(err);
   }
