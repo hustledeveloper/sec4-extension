@@ -16,6 +16,8 @@
     burada faz 2 için önerilerim ve yapılacaklar bulunmakta
 12. token için gerçek bir kontrol sistemi kurdum ve mantıklı bir şekilde login logout olunabiliyor
 13. scan kısmına devam ediyorum
+14. scan başarılı
+15. jobslug ile sonuç linkini açma başarılı
 
 # ocak öncesi notları
 
