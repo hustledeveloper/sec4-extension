@@ -127,6 +127,11 @@ async function scan_function() {
     chrome.storage.local.set({ jobslug: jobslug }, function () {
       console.log("Value is set to " + jobslug);
     });
+    chrome.storage.local.get(["jobslug"], function (result) {
+      const jobslug = result.jobslug;
+      const url = "https://app.securityforeveryone.com/reports/" + jobslug;
+      chrome.tabs.create({ url: url });
+    });
   } catch (err) {
     console.log(err);
   }
@@ -211,11 +216,6 @@ chrome.runtime.onMessage.addListener((request) => {
   const data = request.data;
 });
 
-*/
-
-//SHOW RESULT AREA
-//scan sonucunu bu şekilde yeni tab olarak döndürecek
-//job slug id'yi lokalde kaydedip de çekebilirsin?
 function openNewTab(url) {
   chrome.tabs.create({
     url: url,
@@ -228,3 +228,4 @@ async function processData() {
   openNewTab(result.url);
   return result;
 }
+*/
