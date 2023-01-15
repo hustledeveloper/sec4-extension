@@ -76,9 +76,13 @@ async function deneme5() {
     console.log(err);
   }
 }
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message === "start_scan") {
-    scan_function();
+chrome.runtime.onConnect.addListener((port) => {
+  if (port.name === "scan_port") {
+    port.onMessage.addListener((message) => {
+      if (message === "start_scan") {
+        scan_function();
+      }
+    });
   }
 });
 //search sonucu istenen apiye giden call
@@ -115,7 +119,6 @@ async function scan_function() {
       }
     );
     const result = await response.json();
-
     console.log(result);
   } catch (err) {
     console.log(err);
