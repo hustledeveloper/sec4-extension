@@ -1,5 +1,5 @@
 chrome.runtime.onInstalled.addListener(() => {
-  console.log("Extension have been successfully installed!");
+  console.log("Extension successfully installed!");
 });
 /*Bu kod, eklentide bir güncelleme olduğunda çalışacak. 
  uygulamayı yeniden yükler ve güncellemeyi uygular.Bu sayede 
