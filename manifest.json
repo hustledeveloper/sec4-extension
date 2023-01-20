@@ -1,6 +1,6 @@
 {
-  "name": "Security for Everyone ",
-  "description": "Security for Everyone extension ",
+  "name": "Security-for-Everyone ",
+  "description": "Security for Everyone Chrome extension ",
   "version": "0.1.0",
   "manifest_version": 3,
   "icons": {
