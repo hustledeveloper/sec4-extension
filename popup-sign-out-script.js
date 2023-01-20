@@ -1,8 +1,8 @@
 const cikis_buton = document.querySelector(".cikis");
-const reset_asset_buton = document.querySelector(".reset-token");
+const reset_asset_buton = document.querySelector(".reset-asset");
 const scan_butonu = document.querySelector(".scan");
 const change_asset_buton = document.querySelector(".change-asset");
-//SCAN CLICK düzenlemeler yapılacak
+//SCAN
 scan_butonu.addEventListener("click", () => {
   chrome.runtime.connect({ name: "scan_port" }).postMessage("start_scan");
 });
@@ -12,14 +12,12 @@ chrome.storage.local.get("asseturl", function (result) {
   const inputElement = document.getElementById("assetaktive");
   inputElement.innerText = myValue;
 });
-//scan type yansıtıcı olacak bu
+//scan type gösterme
 chrome.storage.local.get("scan_aktive", function (result) {
   const myValue = result.scan_aktive;
   const inputElement = document.getElementById("scan_aktive");
   inputElement.innerText = myValue;
 });
-
-//TASARIM
 
 reset_asset_buton.addEventListener("mouseover", () => {
   reset_asset_buton.style.backgroundColor = "black";
@@ -54,18 +52,14 @@ cikis_buton.addEventListener("mouseleave", () => {
   cikis_buton.style.transform = "scale(1)";
 });
 
-//logout butonu
-
+//logout butonu, apitokeni sıfırlayıp çıkış yapıyor
 cikis_buton.addEventListener("click", () => {
   let apitoken = chrome.storage.local.get(["apitoken"]);
   apitoken = 0;
-
   chrome.storage.local.set({ apitoken: apitoken }).then(() => {});
-  //token sıfırlandı bildirimi gönderilmeli
   window.location.replace("./popup-welcome.html");
 });
 
-//TASARIM
 scan_butonu.addEventListener("mouseover", () => {
   scan_butonu.style.backgroundColor = "black";
   scan_butonu.style.color = "white";
@@ -89,13 +83,13 @@ change_asset_buton.addEventListener("mouseleave", () => {
   change_asset_buton.style.color = "white";
   change_asset_buton.style.transform = "scale(1)";
 });
+//elle asset girme butonu
 change_asset_buton.addEventListener("click", () => {
   let assetnew = document.querySelector("#new-asset").value;
   chrome.storage.local.set({ asseturl: assetnew }).then(() => {});
 });
 
-//autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
-
+//autocomplete
 const endpoint =
   "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
 
@@ -146,4 +140,3 @@ const suggestions = document.querySelector(".suggestions");
 
 searchInput.addEventListener("change", displayMatches);
 searchInput.addEventListener("keyup", displayMatches);
-//autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
