@@ -7,13 +7,12 @@ chrome.storage.local.get("asseturl", function (result) {
   const inputElement = document.getElementById("assetaktive");
   inputElement.innerText = myValue;
 });
-//scan type yansıtıcı olacak bu
+//scan type gösterme
 chrome.storage.local.get("scan_aktive", function (result) {
   const myValue = result.scan_aktive;
   const inputElement = document.getElementById("scan_aktive");
   inputElement.innerText = myValue;
 });
-//TASARIM
 
 cikis_buton.addEventListener("mouseover", () => {
   cikis_buton.style.backgroundColor = "black";
@@ -29,11 +28,10 @@ cikis_buton.addEventListener("mouseleave", () => {
 
 //logout butonu
 cikis_buton.addEventListener("click", () => {
-  event.preventDefault();
+  preventDefault();
   window.location.replace("./popup-sign-in.html");
 });
 
-//TASARIM
 scan_butonu.addEventListener("mouseover", () => {
   scan_butonu.style.backgroundColor = "black";
   scan_butonu.style.color = "white";
@@ -45,18 +43,9 @@ scan_butonu.addEventListener("mouseleave", () => {
   scan_butonu.style.color = "white";
   scan_butonu.style.transform = "scale(1)";
 });
-//SCAN CLICK düzenlemeler yapılacak
+//SCAN
 scan_butonu.addEventListener("click", () => {
-  const asset = document.querySelector("#asset-aktive").value;
-  const slug = document.querySelector("#scan-type").value;
-
-  if (asset !== 0 && slug !== 0) {
-    window.location.replace("./popup-sign-in.html");
-    //buraya scan raporu linki konacak
-  } else {
-    document.querySelector("#url").placeholder = "Enter an url.";
-    document.querySelector("#scan").placeholder = "Enter a scan.";
-  }
+  chrome.runtime.connect({ name: "scan_port" }).postMessage("start_scan");
 });
 
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
