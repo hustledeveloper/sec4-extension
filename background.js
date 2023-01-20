@@ -1,19 +1,19 @@
-//extension yüklenince konsola bildirim gönderen fonksiyon
 chrome.runtime.onInstalled.addListener(() => {
   console.log("Extension have been successfully installed!");
 });
-//update olunca kullanıcıya bildirim gönderen fonksiyon
-//bunu lokalde deneme imkanım yok ama çalışıyordur muhtemelen
+/*Bu kod, eklentide bir güncelleme olduğunda çalışacak. 
+ uygulamayı yeniden yükler ve güncellemeyi uygular.Bu sayede 
+ kullanıcının manuel olarak uygulamayı yeniden başlatmasına gerek kalmaz. */
 chrome.runtime.onUpdateAvailable.addListener(hasUpdate);
 function hasUpdate(e) {
   console.log("hasUpdate", e);
   chrome.runtime.reload();
 }
 
-//default scan oluşturuldu
+//default scan oluşturuldu, autocomplete eklene kadar manuel olarak bunu kullandım
 chrome.storage.local.set({ scan_aktive: "a-record-lookup" }).then(() => {});
 
-//lokal veri kontrolü
+//kaydedlmiş verilerin konsolda kontrölü için yazdım, geliştirme süreci bittiğinde kaldırabiliriz
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   chrome.storage.local.get(["asseturl"]).then((result) => {
     console.log(result.asseturl);
@@ -30,7 +30,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     console.log(result.jobslug);
   });
 });
-
+//bunu kullanrak el edilen json dosyasını autocomplete in kullanacağı json olarak bağlamak gerekiyor sanırım, denedim olmadı
 chrome.runtime.onInstalled.addListener(deneme6);
 async function deneme6() {
   try {
@@ -55,7 +55,8 @@ async function deneme6() {
     console.log(err);
   }
 }
-
+//scan başlat mesajını dinleyip fonksiyonları çalıştıran kısım, diğer listener'lar buraya eklenebilir
+//port kullanılmasının sebebi scan işleminin zaman almasıdır
 chrome.runtime.onConnect.addListener((port) => {
   if (port.name === "scan_port") {
     port.onMessage.addListener((message) => {
@@ -65,8 +66,7 @@ chrome.runtime.onConnect.addListener((port) => {
     });
   }
 });
-//search sonucu istenen apiye giden call
-//chrome.runtime.onInstalled.addListener(deneme10);
+//scan başlatan ve bitince sonucu newtab olarak açan fonksiyon
 async function scan_function() {
   let asset;
   let slug;
@@ -113,37 +113,6 @@ async function scan_function() {
   }
 }
 
-/* 
-//token check daha isabetli bir token kontrolü kurmak istendiğinde kullanılabilir taslak
-chrome.runtime.onInstalled.addListener(token_check_function);
-async function token_check_function() {
-  let token;
-  await chrome.storage.local.get(["apitoken"]).then((result) => {
-    token = result.apitoken;
-  });
-  try {
-    const response = await fetch(
-      "https://core.securityforeveryone.com/api/user/password-token-check",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          token: token,
-        }),
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-    //responsa göre kontrol kurulmalı
-    //window.location.replace("./popup-sign-out.html");
-  } catch (err) {
-    console.log(err);
-  }
-}
-*/
 //TOOL SEARCH KISMI İÇİN NOT VE KODLAR
 //Bu mehmet beyin istediği yoldu ama bunu da uyarlayamadım autocomplete'e
 /* 
@@ -174,8 +143,6 @@ export const list = ({
   });
 };
 */
-//Bg'da attığım fetch'i sign out'taki autocomplete'e
-//implamente etmem lazım. response.json() kullanarak
 
 /*
 /// bunlarla attığım fetch çağrısı ile aldığım
@@ -198,10 +165,5 @@ function openNewTab(url) {
     active: true,
   });
 }
-async function processData() {
-  //scan bitince job slug id içeren sonuç linkini döndürecek fonksiyon ile bağlanacak
-  //const result = await scan_edecek_fonksiyon();
-  openNewTab(result.url);
-  return result;
-}
+
 */
