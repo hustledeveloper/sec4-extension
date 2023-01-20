@@ -7,7 +7,7 @@ function isValidToken(mytoken) {
   // check if token is not undefined or null
   if (mytoken === undefined || mytoken === null) {
     // redirect to login page
-    window.location.replace("./popup-nonmember.html");
+    window.location.replace("./free-popup-sign-out.html");
     return;
   }
   // check if token length is between 32 and 256 characters
@@ -16,14 +16,14 @@ function isValidToken(mytoken) {
     const valid = /^[a-zA-Z0-9_\-]*$/.test(mytoken);
     if (valid) {
       // redirect to main page
-      window.location.replace("./popup-member.html");
+      window.location.replace("./popup-sign-out.html");
     } else {
       // redirect to login page
-      window.location.replace("./popup-nonmember.html");
+      window.location.replace("./free-popup-sign-out.html");
     }
   } else {
     // redirect to login page
-    window.location.replace("./popup-nonmember.html");
+    window.location.replace("./free-popup-sign-out.html");
   }
 }
 
@@ -61,5 +61,5 @@ guest_buton.addEventListener("mouseleave", () => {
 
 guest_buton.addEventListener("click", (e) => {
   e.preventDefault();
-  window.location.replace("./popup-nonmember.html");
+  window.location.replace("./free-popup-sign-out.html");
 });

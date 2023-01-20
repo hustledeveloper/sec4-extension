@@ -10,7 +10,7 @@ function hasUpdate(e) {
   chrome.runtime.reload();
 }
 
-//default  scan oluşturuldu, autocomplete eklene kadar manuel olarak bunu kullandım
+//default scan oluşturuldu, autocomplete eklene kadar manuel olarak bunu kullandım
 chrome.storage.local.set({ scan_aktive: "a-record-lookup" }).then(() => {});
 
 //kaydedlmiş verilerin konsolda kontrölü için yazdım, geliştirme süreci bittiğinde kaldırabiliriz
