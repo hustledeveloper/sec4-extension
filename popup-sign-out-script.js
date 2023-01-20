@@ -36,7 +36,9 @@ reset_asset_buton.addEventListener("click", () => {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var activeTab = tabs[0];
     var asseturl = activeTab.url;
-    chrome.storage.local.set({ asseturl: asseturl }).then(() => {});
+    var url = new URL(asseturl);
+    var hostname = url.hostname;
+    chrome.storage.local.set({ asseturl: hostname }).then(() => {});
   });
 });
 
