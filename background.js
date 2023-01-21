@@ -121,6 +121,11 @@ async function scan_function() {
         chrome.storage.local.set({ jobslug: jobslug }, function () {
           console.log("Value is set to " + jobslug);
         });
+        chrome.storage.local.get(["jobslug"], function (result) {
+          const jobslugz = result.jobslug;
+          const url = "https://app.securityforeveryone.com/reports/" + jobslugz;
+          chrome.tabs.create({ url: url });
+        });
       });
   } catch (err) {
     console.log(err);
