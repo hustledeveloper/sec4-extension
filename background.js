@@ -99,7 +99,7 @@ async function scan_function() {
       }
     )
       .then((response) => {
-        if (response.status !== 200) {
+        if (!response.ok) {
           chrome.runtime.sendMessage({
             type: "error",
             message: "Hata: " + response.status,
@@ -108,21 +108,19 @@ async function scan_function() {
         }
         return response.json();
       })
-
       .then((jsonData) => {
+        var kontrol = jsonData.code;
+        if (kontrol !== 200) {
+          chrome.runtime.sendMessage({
+            type: "error",
+            message: "Hata: " + jsonData.value.status,
+          });
+          return;
+        }
         var jobslug = jsonData.value.job_slugs[0];
         chrome.storage.local.set({ jobslug: jobslug }, function () {
           console.log("Value is set to " + jobslug);
         });
-
-        chrome.storage.local.get(["jobslug"], function (result) {
-          const jobslug = result.jobslug;
-          const url = "https://app.securityforeveryone.com/reports/" + jobslug;
-          chrome.tabs.create({ url: url });
-        });
-      })
-      .catch((err) => {
-        console.log(err);
       });
   } catch (err) {
     console.log(err);
