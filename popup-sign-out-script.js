@@ -6,6 +6,14 @@ const change_asset_buton = document.querySelector(".change-asset");
 scan_butonu.addEventListener("click", () => {
   chrome.runtime.connect({ name: "scan_port" }).postMessage("start_scan");
 });
+
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "error") {
+    document.getElementById("warning-message").innerHTML = message.message;
+    document.getElementById("warning-message").style.display = "block";
+  }
+});
+
 //asseti gösterme
 chrome.storage.local.get("asseturl", function (result) {
   const myValue = result.asseturl;

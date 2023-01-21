@@ -97,17 +97,33 @@ async function scan_function() {
           token: token,
         }),
       }
-    );
-    const jsonData = await response.json();
-    var jobslug = jsonData.value.job_slugs[0];
-    chrome.storage.local.set({ jobslug: jobslug }, function () {
-      console.log("Value is set to " + jobslug);
-    });
-    chrome.storage.local.get(["jobslug"], function (result) {
-      const jobslug = result.jobslug;
-      const url = "https://app.securityforeveryone.com/reports/" + jobslug;
-      chrome.tabs.create({ url: url });
-    });
+    )
+      .then((response) => {
+        if (response.status !== 200) {
+          chrome.runtime.sendMessage({
+            type: "error",
+            message: "Hata: " + response.status,
+          });
+          return;
+        }
+        return response.json();
+      })
+
+      .then((jsonData) => {
+        var jobslug = jsonData.value.job_slugs[0];
+        chrome.storage.local.set({ jobslug: jobslug }, function () {
+          console.log("Value is set to " + jobslug);
+        });
+
+        chrome.storage.local.get(["jobslug"], function (result) {
+          const jobslug = result.jobslug;
+          const url = "https://app.securityforeveryone.com/reports/" + jobslug;
+          chrome.tabs.create({ url: url });
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   } catch (err) {
     console.log(err);
   }
