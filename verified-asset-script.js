@@ -12,7 +12,21 @@ reset_button.addEventListener("mouseleave", () => {
   reset_button.style.color = "white";
   reset_button.style.transform = "scale(1)";
 });
+const scan_button = document.querySelector("#scan-btn");
+
+scan_button.addEventListener("mouseover", () => {
+  scan_button.style.backgroundColor = "black";
+  scan_button.style.color = "white";
+  scan_button.style.transform = "scale(1.3)";
+});
+
+scan_button.addEventListener("mouseleave", () => {
+  scan_button.style.backgroundColor = "#6366F1";
+  scan_button.style.color = "white";
+  scan_button.style.transform = "scale(1)";
+});
 const aseet_add_button = document.querySelector("#asset-add");
+
 aseet_add_button.addEventListener("mouseover", () => {
   aseet_add_button.style.backgroundColor = "black";
   aseet_add_button.style.color = "white";
@@ -24,8 +38,9 @@ aseet_add_button.addEventListener("mouseleave", () => {
   aseet_add_button.style.color = "white";
   aseet_add_button.style.transform = "scale(1)";
 });
-//TASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIM
 
+//TASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIM
+//burada select butonunun üstündeki değeri alarak bu değeri bigasset isimli bir değişkene atayan butonu ekleme istiyorum
 document.getElementById("asset-form").addEventListener("submit", function (e) {
   e.preventDefault(); // prevent form from submitting
 
@@ -46,9 +61,7 @@ document.getElementById("asset-form").addEventListener("submit", function (e) {
     // Display assets in a list on the page
     const option = document.createElement("option");
     option.textContent = assets;
-    option.addEventListener("click", function () {
-      window.location.href = "popup-welcome.html";
-    });
+
     assetList.appendChild(option);
   });
 });
@@ -60,9 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
       result.verifiedAssets.forEach(function (asset) {
         const option = document.createElement("option");
         option.textContent = asset;
-        option.addEventListener("click", function () {
-          window.location.href = "popup-welcome.html";
-        });
+
         assetList.appendChild(option);
       });
     }
@@ -77,4 +88,13 @@ document.getElementById("reset-btn").addEventListener("click", function () {
   // Clear assets from list on the page
   const assetList = document.getElementById("asset-list");
   assetList.innerHTML = "";
+});
+document.getElementById("scan-btn").addEventListener("click", function () {
+  const selectElement = document.getElementById("asset-list");
+  const selectedAsset =
+    selectElement.options[selectElement.selectedIndex].value;
+  selectedAsset = 0;
+  // selectedAsset değişkeni seçili olan asset'i içerir
+  // Burada seçili olan asseti silme veya diğer işlemleri yapabilirsiniz
+  //bu asset değerini url olarak ana assete ata sonra scan ekranına yolla bu asseti locale kaydedip
 });
