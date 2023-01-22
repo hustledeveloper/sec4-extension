@@ -40,7 +40,7 @@ aseet_add_button.addEventListener("mouseleave", () => {
 });
 
 //TASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIM
-//burada select butonunun üstündeki değeri alarak bu değeri bigasset isimli bir değişkene atayan butonu ekleme istiyorum
+//burada asset değeri alınırken bunun geçerli bir urlmasını garanti edecek kontrol sistemi kur, url değilse uyarı versin ve asseti eklemesin.
 document.getElementById("asset-form").addEventListener("submit", function (e) {
   e.preventDefault(); // prevent form from submitting
 
@@ -93,11 +93,6 @@ document.getElementById("scan-btn").addEventListener("click", function () {
   const selectElement = document.getElementById("asset-list");
   const selectedAsset =
     selectElement.options[selectElement.selectedIndex].value;
-
-  // selectedAsset değişkeni seçili olan asset'i içerir
-  // Burada seçili olan asseti silme veya diğer işlemleri yapabilirsiniz
-  //bu asset değerini url olarak ana assete ata sonra scan ekranına yolla bu asseti locale kaydedip
-
   chrome.storage.local.set({ asseturl: selectedAsset }).then(() => {});
   window.location.replace("./popup-sign-out.html");
 });
