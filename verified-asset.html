@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Security for everyone</title>
+    <link rel="stylesheet" href="mystyles.css" />
+    <style>
+      body {
+        width: 400px;
+        height: 600px;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <img src="images/banner.png" class="center" />
+    </div>
+
+    <form id="asset-form">
+      <label for="asset-input">Enter an asset:</label>
+      <input
+        type="text"
+        id="asset-input"
+        name="asset"
+        placeholder="Asset URL"
+      />
+      <button type="submit">Submit</button>
+    </form>
+    <div id="asset-list"></div>
+
+    <div>
+      <a
+        class="website"
+        href="https://securityforeveryone.com/"
+        target="_blank"
+      >
+        <i class="website"></i><b>Visit our website</b></a
+      >
+    </div>
+    <script src="./verified-asset-script.js"></script>
+  </body>
+</html>
