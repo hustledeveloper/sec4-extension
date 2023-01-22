@@ -2,6 +2,24 @@ const cikis_buton = document.querySelector(".cikis");
 const reset_asset_buton = document.querySelector(".reset-asset");
 const scan_butonu = document.querySelector(".scan");
 const change_asset_buton = document.querySelector(".change-asset");
+const go_to_verified_button = document.querySelector("#verified-btn");
+
+//go verified
+go_to_verified_button.addEventListener("click", () => {
+  window.location.replace("./verified-asset.html");
+});
+go_to_verified_button.addEventListener("mouseover", () => {
+  go_to_verified_button.style.backgroundColor = "black";
+  go_to_verified_button.style.color = "white";
+  go_to_verified_button.style.transform = "scale(1.3)";
+});
+
+go_to_verified_button.addEventListener("mouseleave", () => {
+  go_to_verified_button.style.backgroundColor = "#6366F1";
+  go_to_verified_button.style.color = "white";
+  go_to_verified_button.style.transform = "scale(1)";
+});
+
 //SCAN
 scan_butonu.addEventListener("click", () => {
   chrome.runtime.connect({ name: "scan_port" }).postMessage("start_scan");
