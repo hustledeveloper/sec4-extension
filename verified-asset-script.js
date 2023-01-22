@@ -40,13 +40,17 @@ aseet_add_button.addEventListener("mouseleave", () => {
 });
 
 //TASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIM
-//burada asset değeri alınırken bunun geçerli bir urlmasını garanti edecek kontrol sistemi kur, url değilse uyarı versin ve asseti eklemesin.
+
 document.getElementById("asset-form").addEventListener("submit", function (e) {
   e.preventDefault(); // prevent form from submitting
 
   // Get assets from input field
   const assets = document.getElementById("asset-input").value;
-
+  //kontrol
+  if (!isValidUrl(assets)) {
+    alert("Invalid URL. Please enter a valid URL.");
+    return;
+  }
   // Save assets in chrome storage
   chrome.storage.local.get("verifiedAssets", function (result) {
     const assetList = document.getElementById("asset-list");
@@ -65,6 +69,12 @@ document.getElementById("asset-form").addEventListener("submit", function (e) {
     assetList.appendChild(option);
   });
 });
+function isValidUrl(url) {
+  //Regex kontrolü
+  const regex =
+    /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+  return regex.test(url);
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   chrome.storage.local.get("verifiedAssets", function (result) {
@@ -93,6 +103,9 @@ document.getElementById("scan-btn").addEventListener("click", function () {
   const selectElement = document.getElementById("asset-list");
   const selectedAsset =
     selectElement.options[selectElement.selectedIndex].value;
-  chrome.storage.local.set({ asseturl: selectedAsset }).then(() => {});
+  var url = new URL(selectedAsset);
+  var hostname = url.hostname;
+
+  chrome.storage.local.set({ asseturl: hostname }).then(() => {});
   window.location.replace("./popup-sign-out.html");
 });
