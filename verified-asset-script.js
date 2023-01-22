@@ -93,8 +93,11 @@ document.getElementById("scan-btn").addEventListener("click", function () {
   const selectElement = document.getElementById("asset-list");
   const selectedAsset =
     selectElement.options[selectElement.selectedIndex].value;
-  selectedAsset = 0;
+
   // selectedAsset değişkeni seçili olan asset'i içerir
   // Burada seçili olan asseti silme veya diğer işlemleri yapabilirsiniz
   //bu asset değerini url olarak ana assete ata sonra scan ekranına yolla bu asseti locale kaydedip
+
+  chrome.storage.local.set({ asseturl: selectedAsset }).then(() => {});
+  window.location.replace("./popup-sign-out.html");
 });
