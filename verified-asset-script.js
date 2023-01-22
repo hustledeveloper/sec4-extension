@@ -1,3 +1,4 @@
+//TASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIM
 const reset_button = document.querySelector("#reset-btn");
 
 reset_button.addEventListener("mouseover", () => {
@@ -23,6 +24,7 @@ aseet_add_button.addEventListener("mouseleave", () => {
   aseet_add_button.style.color = "white";
   aseet_add_button.style.transform = "scale(1)";
 });
+//TASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIM
 
 document.getElementById("asset-form").addEventListener("submit", function (e) {
   e.preventDefault(); // prevent form from submitting
@@ -42,9 +44,12 @@ document.getElementById("asset-form").addEventListener("submit", function (e) {
       console.log("Assets saved: ", assetArray);
     });
     // Display assets in a list on the page
-    const li = document.createElement("li");
-    li.textContent = assets;
-    assetList.appendChild(li);
+    const option = document.createElement("option");
+    option.textContent = assets;
+    option.addEventListener("click", function () {
+      window.location.href = "popup-welcome.html";
+    });
+    assetList.appendChild(option);
   });
 });
 
@@ -53,9 +58,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const assetList = document.getElementById("asset-list");
     if (result.verifiedAssets) {
       result.verifiedAssets.forEach(function (asset) {
-        const li = document.createElement("li");
-        li.textContent = asset;
-        assetList.appendChild(li);
+        const option = document.createElement("option");
+        option.textContent = asset;
+        option.addEventListener("click", function () {
+          window.location.href = "popup-welcome.html";
+        });
+        assetList.appendChild(option);
       });
     }
   });
