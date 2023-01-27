@@ -58,10 +58,10 @@ reset_asset_buton.addEventListener("mouseleave", () => {
 });
 reset_asset_buton.addEventListener("click", () => {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    var activeTab = tabs[0];
-    var asseturl = activeTab.url;
-    var url = new URL(asseturl);
-    var hostname = url.hostname;
+    let activeTab = tabs[0];
+    let asseturl = activeTab.url;
+    let url = new URL(asseturl);
+    let hostname = url.hostname;
     chrome.storage.local.set({ asseturl: hostname }).then(() => {});
   });
 });

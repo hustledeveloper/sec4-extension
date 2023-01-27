@@ -1,9 +1,7 @@
 chrome.runtime.onInstalled.addListener(() => {
   console.log("Extension successfully installed!");
 });
-/*Bu kod, eklentide bir güncelleme olduğunda çalışacak. 
- uygulamayı yeniden yükler ve güncellemeyi uygular.Bu sayede 
- kullanıcının manuel olarak uygulamayı yeniden başlatmasına gerek kalmaz. */
+/* Chrome extensions with persistent background pages are reloaded only when the browser is restarted. For most users this does not happen very often. To fix this, we need to manually restart (and thus install the update to the) extension. Chrome has an API for extension update handling (chrome.runtime.onUpdateAvailable), that checks for updates with a few-hour-long interval, and notifies the extension when it found one.*/
 chrome.runtime.onUpdateAvailable.addListener(hasUpdate);
 function hasUpdate(e) {
   console.log("hasUpdate", e);
@@ -109,7 +107,7 @@ async function scan_function() {
         return response.json();
       })
       .then((jsonData) => {
-        var kontrol = jsonData.code;
+        let kontrol = jsonData.code;
         if (kontrol !== 200) {
           chrome.runtime.sendMessage({
             type: "error",
@@ -117,7 +115,7 @@ async function scan_function() {
           });
           return;
         }
-        var jobslug = jsonData.value.job_slugs[0];
+        let jobslug = jsonData.value.job_slugs[0];
         chrome.storage.local.set({ jobslug: jobslug }, function () {
           console.log("Value is set to " + jobslug);
         });
@@ -131,58 +129,3 @@ async function scan_function() {
     console.log(err);
   }
 }
-
-//TOOL SEARCH KISMI İÇİN NOT VE KODLAR
-//Bu mehmet beyin istediği yoldu ama bunu da uyarlayamadım autocomplete'e
-/* 
-scan_butonu.addEventListener("click", () => {
-  list({ page, per_page, query, scan_parent_id, min_score, max_score });
-});
-const apiPrefix = "https://core-test.s4e.link/api/scans/";
-
-const page = 1;
-const per_page = 100;
-const query = "gene";
-
-export const list = ({
-  page,
-  per_page,
-  query,
-  scan_parent_id,
-  min_score,
-  max_score,
-}) => {
-  return request.post(`${apiPrefix}/list`, {
-    page,
-    per_page,
-    query,
-    scan_parent_id,
-    min_score,
-    max_score,
-  });
-};
-*/
-
-/*
-/// bunlarla attığım fetch çağrısı ile aldığım
-// json dosyasını bg dan dışarı iletmeye çalıştım autocomplete için ama olmadı
-
-function sendDataToPopup(data) {
-  chrome.runtime.sendMessage({
-    data: data,
-  });
-}
-sendDataToPopup(data);
-
-chrome.runtime.onMessage.addListener((request) => {
-  const data = request.data;
-});
-
-function openNewTab(url) {
-  chrome.tabs.create({
-    url: url,
-    active: true,
-  });
-}
-
-*/
