@@ -2,10 +2,12 @@
 function save_options() {
   let blog = document.getElementById("blog-notification").checked;
   let tool = document.getElementById("tool-notification").checked;
+  let scan = document.getElementById("scan-notification").checked;
   chrome.storage.sync.set(
     {
       blog: blog,
       tool: tool,
+      scan: scan,
     },
     function () {
       // Update status to let user know options were saved.
@@ -26,10 +28,12 @@ function restore_options() {
     {
       blog: true,
       tool: true,
+      scan: true,
     },
     function (items) {
       document.getElementById("blog-notification").checked = items.blog;
       document.getElementById("tool-notification").checked = items.tool;
+      document.getElementById("scan-notification").checked = items.scan;
     }
   );
 }
