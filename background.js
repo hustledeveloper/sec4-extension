@@ -68,7 +68,7 @@ chrome.runtime.onConnect.addListener((port) => {
 async function scan_function() {
   let asset;
   let slug;
-  let token;
+  let APItoken;
   await chrome.storage.local.get(["scan_aktive"]).then((result) => {
     slug = result.scan_aktive;
   });
@@ -77,7 +77,7 @@ async function scan_function() {
     asset = result.asseturl;
   });
   await chrome.storage.local.get(["apitoken"]).then((result) => {
-    token = result.apitoken;
+    APItoken = result.apitoken;
   });
 
   try {
@@ -92,7 +92,7 @@ async function scan_function() {
         body: JSON.stringify({
           asset: asset,
           slug: slug,
-          token: token,
+          token: APItoken,
         }),
       }
     )
