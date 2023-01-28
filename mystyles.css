@@ -223,10 +223,10 @@ input.search-input {
   margin-left: 5px;
   margin-right: 5px;
   border-radius: 20px;
-  transition: all 0.3s ease;
-}
-
-.navbar a:hover {
+  transition: all 0.3s ease; 
+  }
+  
+  .navbar a:hover {
   background-color: #35a5f5;
   transform: scale(1.1);
-}
+  }
