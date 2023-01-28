@@ -1,5 +1,26 @@
 //TASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIM
 const reset_button = document.querySelector("#reset-btn");
+const reset_asset_buton = document.querySelector(".reset-asset");
+
+reset_asset_buton.addEventListener("mouseover", () => {
+  reset_asset_buton.style.backgroundColor = "black";
+  reset_asset_buton.style.color = "white";
+});
+
+reset_asset_buton.addEventListener("mouseleave", () => {
+  reset_asset_buton.style.backgroundColor = "#1879c0";
+  reset_asset_buton.style.color = "white";
+});
+reset_asset_buton.addEventListener("click", () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    let activeTab = tabs[0];
+    let asseturl = activeTab.url;
+    let url = new URL(asseturl);
+    let hostname = url.hostname;
+    chrome.storage.local.set({ asseturl: hostname }).then(() => {});
+    window.location.replace("./popup-sign-out.html");
+  });
+});
 
 reset_button.addEventListener("mouseover", () => {
   reset_button.style.backgroundColor = "black";

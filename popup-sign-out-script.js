@@ -1,7 +1,6 @@
 const cikis_buton = document.querySelector(".cikis");
-const reset_asset_buton = document.querySelector(".reset-asset");
 const scan_butonu = document.querySelector(".scan");
-const change_asset_buton = document.querySelector(".change-asset");
+
 const go_to_verified_button = document.querySelector("#verified-btn");
 const navbar_scan_butonu = document.querySelector(".navbar-scan");
 
@@ -13,15 +12,7 @@ navbar_scan_butonu.addEventListener("click", () => {
 go_to_verified_button.addEventListener("click", () => {
   window.location.replace("./verified-asset.html");
 });
-go_to_verified_button.addEventListener("mouseover", () => {
-  go_to_verified_button.style.backgroundColor = "black";
-  go_to_verified_button.style.color = "white";
-});
 
-go_to_verified_button.addEventListener("mouseleave", () => {
-  go_to_verified_button.style.backgroundColor = "#1879c0";
-  go_to_verified_button.style.color = "white";
-});
 
 //SCAN
 scan_butonu.addEventListener("click", () => {
@@ -48,34 +39,9 @@ chrome.storage.local.get("scan_aktive", function (result) {
   inputElement.innerText = myValue;
 });
 
-reset_asset_buton.addEventListener("mouseover", () => {
-  reset_asset_buton.style.backgroundColor = "black";
-  reset_asset_buton.style.color = "white";
-});
 
-reset_asset_buton.addEventListener("mouseleave", () => {
-  reset_asset_buton.style.backgroundColor = "#1879c0";
-  reset_asset_buton.style.color = "white";
-});
-reset_asset_buton.addEventListener("click", () => {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    let activeTab = tabs[0];
-    let asseturl = activeTab.url;
-    let url = new URL(asseturl);
-    let hostname = url.hostname;
-    chrome.storage.local.set({ asseturl: hostname }).then(() => {});
-  });
-});
 
-cikis_buton.addEventListener("mouseover", () => {
-  cikis_buton.style.backgroundColor = "black";
-  cikis_buton.style.color = "white";
-});
 
-cikis_buton.addEventListener("mouseleave", () => {
-  cikis_buton.style.backgroundColor = "#1879c0";
-  cikis_buton.style.color = "white";
-});
 
 //logout butonu, apitokeni sıfırlayıp çıkış yapıyor
 cikis_buton.addEventListener("click", () => {
@@ -95,20 +61,7 @@ scan_butonu.addEventListener("mouseleave", () => {
   scan_butonu.style.color = "white";
 });
 
-change_asset_buton.addEventListener("mouseover", () => {
-  change_asset_buton.style.backgroundColor = "black";
-  change_asset_buton.style.color = "white";
-});
 
-change_asset_buton.addEventListener("mouseleave", () => {
-  change_asset_buton.style.backgroundColor = "#1879c0";
-  change_asset_buton.style.color = "white";
-});
-//elle asset girme butonu
-change_asset_buton.addEventListener("click", () => {
-  let assetnew = document.querySelector("#new-asset").value;
-  chrome.storage.local.set({ asseturl: assetnew }).then(() => {});
-});
 
 //autocomplete
 const endpoint =
