@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="mystyles.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
     <style>
       body {
         width: 400px;
@@ -19,7 +23,30 @@
 
   <body>
     <div>
-      <img src="images/banner.png" class="center" />
+      <img
+        src="images/banner.png"
+        class="center"
+        alt="promo banner"
+        style="max-height: 55px; width: auto"
+      />
+    </div>
+    <div class="navbar">
+      <a href="#">
+        <button class="navbar-scan">
+          <i class="fa fa-shield" aria-hidden="true"></i>Scans
+        </button>
+      </a>
+      <a href="#">
+        <button class="navbar-user">
+          <i class="fa fa-user" aria-hidden="true"></i>user
+        </button>
+      </a>
+
+      <a href="#">
+        <button class="navbar-sign-out">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out
+        </button>
+      </a>
     </div>
     <form>
       <div>

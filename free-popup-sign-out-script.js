@@ -1,10 +1,6 @@
 const cikis_buton = document.querySelector(".cikis");
 const scan_butonu = document.querySelector(".free-scan");
-const navbar_scan_butonu = document.querySelector(".navbar-scan");
 
-navbar_scan_butonu.addEventListener("click", () => {
-  window.location.replace("./popup-sign-in.html");
-});
 //asseti gösterme
 chrome.storage.local.get("asseturl", function (result) {
   const myValue = result.asseturl;

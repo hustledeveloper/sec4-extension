@@ -3,6 +3,11 @@ const reset_asset_buton = document.querySelector(".reset-asset");
 const scan_butonu = document.querySelector(".scan");
 const change_asset_buton = document.querySelector(".change-asset");
 const go_to_verified_button = document.querySelector("#verified-btn");
+const navbar_scan_butonu = document.querySelector(".navbar-scan");
+
+navbar_scan_butonu.addEventListener("click", () => {
+  window.location.replace("./popup-sign-in.html");
+});
 
 //go verified
 go_to_verified_button.addEventListener("click", () => {
