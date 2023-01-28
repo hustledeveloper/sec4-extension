@@ -11,13 +11,11 @@ go_to_verified_button.addEventListener("click", () => {
 go_to_verified_button.addEventListener("mouseover", () => {
   go_to_verified_button.style.backgroundColor = "black";
   go_to_verified_button.style.color = "white";
-  go_to_verified_button.style.transform = "scale(1.3)";
 });
 
 go_to_verified_button.addEventListener("mouseleave", () => {
-  go_to_verified_button.style.backgroundColor = "#6366F1";
+  go_to_verified_button.style.backgroundColor = "#1879c0";
   go_to_verified_button.style.color = "white";
-  go_to_verified_button.style.transform = "scale(1)";
 });
 
 //SCAN
@@ -48,13 +46,11 @@ chrome.storage.local.get("scan_aktive", function (result) {
 reset_asset_buton.addEventListener("mouseover", () => {
   reset_asset_buton.style.backgroundColor = "black";
   reset_asset_buton.style.color = "white";
-  reset_asset_buton.style.transform = "scale(1.3)";
 });
 
 reset_asset_buton.addEventListener("mouseleave", () => {
-  reset_asset_buton.style.backgroundColor = "#6366F1";
+  reset_asset_buton.style.backgroundColor = "#1879c0";
   reset_asset_buton.style.color = "white";
-  reset_asset_buton.style.transform = "scale(1)";
 });
 reset_asset_buton.addEventListener("click", () => {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -69,13 +65,11 @@ reset_asset_buton.addEventListener("click", () => {
 cikis_buton.addEventListener("mouseover", () => {
   cikis_buton.style.backgroundColor = "black";
   cikis_buton.style.color = "white";
-  cikis_buton.style.transform = "scale(1.3)";
 });
 
 cikis_buton.addEventListener("mouseleave", () => {
-  cikis_buton.style.backgroundColor = "#6366F1";
+  cikis_buton.style.backgroundColor = "#1879c0";
   cikis_buton.style.color = "white";
-  cikis_buton.style.transform = "scale(1)";
 });
 
 //logout butonu, apitokeni sıfırlayıp çıkış yapıyor
@@ -89,25 +83,21 @@ cikis_buton.addEventListener("click", () => {
 scan_butonu.addEventListener("mouseover", () => {
   scan_butonu.style.backgroundColor = "black";
   scan_butonu.style.color = "white";
-  scan_butonu.style.transform = "scale(1.3)";
 });
 
 scan_butonu.addEventListener("mouseleave", () => {
-  scan_butonu.style.backgroundColor = "#6366F1";
+  scan_butonu.style.backgroundColor = "#1879c0";
   scan_butonu.style.color = "white";
-  scan_butonu.style.transform = "scale(1)";
 });
 
 change_asset_buton.addEventListener("mouseover", () => {
   change_asset_buton.style.backgroundColor = "black";
   change_asset_buton.style.color = "white";
-  change_asset_buton.style.transform = "scale(1.3)";
 });
 
 change_asset_buton.addEventListener("mouseleave", () => {
-  change_asset_buton.style.backgroundColor = "#6366F1";
+  change_asset_buton.style.backgroundColor = "#1879c0";
   change_asset_buton.style.color = "white";
-  change_asset_buton.style.transform = "scale(1)";
 });
 //elle asset girme butonu
 change_asset_buton.addEventListener("click", () => {

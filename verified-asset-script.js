@@ -4,39 +4,33 @@ const reset_button = document.querySelector("#reset-btn");
 reset_button.addEventListener("mouseover", () => {
   reset_button.style.backgroundColor = "black";
   reset_button.style.color = "white";
-  reset_button.style.transform = "scale(1.3)";
 });
 
 reset_button.addEventListener("mouseleave", () => {
-  reset_button.style.backgroundColor = "#6366F1";
+  reset_button.style.backgroundColor = "#1879c0";
   reset_button.style.color = "white";
-  reset_button.style.transform = "scale(1)";
 });
 const scan_button = document.querySelector("#scan-btn");
 
 scan_button.addEventListener("mouseover", () => {
   scan_button.style.backgroundColor = "black";
   scan_button.style.color = "white";
-  scan_button.style.transform = "scale(1.3)";
 });
 
 scan_button.addEventListener("mouseleave", () => {
-  scan_button.style.backgroundColor = "#6366F1";
+  scan_button.style.backgroundColor = "#1879c0";
   scan_button.style.color = "white";
-  scan_button.style.transform = "scale(1)";
 });
 const aseet_add_button = document.querySelector("#asset-add");
 
 aseet_add_button.addEventListener("mouseover", () => {
   aseet_add_button.style.backgroundColor = "black";
   aseet_add_button.style.color = "white";
-  aseet_add_button.style.transform = "scale(1.3)";
 });
 
 aseet_add_button.addEventListener("mouseleave", () => {
-  aseet_add_button.style.backgroundColor = "#6366F1";
+  aseet_add_button.style.backgroundColor = "#1879c0";
   aseet_add_button.style.color = "white";
-  aseet_add_button.style.transform = "scale(1)";
 });
 
 //TASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIM
@@ -103,8 +97,8 @@ document.getElementById("scan-btn").addEventListener("click", function () {
   const selectElement = document.getElementById("asset-list");
   const selectedAsset =
     selectElement.options[selectElement.selectedIndex].value;
-  var url = new URL(selectedAsset);
-  var hostname = url.hostname;
+  let url = new URL(selectedAsset);
+  let hostname = url.hostname;
 
   chrome.storage.local.set({ asseturl: hostname }).then(() => {});
   window.location.replace("./popup-sign-out.html");

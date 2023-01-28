@@ -17,13 +17,11 @@ chrome.storage.local.get("scan_aktive", function (result) {
 cikis_buton.addEventListener("mouseover", () => {
   cikis_buton.style.backgroundColor = "black";
   cikis_buton.style.color = "white";
-  cikis_buton.style.transform = "scale(1.3)";
 });
 
 cikis_buton.addEventListener("mouseleave", () => {
-  cikis_buton.style.backgroundColor = "#6366F1";
+  cikis_buton.style.backgroundColor = "#1879c0";
   cikis_buton.style.color = "white";
-  cikis_buton.style.transform = "scale(1)";
 });
 
 //logout butonu
@@ -34,13 +32,11 @@ cikis_buton.addEventListener("click", () => {
 scan_butonu.addEventListener("mouseover", () => {
   scan_butonu.style.backgroundColor = "black";
   scan_butonu.style.color = "white";
-  scan_butonu.style.transform = "scale(1.3)";
 });
 
 scan_butonu.addEventListener("mouseleave", () => {
-  scan_butonu.style.backgroundColor = "#6366F1";
+  scan_butonu.style.backgroundColor = "#1879c0";
   scan_butonu.style.color = "white";
-  scan_butonu.style.transform = "scale(1)";
 });
 //SCAN
 scan_butonu.addEventListener("click", () => {
