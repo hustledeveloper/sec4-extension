@@ -1,7 +1,7 @@
 // Saves options to chrome.storage
 function save_options() {
-  var blog = document.getElementById("blog-notification").checked;
-  var tool = document.getElementById("tool-notification").checked;
+  let blog = document.getElementById("blog-notification").checked;
+  let tool = document.getElementById("tool-notification").checked;
   chrome.storage.sync.set(
     {
       blog: blog,
@@ -9,7 +9,7 @@ function save_options() {
     },
     function () {
       // Update status to let user know options were saved.
-      var status = document.getElementById("status");
+      let status = document.getElementById("status");
       status.textContent = "Options saved.";
       setTimeout(function () {
         status.textContent = "";
