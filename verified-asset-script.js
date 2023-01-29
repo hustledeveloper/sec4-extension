@@ -1,6 +1,24 @@
-//TASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIM
+const cikis_buton = document.querySelector(".cikis");
+const go_to_verified_button = document.querySelector("#verified-btn");
+const navbar_scan_butonu = document.querySelector(".navbar-scan");
 const reset_button = document.querySelector("#reset-btn");
 const reset_asset_buton = document.querySelector(".reset-asset");
+
+//scan sayfasına gidecek sonra
+navbar_scan_butonu.addEventListener("click", () => {
+  window.location.replace("./free-popup-sign-out.html");
+});
+//go verified
+go_to_verified_button.addEventListener("click", () => {
+  window.location.replace("./verified-asset.html");
+});
+//logout butonu, apitokeni sıfırlayıp çıkış yapıyor
+cikis_buton.addEventListener("click", () => {
+  let apitoken = chrome.storage.local.get(["apitoken"]);
+  apitoken = 0;
+  chrome.storage.local.set({ apitoken: apitoken }).then(() => {});
+  window.location.replace("./popup-welcome.html");
+});
 
 reset_asset_buton.addEventListener("mouseover", () => {
   reset_asset_buton.style.backgroundColor = "black";
