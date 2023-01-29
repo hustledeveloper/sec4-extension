@@ -1,31 +1,44 @@
 const cikis_buton = document.querySelector(".cikis");
-const scan_butonu = document.querySelector(".scan");
-
 const go_to_verified_button = document.querySelector("#verified-btn");
 const navbar_scan_butonu = document.querySelector(".navbar-scan");
-
+const scan_butonu = document.querySelector(".scan");
+//scan sayfasına gidecek sonra
 navbar_scan_butonu.addEventListener("click", () => {
-  window.location.replace("./popup-sign-in.html");
+  window.location.replace("./free-popup-sign-out.html");
 });
-
 //go verified
 go_to_verified_button.addEventListener("click", () => {
   window.location.replace("./verified-asset.html");
 });
+//logout butonu, apitokeni sıfırlayıp çıkış yapıyor
+cikis_buton.addEventListener("click", () => {
+  let apitoken = chrome.storage.local.get(["apitoken"]);
+  apitoken = 0;
+  chrome.storage.local.set({ apitoken: apitoken }).then(() => {});
+  window.location.replace("./popup-welcome.html");
+});
 
-
-//SCAN
+//SCAN butonu
 scan_butonu.addEventListener("click", () => {
   chrome.runtime.connect({ name: "scan_port" }).postMessage("start_scan");
 });
+scan_butonu.addEventListener("mouseover", () => {
+  scan_butonu.style.backgroundColor = "black";
+  scan_butonu.style.color = "white";
+});
 
+scan_butonu.addEventListener("mouseleave", () => {
+  scan_butonu.style.backgroundColor = "#1879c0";
+  scan_butonu.style.color = "white";
+});
+
+//hata mesajları
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "error") {
     document.getElementById("warning-message").innerHTML = message.message;
     document.getElementById("warning-message").style.display = "block";
   }
 });
-
 //asseti gösterme
 chrome.storage.local.get("asseturl", function (result) {
   const myValue = result.asseturl;
@@ -38,30 +51,6 @@ chrome.storage.local.get("scan_aktive", function (result) {
   const inputElement = document.getElementById("scan_aktive");
   inputElement.innerText = myValue;
 });
-
-
-
-
-
-//logout butonu, apitokeni sıfırlayıp çıkış yapıyor
-cikis_buton.addEventListener("click", () => {
-  let apitoken = chrome.storage.local.get(["apitoken"]);
-  apitoken = 0;
-  chrome.storage.local.set({ apitoken: apitoken }).then(() => {});
-  window.location.replace("./popup-welcome.html");
-});
-
-scan_butonu.addEventListener("mouseover", () => {
-  scan_butonu.style.backgroundColor = "black";
-  scan_butonu.style.color = "white";
-});
-
-scan_butonu.addEventListener("mouseleave", () => {
-  scan_butonu.style.backgroundColor = "#1879c0";
-  scan_butonu.style.color = "white";
-});
-
-
 
 //autocomplete
 const endpoint =
