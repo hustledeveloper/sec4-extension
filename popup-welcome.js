@@ -1,4 +1,3 @@
-// Check if the user is logged in with token
 chrome.storage.local.get("apitoken", function (data) {
   let tokenone = data.apitoken;
   isValidToken(tokenone);
@@ -7,7 +6,7 @@ function isValidToken(mytoken) {
   // check if token is not undefined or null
   if (mytoken === undefined || mytoken === null) {
     // redirect to login page
-    window.location.replace("./free-popup-sign-out.html");
+    window.location.replace("./popup-sign-in.html");
     return;
   }
   // check if token length is between 32 and 256 characters
@@ -19,14 +18,13 @@ function isValidToken(mytoken) {
       window.location.replace("./popup-sign-out.html");
     } else {
       // redirect to login page
-      window.location.replace("./free-popup-sign-out.html");
+      window.location.replace("./popup-sign-in.html");
     }
   } else {
     // redirect to login page
-    window.location.replace("./free-popup-sign-out.html");
+    window.location.replace("./popup-sign-in.html");
   }
 }
-
 const giris_button = document.querySelector("#go");
 
 giris_button.addEventListener("mouseover", () => {
@@ -43,7 +41,7 @@ giris_button.addEventListener("click", (e) => {
   window.location.replace("./popup-sign-in.html");
 });
 
-const guest_buton = document.querySelector("#guest");
+const guest_buton = document.querySelector("#sign-up");
 
 guest_buton.addEventListener("mouseover", () => {
   guest_buton.style.backgroundColor = "black";
@@ -57,5 +55,6 @@ guest_buton.addEventListener("mouseleave", () => {
 
 guest_buton.addEventListener("click", (e) => {
   e.preventDefault();
-  window.location.replace("./free-popup-sign-out.html");
+  const url = "https://app.securityforeveryone.com/sign-up";
+  chrome.tabs.create({ url: url });
 });
