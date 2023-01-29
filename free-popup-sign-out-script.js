@@ -1,18 +1,6 @@
 const cikis_buton = document.querySelector(".cikis");
 const scan_butonu = document.querySelector(".free-scan");
 
-//asseti gösterme
-chrome.storage.local.get("asseturl", function (result) {
-  const myValue = result.asseturl;
-  const inputElement = document.getElementById("assetaktive");
-  inputElement.innerText = myValue;
-});
-//scan type gösterme
-chrome.storage.local.get("scan_aktive", function (result) {
-  const myValue = result.scan_aktive;
-  const inputElement = document.getElementById("scan_aktive");
-  inputElement.innerText = myValue;
-});
 
 cikis_buton.addEventListener("mouseover", () => {
   cikis_buton.style.backgroundColor = "black";
