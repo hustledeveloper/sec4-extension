@@ -1,7 +1,7 @@
 const cikis_buton = document.querySelector(".cikis");
 const go_to_verified_button = document.querySelector("#verified-btn");
 const navbar_scan_butonu = document.querySelector(".navbar-scan");
-const scan_butonu = document.querySelector(".scan");
+const scan_butonu = document.querySelector("#scan");
 //scan sayfasına gidecek sonra
 navbar_scan_butonu.addEventListener("click", () => {
   window.location.replace("./free-popup-sign-out.html");
@@ -22,15 +22,7 @@ cikis_buton.addEventListener("click", () => {
 scan_butonu.addEventListener("click", () => {
   chrome.runtime.connect({ name: "scan_port" }).postMessage("start_scan");
 });
-scan_butonu.addEventListener("mouseover", () => {
-  scan_butonu.style.backgroundColor = "black";
-  scan_butonu.style.color = "white";
-});
 
-scan_butonu.addEventListener("mouseleave", () => {
-  scan_butonu.style.backgroundColor = "#1879c0";
-  scan_butonu.style.color = "white";
-});
 
 //hata mesajları
 chrome.runtime.onMessage.addListener((message) => {

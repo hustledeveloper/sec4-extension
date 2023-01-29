@@ -1,13 +1,5 @@
 const giris_buton = document.querySelector("#gir");
-giris_buton.addEventListener("mouseover", () => {
-  giris_buton.style.backgroundColor = "black";
-  giris_buton.style.color = "white";
-});
 
-giris_buton.addEventListener("mouseleave", () => {
-  giris_buton.style.backgroundColor = "#1879c0";
-  giris_buton.style.color = "white";
-});
 
 giris_buton.addEventListener("click", () => {
   let apitoken = document.querySelector("#api-token").value;

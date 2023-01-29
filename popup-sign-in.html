@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Security for everyone</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="mystyles.css" />
     <style>
       body {
@@ -26,34 +28,29 @@
         style="max-height: 55px; width: auto"
       />
     </div>
-<div class="show-container-wrapper" style="border-radius: 0;">
-  <div style="justify-content: space-between;  overflow: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  ">
-  <b>
-    API token :
-
-  </b>
-  
-    <input
-    type="text"
-    name="api-token"
-    id="api-token"
-    placeholder="Your api token"
-    style="width: 200px"
-  />
-  </div>
-  
-  <div>
-    <button type="submit" id="gir">Sign In</button>
-  </div>
-
-
-
-</div>
-    
+    <div class="show-container-wrapper" style="border-radius: 0">
+      <div
+        style="
+          justify-content: space-between;
+          overflow: auto;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        "
+      >
+        <b> API token : </b>
+        <input
+          type="text"
+          name="api-token"
+          id="api-token"
+          placeholder="Your api token"
+          style="width: 200px"
+        />
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary" id="gir">Sign In</button>
+      </div>
+    </div>
     <div>
       <a
         class="website"
@@ -68,13 +65,9 @@
       Lütfen geçerli bir token giriniz.
     </div>
     <div>
-      <a
-        class="website"
-        href="https://securityforeveryone.com/"
-        target="_blank"
-      >
-        <i class="website"></i><b>Visit our website</b></a
-      >
+      <a href="https://securityforeveryone.com/" target="_blank"
+      ><button class="btn btn-primary">Visit our website</button></a
+    >
     </div>
     <script src="./popup-sign-in-script.js"></script>
   </body>

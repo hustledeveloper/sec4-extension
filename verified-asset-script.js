@@ -2,7 +2,7 @@ const cikis_buton = document.querySelector(".cikis");
 const go_to_verified_button = document.querySelector("#verified-btn");
 const navbar_scan_butonu = document.querySelector(".navbar-scan");
 const reset_button = document.querySelector("#reset-btn");
-const reset_asset_buton = document.querySelector(".reset-asset");
+const reset_asset_buton = document.querySelector("#reset-asset");
 
 //scan sayfasına gidecek sonra
 navbar_scan_butonu.addEventListener("click", () => {
@@ -20,15 +20,6 @@ cikis_buton.addEventListener("click", () => {
   window.location.replace("./popup-welcome.html");
 });
 
-reset_asset_buton.addEventListener("mouseover", () => {
-  reset_asset_buton.style.backgroundColor = "black";
-  reset_asset_buton.style.color = "white";
-});
-
-reset_asset_buton.addEventListener("mouseleave", () => {
-  reset_asset_buton.style.backgroundColor = "#1879c0";
-  reset_asset_buton.style.color = "white";
-});
 reset_asset_buton.addEventListener("click", () => {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     let activeTab = tabs[0];
@@ -40,37 +31,13 @@ reset_asset_buton.addEventListener("click", () => {
   });
 });
 
-reset_button.addEventListener("mouseover", () => {
-  reset_button.style.backgroundColor = "black";
-  reset_button.style.color = "white";
-});
 
-reset_button.addEventListener("mouseleave", () => {
-  reset_button.style.backgroundColor = "#1879c0";
-  reset_button.style.color = "white";
-});
 const scan_button = document.querySelector("#scan-btn");
 
-scan_button.addEventListener("mouseover", () => {
-  scan_button.style.backgroundColor = "black";
-  scan_button.style.color = "white";
-});
 
-scan_button.addEventListener("mouseleave", () => {
-  scan_button.style.backgroundColor = "#1879c0";
-  scan_button.style.color = "white";
-});
 const aseet_add_button = document.querySelector("#asset-add");
 
-aseet_add_button.addEventListener("mouseover", () => {
-  aseet_add_button.style.backgroundColor = "black";
-  aseet_add_button.style.color = "white";
-});
 
-aseet_add_button.addEventListener("mouseleave", () => {
-  aseet_add_button.style.backgroundColor = "#1879c0";
-  aseet_add_button.style.color = "white";
-});
 
 //TASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIM
 
