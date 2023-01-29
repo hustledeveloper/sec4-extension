@@ -12,7 +12,7 @@
     <style>
       body {
         width: 400px;
-        height: 650px;
+        height: 400px;
         margin: 0;
         padding: 0;
         overflow: hidden;
@@ -49,22 +49,14 @@
       </a>
     </div>
     <form>
-      <div>
-        <b>your current asset is: </b>
-        <b id="assetaktive">ASSET</b>
-      </div>
-      <div>
-        <b>your current scan is: </b>
-        <b id="scan_aktive">SCAN</b>
-      </div>
-      <div>
-        <form action="" class="search-form">
-          <input type="text" class="search-input" placeholder="Search" />
-          <ul class="suggestions">
-            <li>Filter for city</li>
-            <li>or state</li>
-          </ul>
-        </form>
+
+      <div class="show-container-wrapper"> 
+        <div class="show-container">
+          <b>Current Asset: <b><b id="assetaktive">ASSET</b>
+        </div>
+        <div class="show-container">
+          <b>Current Scan: <b><b id="scan_aktive">SCAN</b>
+        </div>
       </div>
       <div>
         <button type="submit" class="scan">Scan</button>
