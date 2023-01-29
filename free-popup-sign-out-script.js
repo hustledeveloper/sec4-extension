@@ -1,4 +1,5 @@
 const scan_butonu = document.querySelector(".free-scan");
+//bu buton auto complete ile seçilen scanı alıp scan ekranına yollayacak
 scan_butonu.addEventListener("mouseover", () => {
   scan_butonu.style.backgroundColor = "black";
   scan_butonu.style.color = "white";
