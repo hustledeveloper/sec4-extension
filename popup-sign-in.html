@@ -26,39 +26,44 @@
         style="max-height: 55px; width: auto"
       />
     </div>
+<div class="show-container-wrapper" style="border-radius: 0;">
+  <div style="justify-content: space-between;  overflow: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  ">
+  <b>
+    API token :
+
+  </b>
+  
+    <input
+    type="text"
+    name="api-token"
+    id="api-token"
+    placeholder="Your api token"
+    style="width: 200px"
+  />
+  </div>
+  
+  <div>
+    <button type="submit" id="gir">Sign In</button>
+  </div>
+
+
+
+</div>
+    
     <div>
-      <form>
-        
-
-        <b
-        style="
-          color: black;
-          justify-content: center;
-          display: flex;
-          padding: 5px;
-        "
-        >Api Token
-      </b>
-
-        <input
-          type="text"
-          name="api-token"
-          id="api-token"
-          placeholder="enter your api token"
-        />
-        <div> </div>
-        <button type="submit" id="gir">Sign In</button>
-      </form>
-      <div>
-        <a
-          class="website"
-          href="https://app.securityforeveryone.com/help-center/api"
-          target="_blank"
-        >
-          <i class="website"></i><b>What is API Token</b></a
-        >
-      </div>
+      <a
+        class="website"
+        href="https://app.securityforeveryone.com/help-center/api"
+        target="_blank"
+      >
+        <i class="website"></i><b>What is API Token</b></a
+      >
     </div>
+
     <div id="warning-message" style="display: none">
       Lütfen geçerli bir token giriniz.
     </div>

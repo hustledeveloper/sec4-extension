@@ -6,13 +6,13 @@
     <title>Security for everyone</title>
     <link rel="stylesheet" href="mystyles.css" />
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <style>
       body {
         width: 400px;
-        height: 600px;
+        height: 400px;
         margin: 0;
         padding: 0;
         overflow: hidden;
@@ -49,33 +49,45 @@
       </a>
     </div>
 
-    <form id="asset-form">
-      <label for="asset-input">Enter a new verified asset:</label>
+    <form id="asset-form" style="padding: 0">
+      <label for="asset-input">
+        <b
+          style="
+            color: black;
+            justify-content: center;
+            display: flex;
+            padding: 5px;
+          "
+          >Enter an asset:
+        </b>
+      </label>
       <input
         type="text"
         id="asset-input"
         name="asset"
         placeholder="Asset URL"
       />
-      <button type="submit" id="asset-add">add verified asset</button>
-    </form>
-
-    <div>
       <div>
-        <b>select your verified asset to scan</b>
+        <button type="submit" id="asset-add">Add asset</button>
       </div>
-      <select name="asset-list" id="asset-list"></select>
+    </form>
+    <div>
+      <div class="btn-container">
+        <div>
+          <b>Select: </b>
+        </div>
+        <div>
+          <select name="asset-list" id="asset-list"></select>
+        </div>
+      </div>
     </div>
     <div>
-      <button id="scan-btn">Scan that asset</button>
+      <button id="scan-btn">Scan</button>
     </div>
-    <div>
+    <div class="btn-container">
       <button id="reset-btn">Reset all assets</button>
-    </div>
-    <div>
-      <button type="submit" class="reset-asset">
-        Reset my asset to this page
-      </button>
+
+      <button type="submit" class="reset-asset">Scan this page</button>
     </div>
     <div>
       <a

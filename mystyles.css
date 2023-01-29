@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 div {
-  padding: 15px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,7 +45,7 @@ i {
 
 body {
   width: 400px;
-  height: 600px;
+  height: 700px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -53,9 +53,8 @@ body {
   color: rgb(0, 0, 0);
 }
 
-
 form {
-  padding: 20px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,6 +74,7 @@ button {
   font-weight: bold;
   transition-duration: 0.3s;
   padding: 10px;
+  
 }
 #notFound {
   display: none;
@@ -206,7 +206,7 @@ input.search-input {
 .navbar {
   width: 100%;
   padding: 9px;
-  background-color: #5793cf;
+  background-color: #8fbdeb;
   overflow: auto;
   display: flex;
   flex-direction: row;
@@ -232,7 +232,7 @@ input.search-input {
 }
 .show-container-wrapper {
   width: 100%;
-  background-color: #5793cf;
+  background-color: #8fbdeb;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -247,7 +247,6 @@ input.search-input {
   justify-content: center;
   margin-bottom: 5px;
   width: 100%;
-  
 }
 b {
   font-family: Arial, sans-serif;
@@ -255,4 +254,23 @@ b {
   color: rgb(255, 255, 255);
   font-weight: bold;
   width: 100%;
+}
+#asset-input {
+  width: 300px;
+  border: 1px solid black;
+  padding: 4px;
+}
+#asset-list {
+  width: 300px;
+  border: 1px solid black;
+  padding: 4px;
+}
+.btn-container {
+    background-color: #8fbdeb;
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
 }

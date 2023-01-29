@@ -1,5 +1,4 @@
 const giris_buton = document.querySelector("#gir");
-
 giris_buton.addEventListener("mouseover", () => {
   giris_buton.style.backgroundColor = "black";
   giris_buton.style.color = "white";
@@ -10,12 +9,12 @@ giris_buton.addEventListener("mouseleave", () => {
   giris_buton.style.color = "white";
 });
 
-document.querySelector("form").addEventListener("submit", (event) => {
-  event.preventDefault();
+giris_buton.addEventListener("click", () => {
   let apitoken = document.querySelector("#api-token").value;
   //apitoken localde kaydedildi
   isValidToken(apitoken);
 });
+
 function isValidToken(mytoken) {
   if (mytoken === undefined || mytoken === null) {
     document.getElementById("warning-message").style.display = "block";
