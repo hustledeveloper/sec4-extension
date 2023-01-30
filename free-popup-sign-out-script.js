@@ -2,6 +2,9 @@ const cikis_buton = document.querySelector(".cikis");
 const go_to_verified_button = document.querySelector("#verified-btn");
 const navbar_scan_butonu = document.querySelector(".navbar-scan");
 const scan_butonu = document.querySelector("#free-scan");
+document.getElementById("scan-btn").addEventListener("click", function () {
+  window.location.replace("./popup-sign-out.html");
+});
 //scan sayfasına gidecek sonra
 navbar_scan_butonu.addEventListener("click", () => {
   window.location.replace("./free-popup-sign-out.html");
@@ -58,6 +61,7 @@ function displayMatches() {
 
   suggestions.innerHTML = html;
   document.querySelector("#free-scan").style.display = "block";
+  document.querySelector("#scan-btn").style.display = "block";
   document.querySelector(".suggestions").size = matchArray.length;
   document.querySelector(".suggestions").style.display = "block";
 }
@@ -86,11 +90,20 @@ scan_butonu.addEventListener("click", () => {
   const selectedOption = document.querySelector(".suggestions option:checked");
   if (selectedOption) {
     const url = "https://securityforeveryone.com/tools/" + selectedOption.id;
+    let takeslug = selectedOption.id;
+    chrome.storage.local.set({ scan_aktive: takeslug }).then(() => {});
     chrome.tabs.create({ url: url });
   }
 });
 select.addEventListener("change", (event) => {
+  const selectedOption = document.querySelector(".suggestions option:checked");
+  if (selectedOption) {
+    let takeslug = selectedOption.id;
+    chrome.storage.local.set({ scan_aktive: takeslug }).then(() => {});
+  }
   searchIn.value = event.target.value;
-  searchIn.style.width = (event.target.value.length * 9) + "px";
+  searchIn.style.width = event.target.value.length * 9 + "px";
+  searchIn.style.lineHeight = "20px";
+  searchIn.style.height = "40px";
   select.style.display = "none";
-  });
+});
