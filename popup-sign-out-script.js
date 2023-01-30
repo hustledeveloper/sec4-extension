@@ -12,9 +12,7 @@ go_to_verified_button.addEventListener("click", () => {
 });
 //logout butonu, apitokeni sıfırlayıp çıkış yapıyor
 cikis_buton.addEventListener("click", () => {
-  let apitoken = chrome.storage.local.get(["apitoken"]);
-  apitoken = 0;
-  chrome.storage.local.set({ apitoken: apitoken }).then(() => {});
+  chrome.storage.local.set({ apitoken: 0 }).then(() => {});
   window.location.replace("./popup-welcome.html");
 });
 
