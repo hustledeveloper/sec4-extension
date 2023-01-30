@@ -67,6 +67,8 @@ function displayMatches() {
 
   suggestions.innerHTML = html;
   document.querySelector("#free-scan").style.display = "block";
+  document.querySelector('.suggestions').size = matchArray.length;
+document.querySelector('.suggestions').style.display = "block";
 }
 
 const searchInput = document.querySelector(".search-input");
@@ -76,3 +78,12 @@ searchInput.addEventListener("change", displayMatches);
 searchInput.addEventListener("keyup", displayMatches);
 
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
+const input = document.querySelector(".search-input");
+
+input.addEventListener("input", function () {
+  if (this.value) {
+    document.querySelector('.suggestions').style.display = "block";
+  } else {
+    document.querySelector('.suggestions').style.display = "none";
+  }
+});

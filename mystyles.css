@@ -175,25 +175,27 @@ button:hover {
   button:active {
   transform: scale(0.95);
   }
+
   .search-form {
-    max-width: 400px;
-    margin: 50px auto;
+    position: relative;
   }
-  input {
+  
+  .search-input {
+    max-width: 300px;
+    margin: 30px auto;
+    border-radius: 2px;
     width: 100%;
     padding: 10px;
-  }
-  input.search-input {
-    margin: 0;
     text-align: center;
-    border: 10px solid #f7f7f7;
-    font-size: 40px;
+    border: 10px solid #8fbdeb;
+    font-size: 20px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
   }
-  .suggestions li {
-    background: white;
+  
+  .suggestions option {
+    background: #8fbdeb;
     list-style: none;
-    border-bottom: 1px solid #d8d8d8;
+    border-bottom: 2px solid #2082d3;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
     margin: 0;
     padding: 20px;
@@ -202,15 +204,29 @@ button:hover {
     justify-content: space-between;
     text-transform: capitalize;
   }
-  .suggestions li:nth-child(even) {
+  
+  .suggestions option:nth-child(even) {
     transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
-    background: linear-gradient(to bottom, #fff 0%, #efefef 100%);
-  }
-  .suggestions li:nth-child(odd) {
-    transform: perspective(100px) rotateX(-3deg) translateY(3px);
-    background: linear-gradient(to top, #fff 0%, #efefef 100%);
-  }
-  .highlight {
-    background-color: #fbc93d;
+    background: linear-gradient(to bottom, #fff 0%, #666c72 100%);
   }
   
+  .suggestions option:nth-child(odd) {
+    transform: perspective(100px) rotateX(-3deg) translateY(3px);
+    background: linear-gradient(to top, #fff 0%, #666c72 100%);
+  }
+  
+  .suggestions {
+    width: 600px;
+    overflow: auto;
+    max-height: 400px;
+    overflow-y: scroll;
+    transition: all 0.4s;
+    border-radius: 8px;  
+    order: 1;
+
+  }
+  
+  .suggestions select {
+    -webkit-appearance: button;
+    appearance: button;
+  }
