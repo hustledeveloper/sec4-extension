@@ -110,7 +110,7 @@ async function scan_function() {
         if (kontrol !== 200) {
           chrome.runtime.sendMessage({
             type: "error",
-            message: "Hata: " + jsonData.value.status,
+            message: "Get a verified asset. Error: " + jsonData.value.status,
           });
           return;
         }
