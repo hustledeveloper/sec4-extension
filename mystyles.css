@@ -74,7 +74,6 @@ form {
   text-align: center;
 }
 
-
 .navbar {
   width: 100%;
   padding: 9px;
@@ -96,7 +95,6 @@ form {
   margin-right: 5px;
   border-radius: 20px;
   transition: all 0.3s ease;
-
 }
 
 .navbar a:hover {
@@ -148,8 +146,6 @@ b {
   padding: 10px;
 }
 
-
-
 button {
   font-size: 14px;
   line-height: 14px;
@@ -159,74 +155,76 @@ button {
   letter-spacing: normal;
   text-align: center;
   color: rgb(255, 255, 255);
-  font-family: Arial, Helvetica, sans-serif ;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   transition-duration: 0.3s;
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0.14) 0px 0px 0px 0px, rgba(0, 0, 0, 0.12) 0px 0px 0px 0px; 
+    rgba(0, 0, 0, 0.14) 0px 0px 0px 0px, rgba(0, 0, 0, 0.12) 0px 0px 0px 0px;
 }
 button:hover {
   background-color: #2082d3;
   transform: scale(1.1);
   cursor: pointer;
-  }
-  
-  button:active {
+}
+
+button:active {
   transform: scale(0.95);
+}
+
+.search-form {
+  position: relative;
+  word-wrap: break-word;
   }
 
-  .search-form {
-    position: relative;
-  }
-  
-  .search-input {
-    max-width: 300px;
-    margin: 30px auto;
-    border-radius: 2px;
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-    border: 10px solid #8fbdeb;
-    font-size: 20px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
-  }
-  
-  .suggestions option {
-    background: #8fbdeb;
-    list-style: none;
-    border-bottom: 2px solid #2082d3;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
-    margin: 0;
-    padding: 20px;
-    transition: background 0.2s;
-    display: flex;
-    justify-content: space-between;
-    text-transform: capitalize;
-  }
-  
-  .suggestions option:nth-child(even) {
-    transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
-    background: linear-gradient(to bottom, #fff 0%, #666c72 100%);
-  }
-  
-  .suggestions option:nth-child(odd) {
-    transform: perspective(100px) rotateX(-3deg) translateY(3px);
-    background: linear-gradient(to top, #fff 0%, #666c72 100%);
-  }
-  
-  .suggestions {
-    width: 600px;
-    overflow: auto;
-    max-height: 400px;
-    overflow-y: scroll;
-    transition: all 0.4s;
-    border-radius: 8px;  
-    order: 1;
+.search-input {
+  width: auto;
+  padding: 10px;
+  margin: 30px auto;
+  border-radius: 2px;
+  text-align: center;
+  border: 10px solid #8fbdeb;
+  font-size: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
 
-  }
-  
-  .suggestions select {
-    -webkit-appearance: button;
-    appearance: button;
-  }
+.suggestions option {
+  background: #8fbdeb;
+  list-style: none;
+  border-bottom: 2px solid #2082d3;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+  margin: 0;
+  padding: 20px;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  word-wrap: break-word;
+}
+.suggestions option:nth-child(even) {
+  background: #ffffff;
+}
+
+.suggestions option:nth-child(odd) {
+  background: #b6bec5;
+}
+
+.suggestions {
+  width: 600px;
+  overflow: auto;
+  max-height: 300px;
+  overflow-y: scroll;
+  transition: all 0.4s;
+  border-radius: 8px;
+  order: 1;
+  display: none;
+}
+
+.suggestions select {
+  -webkit-appearance: button;
+  appearance: button;
+}

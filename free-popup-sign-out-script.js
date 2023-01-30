@@ -18,15 +18,6 @@ cikis_buton.addEventListener("click", () => {
   window.location.replace("./popup-welcome.html");
 });
 
-//SCAN
-scan_butonu.addEventListener("click", () => {
-  const selectedOption = document.querySelector(".suggestions option:checked");
-  if (selectedOption) {
-    const url = "https://securityforeveryone.com/tools/" + selectedOption.id;
-    chrome.tabs.create({ url: url });
-  }
-});
-
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
 
 const endpoint =
@@ -67,8 +58,8 @@ function displayMatches() {
 
   suggestions.innerHTML = html;
   document.querySelector("#free-scan").style.display = "block";
-  document.querySelector('.suggestions').size = matchArray.length;
-document.querySelector('.suggestions').style.display = "block";
+  document.querySelector(".suggestions").size = matchArray.length;
+  document.querySelector(".suggestions").style.display = "block";
 }
 
 const searchInput = document.querySelector(".search-input");
@@ -78,12 +69,28 @@ searchInput.addEventListener("change", displayMatches);
 searchInput.addEventListener("keyup", displayMatches);
 
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
-const input = document.querySelector(".search-input");
+const searchIn = document.querySelector(".search-input");
+const select = document.querySelector(".suggestions");
 
-input.addEventListener("input", function () {
-  if (this.value) {
-    document.querySelector('.suggestions').style.display = "block";
-  } else {
-    document.querySelector('.suggestions').style.display = "none";
+searchIn.addEventListener("focus", () => {
+  select.style.display = "block";
+});
+
+select.addEventListener("change", (event) => {
+  searchIn.value = event.target.value;
+  select.style.display = "none";
+});
+
+//details
+scan_butonu.addEventListener("click", () => {
+  const selectedOption = document.querySelector(".suggestions option:checked");
+  if (selectedOption) {
+    const url = "https://securityforeveryone.com/tools/" + selectedOption.id;
+    chrome.tabs.create({ url: url });
   }
 });
+select.addEventListener("change", (event) => {
+  searchIn.value = event.target.value;
+  searchIn.style.width = (event.target.value.length * 9) + "px";
+  select.style.display = "none";
+  });
