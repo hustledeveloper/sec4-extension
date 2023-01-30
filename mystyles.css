@@ -63,19 +63,6 @@ form {
   color: rgb(0, 0, 0);
 }
 
-button {
-  font-size: 100%;
-  background-color: #1879c0;
-  border-radius: 20px;
-  border: none;
-  text-align: center;
-  color: rgb(255, 255, 255);
-  font-family: monospace;
-  font-weight: bold;
-  transition-duration: 0.3s;
-  padding: 10px;
-  
-}
 #notFound {
   display: none;
 }
@@ -126,7 +113,6 @@ input.search-input {
   background-color: #fbc93d;
 }
 
-
 .navbar {
   width: 100%;
   padding: 9px;
@@ -148,10 +134,10 @@ input.search-input {
   margin-right: 5px;
   border-radius: 20px;
   transition: all 0.3s ease;
+
 }
 
 .navbar a:hover {
-  background-color: #35a5f5;
   transform: scale(1.1);
 }
 .show-container-wrapper {
@@ -190,7 +176,7 @@ b {
   padding: 4px;
 }
 .btn-container {
-    background-color: #8fbdeb;
+  background-color: #8fbdeb;
   overflow: auto;
   display: flex;
   flex-direction: row;
@@ -198,7 +184,31 @@ b {
   justify-content: space-between;
   padding: 10px;
 }
-.btn-primary{
-  background-color: #1879c0;
-  border-radius: 20px;
+
+
+
+button {
+  font-size: 14px;
+  line-height: 14px;
+  background-color: #2196f3;
+  border-radius: 9999px;
+  border: none;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-family: Arial, Helvetica, sans-serif ;
+  font-weight: bold;
+  transition-duration: 0.3s;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.14) 0px 0px 0px 0px, rgba(0, 0, 0, 0.12) 0px 0px 0px 0px; 
 }
+button:hover {
+  background-color: #2082d3;
+  transform: scale(1.1);
+  cursor: pointer;
+  }
+  
+  button:active {
+  transform: scale(0.95);
+  }
