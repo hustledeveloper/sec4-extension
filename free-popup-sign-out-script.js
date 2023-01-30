@@ -20,7 +20,11 @@ cikis_buton.addEventListener("click", () => {
 
 //SCAN
 scan_butonu.addEventListener("click", () => {
-  chrome.runtime.connect({ name: "scan_port" }).postMessage("start_scan");
+  const selectedOption = document.querySelector(".suggestions option:checked");
+  if (selectedOption) {
+  const url = "https://securityforeveryone.com/tools/" + selectedOption.id;
+  chrome.tabs.create({ url: url });
+  }
 });
 
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
@@ -52,18 +56,21 @@ function displayMatches() {
         `<span class="hl">${this.value}</span>`
       );
       return `
-      <li>
-      <a href="https://securityforeveryone.com/tools/${place.slug.trim()}" target="_blank">
+      <option id="${place.slug}" class="tool-button">
+      
         <span class="name">${ScanName}</span>
-        </a>
-       
-      </li>
+      
+      </option>
     `;
     })
     .join("");
 
   suggestions.innerHTML = html;
 }
+
+
+
+
 
 const searchInput = document.querySelector(".search-input");
 const suggestions = document.querySelector(".suggestions");
