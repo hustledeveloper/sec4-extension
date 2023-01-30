@@ -22,8 +22,8 @@ cikis_buton.addEventListener("click", () => {
 scan_butonu.addEventListener("click", () => {
   const selectedOption = document.querySelector(".suggestions option:checked");
   if (selectedOption) {
-  const url = "https://securityforeveryone.com/tools/" + selectedOption.id;
-  chrome.tabs.create({ url: url });
+    const url = "https://securityforeveryone.com/tools/" + selectedOption.id;
+    chrome.tabs.create({ url: url });
   }
 });
 
@@ -66,15 +66,13 @@ function displayMatches() {
     .join("");
 
   suggestions.innerHTML = html;
+  document.querySelector("#free-scan").style.display = "block";
 }
-
-
-
-
 
 const searchInput = document.querySelector(".search-input");
 const suggestions = document.querySelector(".suggestions");
 
 searchInput.addEventListener("change", displayMatches);
 searchInput.addEventListener("keyup", displayMatches);
+
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
