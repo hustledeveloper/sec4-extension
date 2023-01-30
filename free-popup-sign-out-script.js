@@ -53,7 +53,7 @@ function displayMatches() {
       );
       return `
       <li>
-      <a href="https://securityforeveryone.com/tools/${place.slug}" target="_blank">
+      <a href="https://securityforeveryone.com/tools/${place.slug.trim()}" target="_blank">
         <span class="name">${ScanName}</span>
         </a>
        
