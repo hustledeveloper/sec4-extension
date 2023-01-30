@@ -26,42 +26,37 @@ scan_butonu.addEventListener("click", () => {
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
 
 const endpoint =
-  "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+  "https://gist.githubusercontent.com/hustledeveloper/3b82ed0e1291f2c990e076cd375b2830/raw/bb592f2a3aa02a3acd332889420b52ba8215afcc/Scan-tools-list.json";
 
-const cities = [];
+const names = [];
 
-// fetch grabs endpoint - at this point a promise and generates readablestream
 fetch(endpoint)
   .then((blob) => blob.json())
-  .then((data) => cities.push(...data));
+  .then((data) => names.push(...data));
 
-function findMatches(keyword, cities) {
-  return cities.filter((place) => {
-    // does city or state match? use paramater regex
+function findMatches(keyword, names) {
+  return names.filter((place) => {
     const regex = new RegExp(keyword, "gi");
-    return place.city.match(regex) || place.state.match(regex);
+    return place.name.match(regex);
   });
 }
 
 // add results to HTML li
 function displayMatches() {
-  const matchArray = findMatches(this.value, cities);
+  const matchArray = findMatches(this.value, names);
   const html = matchArray
     .map((place) => {
       const regex = new RegExp(this.value, "gi");
-      const cityName = place.city.replace(
-        regex,
-        `<span class="highlight">${this.value}</span>`
-      );
-      const stateName = place.state.replace(
+      const ScanName = place.name.replace(
         regex,
         `<span class="hl">${this.value}</span>`
       );
-
       return `
       <li>
-        <span class="name">${cityName}, ${stateName}</span>
-        <span class="population">${place.population}</span>
+      <a href="https://securityforeveryone.com/tools/${place.slug}" target="_blank">
+        <span class="name">${ScanName}</span>
+        </a>
+       
       </li>
     `;
     })
