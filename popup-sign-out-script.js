@@ -21,7 +21,6 @@ scan_butonu.addEventListener("click", () => {
   chrome.runtime.connect({ name: "scan_port" }).postMessage("start_scan");
 });
 
-
 //hata mesajları
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "error") {
@@ -32,13 +31,22 @@ chrome.runtime.onMessage.addListener((message) => {
 //asseti gösterme
 chrome.storage.local.get("asseturl", function (result) {
   const myValue = result.asseturl;
-  const inputElement = document.getElementById("assetaktive");
-  inputElement.innerText = myValue;
+  if (myValue === undefined || myValue === null) {
+    const inputElement = document.getElementById("assetaktive");
+    inputElement.innerText = "Please send an asset";
+  } else {
+    const inputElement = document.getElementById("assetaktive");
+    inputElement.innerText = myValue;
+  }
 });
 //scan type gösterme
-chrome.storage.local.get("scan_aktive", function (result) {
-  const myValue = result.scan_aktive;
-  const inputElement = document.getElementById("scan_aktive");
-  inputElement.innerText = myValue;
+chrome.storage.local.get("scan_shown", function (result) {
+  const myValue = result.scan_shown;
+  if (myValue === undefined || myValue === null) {
+    const inputElement = document.getElementById("scan_shown");
+    inputElement.innerText = "Please choose a scan";
+  } else {
+    const inputElement = document.getElementById("scan_shown");
+    inputElement.innerText = myValue;
+  }
 });
-
