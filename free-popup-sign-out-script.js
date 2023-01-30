@@ -2,9 +2,8 @@ const cikis_buton = document.querySelector(".cikis");
 const go_to_verified_button = document.querySelector("#verified-btn");
 const navbar_scan_butonu = document.querySelector(".navbar-scan");
 const scan_butonu = document.querySelector("#free-scan");
-document.getElementById("scan-btn").addEventListener("click", function () {
-  window.location.replace("./popup-sign-out.html");
-});
+const go_scan_butonu = document.querySelector("#scan-btn");
+
 //scan sayfasına gidecek sonra
 navbar_scan_butonu.addEventListener("click", () => {
   window.location.replace("./free-popup-sign-out.html");
@@ -85,7 +84,15 @@ select.addEventListener("change", (event) => {
   select.style.display = "none";
 });
 
-//details
+
+go_scan_butonu.addEventListener("click", () => {
+  const selectedOption = document.querySelector(".suggestions option:checked");
+  if (selectedOption) {
+    let takeslug = selectedOption.id;
+    chrome.storage.local.set({ scan_aktive: takeslug }).then(() => {});
+    window.location.replace("./popup-sign-out.html");
+  }
+});
 scan_butonu.addEventListener("click", () => {
   const selectedOption = document.querySelector(".suggestions option:checked");
   if (selectedOption) {
