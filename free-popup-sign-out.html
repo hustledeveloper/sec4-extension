@@ -13,7 +13,7 @@
     <style>
       body {
         width: 400px;
-        height: 500px;
+        height: auto;
         margin: 0;
         padding: 0;
         overflow: hidden;
@@ -21,7 +21,6 @@
       }
     </style>
   </head>
-
   <body>
     <div>
       <img
@@ -50,33 +49,41 @@
       </a>
     </div>
 
-    <div>
-      <p>
-        More than 2.000 Free Tools
-      </p>
+    <div style="margin-bottom: 1px; margin-top: 1px">
+      <p>More than 2.000 Free Tools</p>
+      <div class="show-container-wrapper">
+        <form action="" class="search-form" style="padding: 2px">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search a tool"
+            style="padding: 2px"
+          />
+          <select
+            style="width: 380px; border: 1px solid black; padding: 2px"
+            class="suggestions"
+          >
+            <option>Search a scan tool</option>
+          </select>
+        </form>
+      </div>
       <div>
-        <form>
-          <form action="" class="search-form">
-            <input type="text" class="search-input" placeholder="Search a tool" />
-            <select style="  width: 300px;
-            border: 1px solid black;
-            padding: 4px;" class="suggestions">
-              <option>Search a scan tool</option>
-              
-            </select>
-          </form>
-        </div>
-        <div>
-          <button  style="display:none" class="button" id="scan-btn">Scan</button>
-        </div>
-        <div>
-          <button style="display:none" type="submit" class="button" id="free-scan">Details for this scan</button>
-        </div>
-      </form>
+        <button style="display: none" class="button" id="scan-btn">Scan</button>
+      </div>
+      <div>
+        <button
+          style="display: none"
+          type="submit"
+          class="button"
+          id="free-scan"
+        >
+          Details for this scan
+        </button>
+      </div>
       <div>
         <a href="https://securityforeveryone.com/" target="_blank"
-        ><button class="button">Visit our website</button></a
-      >
+          ><button class="button">Visit our website</button></a
+        >
       </div>
     </div>
     <script src="./free-popup-sign-out-script.js"></script>

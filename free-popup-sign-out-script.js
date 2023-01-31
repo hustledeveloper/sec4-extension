@@ -116,8 +116,5 @@ select.addEventListener("change", (event) => {
     chrome.storage.local.set({ scan_shown: takeslug_show }).then(() => {});
   }
   searchIn.value = event.target.value;
-  searchIn.style.width = event.target.value.length * 9 + "px";
-  searchIn.style.lineHeight = "20px";
-  searchIn.style.height = "40px";
   select.style.display = "none";
 });
