@@ -4,7 +4,7 @@ chrome.storage.local.get("apitoken", function (data) {
   isValidToken(tokenone);
 });
 function isValidToken(mytoken) {
-  if (mytoken === undefined || mytoken === null) {
+  if (mytoken === undefined || mytoken === null || mytoken === 0) {
     window.location.replace("./popup-sign-in.html");
   } 
 }

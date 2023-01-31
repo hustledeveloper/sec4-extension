@@ -8,7 +8,7 @@ giris_buton.addEventListener("click", () => {
 });
 
 function isValidToken(mytoken) {
-  if (mytoken === undefined || mytoken === null) {
+  if (mytoken === undefined || mytoken === null || mytoken === 0) {
     document.getElementById("warning-message").style.display = "block";
     return;
   }
