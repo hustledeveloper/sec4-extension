@@ -1,6 +1,6 @@
+
+
 const giris_buton = document.querySelector("#gir");
-
-
 giris_buton.addEventListener("click", () => {
   let apitoken = document.querySelector("#api-token").value;
   //apitoken localde kaydedildi
@@ -33,6 +33,6 @@ function isValidToken(mytoken) {
   if (valid) {
     let apitoken = document.querySelector("#api-token").value;
     chrome.storage.local.set({ apitoken: apitoken }).then(() => {});
-    window.location.replace("./popup-welcome.html");
+    window.location.replace("./popup-sign-out.html");
   }
 }

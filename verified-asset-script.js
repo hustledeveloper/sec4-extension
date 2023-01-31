@@ -1,3 +1,4 @@
+
 const cikis_buton = document.querySelector(".cikis");
 const home = document.querySelector(".navbar-home");
 const navbar_scan_butonu = document.querySelector(".navbar-scan");
@@ -17,7 +18,7 @@ home.addEventListener("click", () => {
 cikis_buton.addEventListener("click", () => {
 
   chrome.storage.local.set({ apitoken: 0 }).then(() => {});
-  window.location.replace("./popup-welcome.html");
+  window.location.replace("./popup-sign-in.html");
 });
 
 reset_asset_buton.addEventListener("click", () => {

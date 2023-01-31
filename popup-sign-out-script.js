@@ -1,3 +1,14 @@
+//token check
+chrome.storage.local.get("apitoken", function (data) {
+  let tokenone = data.apitoken;
+  isValidToken(tokenone);
+});
+function isValidToken(mytoken) {
+  if (mytoken === undefined || mytoken === null) {
+    window.location.replace("./popup-sign-in.html");
+  } 
+}
+//token check
 const cikis_buton = document.querySelector(".cikis");
 const go_to_verified_button = document.querySelector("#verified-btn");
 const navbar_scan_butonu = document.querySelector(".navbar-scan");
@@ -13,7 +24,7 @@ go_to_verified_button.addEventListener("click", () => {
 //logout butonu, apitokeni sıfırlayıp çıkış yapıyor
 cikis_buton.addEventListener("click", () => {
   chrome.storage.local.set({ apitoken: 0 }).then(() => {});
-  window.location.replace("./popup-welcome.html");
+  window.location.replace("./popup-sign-in.html");
 });
 
 //SCAN butonu
