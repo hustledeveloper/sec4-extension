@@ -1,6 +1,3 @@
-chrome.runtime.onInstalled.addListener(() => {
-  console.log("Extension successfully installed!");
-});
 /* Chrome extensions with persistent background pages are reloaded only when the browser is restarted. For most users this does not happen very often. To fix this, we need to manually restart (and thus install the update to the) extension. Chrome has an API for extension update handling (chrome.runtime.onUpdateAvailable), that checks for updates with a few-hour-long interval, and notifies the extension when it found one.*/
 chrome.runtime.onUpdateAvailable.addListener(hasUpdate);
 function hasUpdate(e) {
