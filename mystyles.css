@@ -120,9 +120,11 @@ button {
 button:hover {
   background-color: #2082d3;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 button:active {
   background-color: #2082d3;
+  transition: all 0.3s ease;
 
 }
 .search-form {
