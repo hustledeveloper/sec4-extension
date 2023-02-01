@@ -12,4 +12,5 @@ To use the Chrome extension, please follow the steps below:
 
 ## Faz 2
 
-Bildirimler üzeridne denemeler yapmak istiyorum
+Bildirimler üzerinde denemeler yapmak istiyorum
+Tool ve blog bildirimleri sonra yapılır belki ama ben verified asset için tarama yapan ama para öememiş günde 3 verified asset scan hakkı olan ve hakları arasında 5 dakika beklemesi gereken müşteri için bildirim yapmak istiyorum. Bunu yapabilmem için verfied edilmiş bir asset olması lazım elidme ama şimdilik sadece canım sıkıldığı için timer duyarlı blocklama falan deneyeceğim.
