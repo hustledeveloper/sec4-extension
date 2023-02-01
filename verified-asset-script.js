@@ -21,27 +21,6 @@ cikis_buton.addEventListener("click", () => {
   window.location.replace("./popup-sign-in.html");
 });
 
-reset_asset_buton.addEventListener("click", () => {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    let activeTab = tabs[0];
-    let asseturl = activeTab.url;
-    let url = new URL(asseturl);
-    let hostname = url.hostname;
-    chrome.storage.local.set({ asseturl: hostname }).then(() => {});
-    window.location.replace("./popup-sign-out.html");
-  });
-});
-
-
-const scan_button = document.querySelector("#scan-btn");
-
-
-const aseet_add_button = document.querySelector("#asset-add");
-
-
-
-//TASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIMTASARIM
-
 document.getElementById("asset-form").addEventListener("submit", function (e) {
   e.preventDefault(); // prevent form from submitting
 
@@ -49,7 +28,7 @@ document.getElementById("asset-form").addEventListener("submit", function (e) {
   const assets = document.getElementById("asset-input").value;
   //kontrol
   if (!isValidUrl(assets)) {
-    alert("Invalid URL. Please enter a valid URL.");
+    document.getElementById("warning-message").style.display = "block";
     return;
   }
   // Save assets in chrome storage
@@ -91,22 +70,48 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 document.getElementById("reset-btn").addEventListener("click", function () {
-  // Clear assets from chrome storage
   chrome.storage.local.remove("verifiedAssets", function () {
     console.log("Assets removed from chrome storage.");
   });
-
-  // Clear assets from list on the page
   const assetList = document.getElementById("asset-list");
   assetList.innerHTML = "";
 });
+
+document.getElementById("asset-form").addEventListener("submit", function (event) {
+  event.preventDefault();
+  const assetInput = document.getElementById("asset-input");
+  const asset = assetInput.value;
+
+  const selectElement = document.getElementById("asset-list");
+  const newOption = new Option(asset, asset);
+  selectElement.add(newOption);
+  selectElement.value = asset;
+});
+
+reset_asset_buton.addEventListener("click", () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    let activeTab = tabs[0];
+    let asseturl = activeTab.url;
+
+    let url = new URL(asseturl);
+    let hostname = url.hostname;
+    chrome.storage.local.set({ asseturl: hostname }).then(() => {});
+    window.location.replace("./popup-sign-out.html");
+  });
+});
+
 document.getElementById("scan-btn").addEventListener("click", function () {
   const selectElement = document.getElementById("asset-list");
   const selectedAsset =
     selectElement.options[selectElement.selectedIndex].value;
-  let url = new URL(selectedAsset);
-  let hostname = url.hostname;
 
-  chrome.storage.local.set({ asseturl: hostname }).then(() => {});
-  window.location.replace("./popup-sign-out.html");
+  try {
+    let url = new URL(selectedAsset);
+    let hostname = url.hostname;
+
+    chrome.storage.local.set({ asseturl: hostname }).then(() => {});
+    window.location.replace("./popup-sign-out.html");
+  } catch (e) {
+    document.getElementById("warning-message").style.display = "block";
+  }
 });
