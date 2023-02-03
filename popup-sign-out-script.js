@@ -64,74 +64,30 @@ bunu ertesi gün 3 hakkına tekrar kavuştuğunda da yapacak. bu şekilde kullan
 artırmak ve bu adamı verified asset scanlerini her gün yapmaya teşvik ederekn daha sonra sınırsız hak için pro olmasını sağlamak
 */
 
-let timeLeft = 0;
 let timerInterval = null;
 
 document.addEventListener("DOMContentLoaded", function () {
   const timerDiv = document.getElementById("timer");
   const scanButton = document.getElementById("scan");
 
-  // Load timer from storage
-  chrome.storage.local.get("timer", function (data) {
-    if (data.timer) {
-      timeLeft = data.timer;
-    }
-
-    scanButton.addEventListener("click", () => {
-      if (timeLeft > 0) {
+  // Connect to background page
+  let port = chrome.runtime.connect({ name: "scan_port" });
+  port.postMessage("hello");
+  port.onMessage.addListener(function (message) {
+    if (message.type === "timer") {
+      if (message.timeLeft > 0) {
         timerDiv.innerHTML =
           "Your package's daily limit exceeded. Please wait " +
-          timeLeft +
+          message.timeLeft +
           " seconds";
         return;
       }
 
-      // Start timer
-      timeLeft = 10;
       timerDiv.innerHTML = "";
-
-      // Send scan message
-      chrome.runtime.connect({ name: "scan_port" }).postMessage("start_scan");
-
-      timerInterval = setInterval(function () {
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          timerDiv.innerHTML = "";
-          return;
-        }
-
-        timeLeft--;
-        timerDiv.innerHTML =
-          "Your package's daily limit exceeded. Please wait " +
-          timeLeft +
-          " seconds";
-
-        // Save timer to storage
-        chrome.storage.local.set({ timer: timeLeft });
-      }, 1000);
-    });
-
-    if (timeLeft > 0) {
-      timerDiv.innerHTML =
-        "Your package's daily limit exceeded. Please wait " +
-        timeLeft +
-        " seconds";
-      timerInterval = setInterval(function () {
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          timerDiv.innerHTML = "";
-          return;
-        }
-
-        timeLeft--;
-        timerDiv.innerHTML =
-          "Your package's daily limit exceeded. Please wait " +
-          timeLeft +
-          " seconds";
-
-        // Save timer to storage
-        chrome.storage.local.set({ timer: timeLeft });
-      }, 1000);
     }
+  });
+
+  scanButton.addEventListener("click", () => {
+    port.postMessage("start_scan");
   });
 });
