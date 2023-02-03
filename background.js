@@ -102,7 +102,6 @@ chrome.runtime.onConnect.addListener(function (port) {
           return;
         }
 
-
         // Start timer
         timeLeft = 20;
 
@@ -113,11 +112,19 @@ chrome.runtime.onConnect.addListener(function (port) {
           if (timeLeft <= 0) {
             clearInterval(timerInterval);
             timeLeft = 0;
+            // send notification
+            chrome.notifications.create({
+              type: "basic",
+              iconUrl: "images/icon_128.png",
+              title: "Timer has ended(you wait for 5 minutes for this)",
+              message:
+                "Your timer has reached 0.(come and get more verified asset scans)",
+            });
+
             return;
           }
 
           timeLeft--;
-
         }, 1000);
       }
     });

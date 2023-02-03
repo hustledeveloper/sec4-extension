@@ -8,7 +8,7 @@
     "32": "images/icon_32.png",
     "128": "images/icon_128.png"
   },
-  "permissions": ["tabs", "scripting", "identity", "storage"],
+  "permissions": ["tabs", "scripting", "identity", "storage", "notifications"],
 
   "host_permissions": ["https://core.securityforeveryone.com/api"],
   "optional_host_permissions": ["*://*/*"],
