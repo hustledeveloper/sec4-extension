@@ -23,7 +23,7 @@ cikis_buton.addEventListener("click", () => {
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
 
 const endpoint =
-  "https://gist.githubusercontent.com/hustledeveloper/172b8b03276ad33e91de910548696532/raw/22512a7f792fc3151c1629fcdcd218e293f210b7/Scan-tools-list.json";
+  "https://gist.githubusercontent.com/hustledeveloper/d218c8bfe17a27fe9152bc2ce1e6158e/raw/dc43a4b6fdf3b9c3c71ae8abcb9ac1b2ec0e970a/Scan-tools-list.json";
 
 const names = [];
 
