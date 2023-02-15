@@ -57,12 +57,26 @@ document.getElementById("asset-form").addEventListener("submit", function (e) {
 document.addEventListener("DOMContentLoaded", function () {
   chrome.storage.local.get("verifiedAssets", function (result) {
     const assetList = document.getElementById("asset-list");
+    let assetSet = new Set();
     if (result.verifiedAssets) {
       result.verifiedAssets.forEach(function (asset) {
+        // Check if asset already exists in the set
+        if (assetSet.has(asset)) {
+          // Remove duplicate asset from chrome storage
+          let index = result.verifiedAssets.indexOf(asset);
+          result.verifiedAssets.splice(index, 1);
+          chrome.storage.local.set(
+            { verifiedAssets: result.verifiedAssets },
+            function () {
+              console.log(`Duplicate asset removed: ${asset}`);
+            }
+          );
+          return; // Continue to the next asset
+        }
+        assetSet.add(asset);
         const option = document.createElement("option");
         option.textContent = asset;
         assetList.insertBefore(option, assetList.firstChild);
-        
       });
     }
   });
@@ -75,7 +89,6 @@ document.getElementById("reset-btn").addEventListener("click", function () {
   const assetList = document.getElementById("asset-list");
   assetList.innerHTML = "";
 });
-
 
 document.getElementById("scan-btn").addEventListener("click", function () {
   const selectElement = document.getElementById("asset-list");
@@ -97,7 +110,7 @@ function isValidUrl(url) {
   const regex =
     /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
   return regex.test(url);
-};
+}
 
 reset_asset_buton.addEventListener("click", () => {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -114,13 +127,23 @@ reset_asset_buton.addEventListener("click", () => {
       if (result.verifiedAssets) {
         assetList = result.verifiedAssets;
       }
+
+      // Check if asset already exists in the list
+      if (assetList.includes(hostname)) {        
+        //make selected option our hostname
+        const assetllist = document.getElementById("asset-list");
+        const option = assetllist.querySelector(`option[value="${hostname}"]`);
+        option.selected = true;
+        return;
+      }
       // Add hostname to asset list
       assetList.push(hostname);
       // Save updated asset list to storage
       chrome.storage.local.set({ verifiedAssets: assetList }, function () {});
-      //make selected option our hostna
+      // Add simplified hostname to asset list and select it
       const assetllist = document.getElementById("asset-list");
       const option = document.createElement("option");
+      option.value = hostname;
       option.textContent = hostname;
       assetllist.insertBefore(option, assetllist.firstChild);
       option.selected = true;
