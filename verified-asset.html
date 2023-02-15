@@ -33,22 +33,28 @@
     </div>
     <div class="navbar">
       <a href="#">
-        <button class="navbar-scan">
-          <i class="fa fa-shield" aria-hidden="true"></i>Scans
+        <button class="navbar-home">
+          <i class="fa fa-home" aria-hidden="true" style="color:white" ></i>Home
         </button>
       </a>
       <a href="#">
-        <button class="navbar-home">
-          <i class="fa fa-home" aria-hidden="true"></i>Home
+        <button class="navbar-scan">
+          <i class="fa fa-shield" aria-hidden="true" style="color:white" ></i>Scans
+        </button>
+      </a>
+      <a href="#">
+        <button id="verified-btn">
+          <i class="fa fa-user" aria-hidden="true" style="color:white" ></i>Assets
         </button>
       </a>
 
       <a href="#">
         <button type="submit" class="cikis">
-          <i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out
+          <i class="fa fa-sign-out" aria-hidden="true"style="color:rgb(0, 0, 0)"></i>Sign Out
         </button>
       </a>
     </div>
+
 
     <form id="asset-form" style="padding: 0">
       <label for="asset-input">
@@ -58,7 +64,9 @@
         type="text"
         id="asset-input"
         name="asset"
+        class="input-type"
         placeholder="Asset URL"
+        style="width: 380px;";
       />
       <div>
         <button type="submit" class="button" id="asset-add">Add asset</button>
@@ -70,7 +78,7 @@
           <p>Select: </p>
         </div>
         <div>
-          <select name="asset-list" id="asset-list"></select>
+          <select name="asset-list" id="asset-list" class="input-type"></select>
         </div>
       </div>
     </div>
@@ -78,7 +86,7 @@
      <p> Invalid URL. Please enter a valid URL. </p> 
     </div>
     <div>
-      <button class="button" id="scan-btn">Scan</button>
+      <button class="button" id="scan-btn">Use this asset</button>
     </div>
     <div class="btn-container">
       <button class="button" id="reset-btn">Reset all assets</button>

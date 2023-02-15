@@ -4,6 +4,7 @@ const go_to_verified_button = document.querySelector("#verified-btn");
 const home = document.querySelector(".navbar-home");
 const scan_butonu = document.querySelector("#free-scan");
 const go_scan_butonu = document.querySelector("#scan-btn");
+const navbar_scan_butonu = document.querySelector(".navbar-scan");
 
 //scan sayfasına gidecek sonra
 home.addEventListener("click", () => {
@@ -20,6 +21,10 @@ cikis_buton.addEventListener("click", () => {
   window.location.replace("./popup-sign-in.html");
 });
 
+//scan sayfasına gidecek sonra
+navbar_scan_butonu.addEventListener("click", () => {
+  window.location.replace("./free-popup-sign-out.html");
+});
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
 
 const endpoint =

@@ -4,21 +4,26 @@ const home = document.querySelector(".navbar-home");
 const navbar_scan_butonu = document.querySelector(".navbar-scan");
 const reset_button = document.querySelector("#reset-btn");
 const reset_asset_buton = document.querySelector("#reset-asset");
+const go_to_verified_button = document.querySelector("#verified-btn");
 
-//scan sayfasına gidecek sonra
-navbar_scan_butonu.addEventListener("click", () => {
-  window.location.replace("./free-popup-sign-out.html");
-});
-//go verified
 //scan sayfasına gidecek sonra
 home.addEventListener("click", () => {
   window.location.replace("./popup-sign-out.html");
 });
+//go verified
+go_to_verified_button.addEventListener("click", () => {
+  window.location.replace("./verified-asset.html");
+});
 //logout butonu, apitokeni sıfırlayıp çıkış yapıyor
 cikis_buton.addEventListener("click", () => {
-
+  
   chrome.storage.local.set({ apitoken: 0 }).then(() => {});
   window.location.replace("./popup-sign-in.html");
+});
+
+//scan sayfasına gidecek sonra
+navbar_scan_butonu.addEventListener("click", () => {
+  window.location.replace("./free-popup-sign-out.html");
 });
 
 document.getElementById("asset-form").addEventListener("submit", function (e) {
