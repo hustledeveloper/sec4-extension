@@ -63,12 +63,14 @@ form {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
+  border-radius: 6px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .show-container {
   background-color: #2196f3;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 5px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,7 +107,7 @@ button {
   font-size: 14px;
   line-height: 14px;
   background-color: #2196f3;
-  border-radius: 9999px;
+  border-radius: 6px;
   border: none;
   letter-spacing: normal;
   text-align: center;
@@ -129,19 +131,18 @@ button:active {
 }
 .search-form {
   position: relative;
-  word-wrap: break-word;
+  width: 99%;
+  margin: 0 auto;
 }
+
 .search-input {
-  width: 85%;
-  min-width: 85%;
-  padding: 5px;
-  margin: 5px auto;
-  border-radius: 9999px;
+  width: 98%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 18px;
   text-align: center;
-  font-size: 20px;
-  box-shadow:none;
-  overflow: auto;
-  text-overflow: ellipsis;
 }
 .suggestions option {
   background: rgb(226, 229, 222);
@@ -169,7 +170,7 @@ button:active {
   max-height: 150px;
   overflow-y: scroll;
   transition: all 0.4s;
-  border-radius: 8px;
+  border-radius: 6px;
   order: 1;
   display: none;
 }
@@ -195,14 +196,37 @@ input {
   
 }
 .input-type {
-  border-radius:10px;
-  border: 1px solid #eee;
-  transition: .3s border-color;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 18px;
+  text-align: left;
   
 }
 .input-type:hover {
   border: 1px solid #aaa;
 }
-
-
+.input-type2 {
+  background: rgb(226, 229, 222);
+  list-style: none;
+  border-bottom: 2px solid #000000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+  margin: 0;
+  padding: 4px;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  word-wrap: break-word;
+  
+}
+.input-type2 :nth-child(even) {
+  background: #ffffff;
+}
+.input-type2 :nth-child(odd) {
+  background: #eceef0;
+  color: #000000;
+}
 
