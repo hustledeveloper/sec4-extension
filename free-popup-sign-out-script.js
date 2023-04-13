@@ -22,47 +22,32 @@ cikis_buton.addEventListener("click", () => {
 
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
 
-const endpoint =
-  "https://gist.githubusercontent.com/hustledeveloper/d218c8bfe17a27fe9152bc2ce1e6158e/raw/dc43a4b6fdf3b9c3c71ae8abcb9ac1b2ec0e970a/Scan-tools-list.json";
-
-const names = [];
-
-fetch(endpoint)
-  .then((blob) => blob.json())
-  .then((data) => names.push(...data));
-
-function findMatches(keyword, names) {
-  return names.filter((place) => {
-    const regex = new RegExp(keyword, "gi");
-    return place.name.match(regex);
-  });
+function findMatches(keyword, data) {
+  const regex = new RegExp(keyword, "gi");
+  return data.filter((place) => place.name.match(regex));
 }
 
-// add results to HTML li
 function displayMatches() {
-  const matchArray = findMatches(this.value, names);
-  const html = matchArray
-    .map((place) => {
-      const regex = new RegExp(this.value, "gi");
-      const ScanName = place.name.replace(
-        regex,
-        `<span class="hl">${this.value}</span>`
-      );
-      return `
-      <option id="${place.slug}" class="tool-button">
-      
-        <span class="name">${ScanName}</span>
-      
-      </option>
-    `;
-    })
-    .join("");
+  const endpoint = `https://gist.githubusercontent.com/hustledeveloper/d218c8bfe17a27fe9152bc2ce1e6158e/raw/dc43a4b6fdf3b9c3c71ae8abcb9ac1b2ec0e970a/Scan-tools-list.json?q=${this.value}`;
+  fetch(endpoint)
+    .then((blob) => blob.json())
+    .then((data) => {
+      const matchArray = findMatches(this.value, data);
+      const html = matchArray
+        .map(
+          (place) =>
+            `<option id="${place.slug}" class="tool-button">
+              <span class="name">${place.name}</span>
+            </option>`
+        )
+        .join("");
+      suggestions.innerHTML = html;
+      document.querySelector("#free-scan").style.display = "block";
+      document.querySelector("#scan-btn").style.display = "block";
+      document.querySelector(".suggestions").size = matchArray.length;
+      document.querySelector(".suggestions").style.display = "block";
+    });
 
-  suggestions.innerHTML = html;
-  document.querySelector("#free-scan").style.display = "block";
-  document.querySelector("#scan-btn").style.display = "block";
-  document.querySelector(".suggestions").size = matchArray.length;
-  document.querySelector(".suggestions").style.display = "block";
 }
 
 const searchInput = document.querySelector(".search-input");
@@ -70,7 +55,6 @@ const suggestions = document.querySelector(".suggestions");
 
 searchInput.addEventListener("change", displayMatches);
 searchInput.addEventListener("keyup", displayMatches);
-
 //autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
 const searchIn = document.querySelector(".search-input");
 const select = document.querySelector(".suggestions");
