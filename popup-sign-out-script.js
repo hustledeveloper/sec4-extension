@@ -6,16 +6,16 @@ chrome.storage.local.get("apitoken", function (data) {
 function isValidToken(mytoken) {
   if (mytoken === undefined || mytoken === null || mytoken === 0) {
     window.location.replace("./popup-sign-in.html");
-  } 
+  }
 }
 //token check
 const cikis_buton = document.querySelector(".cikis");
 const go_to_verified_button = document.querySelector("#verified-btn");
 const navbar_scan_butonu = document.querySelector(".navbar-scan");
-const scan_butonu = document.querySelector("#scan");
+
 //scan sayfasına gidecek sonra
-home.addEventListener("click", () => {
-  window.location.replace("./popup-sign-out.html");
+navbar_scan_butonu.addEventListener("click", () => {
+  window.location.replace("./free-popup-sign-out.html");
 });
 //go verified
 go_to_verified_button.addEventListener("click", () => {
@@ -23,14 +23,8 @@ go_to_verified_button.addEventListener("click", () => {
 });
 //logout butonu, apitokeni sıfırlayıp çıkış yapıyor
 cikis_buton.addEventListener("click", () => {
-  
   chrome.storage.local.set({ apitoken: 0 }).then(() => {});
   window.location.replace("./popup-sign-in.html");
-});
-
-//SCAN butonu
-scan_butonu.addEventListener("click", () => {
-  chrome.runtime.connect({ name: "scan_port" }).postMessage("start_scan");
 });
 
 //hata mesajları
