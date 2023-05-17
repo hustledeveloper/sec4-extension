@@ -1,8 +1,18 @@
+//token check
+chrome.storage.local.get("apitoken", function (data) {
+  let tokenone = data.apitoken;
+  isValidToken(tokenone);
+});
+function isValidToken(mytoken) {
+  if (mytoken === undefined || mytoken === null || mytoken === 0) {
+    window.location.replace("./popup-sign-in.html");
+  } 
+}
+//token check
 const cikis_buton = document.querySelector(".cikis");
 const go_to_verified_button = document.querySelector("#verified-btn");
 const navbar_scan_butonu = document.querySelector(".navbar-scan");
 const scan_butonu = document.querySelector("#scan");
-const home = document.querySelector(".navbar-home");
 //scan sayfasına gidecek sonra
 home.addEventListener("click", () => {
   window.location.replace("./popup-sign-out.html");
@@ -17,26 +27,6 @@ cikis_buton.addEventListener("click", () => {
   chrome.storage.local.set({ apitoken: 0 }).then(() => {});
   window.location.replace("./popup-sign-in.html");
 });
-
-//scan sayfasına gidecek sonra
-navbar_scan_butonu.addEventListener("click", () => {
-  window.location.replace("./free-popup-sign-out.html");
-});
-
-
-
-//token check
-chrome.storage.local.get("apitoken", function (data) {
-  let tokenone = data.apitoken;
-  isValidToken(tokenone);
-});
-function isValidToken(mytoken) {
-  if (mytoken === undefined || mytoken === null || mytoken === 0) {
-    window.location.replace("./popup-sign-in.html");
-  } 
-}
-//token check
-
 
 //SCAN butonu
 scan_butonu.addEventListener("click", () => {
@@ -71,4 +61,39 @@ chrome.storage.local.get("scan_shown", function (result) {
     const inputElement = document.getElementById("scan_shown");
     inputElement.innerText = myValue;
   }
+});
+/*
+scan button bir timer a bağlandı, yapacağım şu olacak ilerde:
+bu timer normal scande değil verified asset scande ve nonpaid member için(günlük sınırlı hakkı olan)
+çalışacak, onun verified asset scanleri arasında sayaç çalışacak ve 5 dakika sonra ona hakkın yenilendi diye küçük bir bildirim yollayacak.
+bunu ertesi gün 3 hakkına tekrar kavuştuğunda da yapacak. bu şekilde kullanım alışkanlığını 
+artırmak ve bu adamı verified asset scanlerini her gün yapmaya teşvik ederekn daha sonra sınırsız hak için pro olmasını sağlamak
+*/
+
+let timerInterval = null;
+
+document.addEventListener("DOMContentLoaded", function () {
+  const timerDiv = document.getElementById("timer");
+  const scanButton = document.getElementById("scan");
+
+  // Connect to background page
+  let port = chrome.runtime.connect({ name: "scan_port" });
+  port.postMessage("hello");
+  port.onMessage.addListener(function (message) {
+    if (message.type === "timer") {
+      if (message.timeLeft > 0) {
+        timerDiv.innerHTML =
+          "Your package's daily limit exceeded. Please wait " +
+          message.timeLeft +
+          " seconds";
+        return;
+      }
+
+      timerDiv.innerHTML = "";
+    }
+  });
+
+  scanButton.addEventListener("click", () => {
+    port.postMessage("start_scan");
+  });
 });
