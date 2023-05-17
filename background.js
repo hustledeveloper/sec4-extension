@@ -89,7 +89,7 @@ chrome.runtime.onConnect.addListener((port) => {
 });
 */
 
-//deneme alanıdeneme alanıdeneme alanıdeneme alanıdeneme alanı
+//timer
 let timeLeft = 0;
 
 chrome.runtime.onConnect.addListener(function (port) {
