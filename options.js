@@ -10,7 +10,6 @@ function save_options() {
       scan: scan,
     },
     function () {
-      // Update status to let user know options were saved.
       let status = document.getElementById("status");
       status.textContent = "Options saved.";
       setTimeout(function () {
@@ -20,10 +19,8 @@ function save_options() {
   );
 }
 
-// Restores select checkbox state using the preferences
-// stored in chrome.storage.
+
 function restore_options() {
-  // Use default values
   chrome.storage.sync.get(
     {
       blog: true,

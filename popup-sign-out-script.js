@@ -8,26 +8,24 @@ function isValidToken(mytoken) {
     window.location.replace("./popup-sign-in.html");
   }
 }
-//token check
 const cikis_buton = document.querySelector(".cikis");
 const go_to_verified_button = document.querySelector("#verified-btn");
 const navbar_scan_butonu = document.querySelector(".navbar-scan");
 
-//scan sayfasına gidecek sonra
 navbar_scan_butonu.addEventListener("click", () => {
   window.location.replace("./free-popup-sign-out.html");
 });
-//go verified
+
 go_to_verified_button.addEventListener("click", () => {
   window.location.replace("./verified-asset.html");
 });
-//logout butonu, apitokeni sıfırlayıp çıkış yapıyor
+
 cikis_buton.addEventListener("click", () => {
   chrome.storage.local.set({ apitoken: 0 }).then(() => {});
   window.location.replace("./popup-sign-in.html");
 });
 
-//hata mesajları
+
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "error") {
     document.getElementById("warning-message").innerHTML = message.message;
@@ -56,13 +54,6 @@ chrome.storage.local.get("scan_shown", function (result) {
     inputElement.innerText = myValue;
   }
 });
-/*
-scan button bir timer a bağlandı, yapacağım şu olacak ilerde:
-bu timer normal scande değil verified asset scande ve nonpaid member için(günlük sınırlı hakkı olan)
-çalışacak, onun verified asset scanleri arasında sayaç çalışacak ve 5 dakika sonra ona hakkın yenilendi diye küçük bir bildirim yollayacak.
-bunu ertesi gün 3 hakkına tekrar kavuştuğunda da yapacak. bu şekilde kullanım alışkanlığını 
-artırmak ve bu adamı verified asset scanlerini her gün yapmaya teşvik ederekn daha sonra sınırsız hak için pro olmasını sağlamak
-*/
 
 let timerInterval = null;
 
@@ -82,11 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
           " seconds";
         return;
       }
-
       timerDiv.innerHTML = "";
     }
   });
-
   scanButton.addEventListener("click", () => {
     port.postMessage("start_scan");
   });

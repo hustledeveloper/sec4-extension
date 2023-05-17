@@ -5,22 +5,21 @@ const home = document.querySelector(".navbar-home");
 const scan_butonu = document.querySelector("#free-scan");
 const go_scan_butonu = document.querySelector("#scan-btn");
 
-//scan sayfasına gidecek sonra
+
 home.addEventListener("click", () => {
   window.location.replace("./popup-sign-out.html");
 });
-//go verified
+
 go_to_verified_button.addEventListener("click", () => {
   window.location.replace("./verified-asset.html");
 });
-//logout butonu, apitokeni sıfırlayıp çıkış yapıyor
+
 cikis_buton.addEventListener("click", () => {
   
   chrome.storage.local.set({ apitoken: 0 }).then(() => {});
   window.location.replace("./popup-sign-in.html");
 });
 
-//autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
 
 function findMatches(keyword, data) {
   const regex = new RegExp(keyword, "gi");
@@ -55,7 +54,7 @@ const suggestions = document.querySelector(".suggestions");
 
 searchInput.addEventListener("change", displayMatches);
 searchInput.addEventListener("keyup", displayMatches);
-//autocompleteautocompleteautocompleteautocompleteautocompleteautocompleteautocomplete
+
 const searchIn = document.querySelector(".search-input");
 const select = document.querySelector(".suggestions");
 

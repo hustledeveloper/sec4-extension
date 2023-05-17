@@ -70,24 +70,7 @@ async function scan_function() {
     console.log(err);
   }
 }
-/*
-listener buna bağlanırsa direkt scan çalışacaktır, 
-timer olana mesaj gelirse porttan ona bağlanır ve scan fonksiyonunu 
-çalıştırmak için timer sayar, yapılacak olan şudur : yapılan scan verified 
-asset scan ise (buna dönülen sonuçtan ulaşılabilir sanırım) timer sonraki verified 
-asset scan için 5 dakika bekler. free scan ise timer olmayan listener a girer ve 
-zamansız çalışır */
-/*
-chrome.runtime.onConnect.addListener((port) => {
-  if (port.name === "scan_port") {
-    port.onMessage.addListener((message) => {
-      if (message === "start_scan") {
-        scan_function();
-      }
-    });
-  }
-});
-*/
+
 
 //timer
 let timeLeft = 0;
@@ -116,7 +99,7 @@ chrome.runtime.onConnect.addListener(function (port) {
             chrome.notifications.create({
               type: "basic",
               iconUrl: "images/icon_128.png",
-              title: "Timer has ended(you wait for 5 minutes for this)",
+              title: "Timer has ended(you wait for 20 seconds for this)",
               message:
                 "Your timer has reached 0.(come and get more verified asset scans)",
             });
