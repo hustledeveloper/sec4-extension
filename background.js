@@ -4,8 +4,6 @@ function hasUpdate(e) {
   console.log("hasUpdate", e);
   chrome.runtime.reload();
 }
-
-//scan başlatan ve bitince sonucu newtab olarak açan fonksiyon
 async function scan_function() {
   let asset;
   let slug;
