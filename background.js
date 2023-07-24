@@ -33,7 +33,7 @@ async function scan_function() {
 
   try {
     const response = await fetch(
-      "https://core.securityforeveryone.com/api/v2/start",
+      "api link here",
       {
         method: "POST",
         headers: {
@@ -72,7 +72,7 @@ async function scan_function() {
         });
         chrome.storage.local.get(["jobslug"], function (result) {
           const jobslugz = result.jobslug;
-          const url = "https://app.securityforeveryone.com/reports/" + jobslugz;
+          const url = "api link here" + jobslugz;
           chrome.tabs.create({ url: url });
         });
       });
@@ -106,7 +106,7 @@ chrome.runtime.onInstalled.addListener(deneme6);
 async function deneme6() {
   try {
     const response = await fetch(
-      "https://core.securityforeveryone.com/api/scans/list",
+      "api link here",
       {
         method: "POST",
         headers: {

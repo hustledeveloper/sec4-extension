@@ -1,4 +1,4 @@
-# Security for Everyone Chrome Extension
+# Memorisation Chrome Extension
 
 ## Installation
 

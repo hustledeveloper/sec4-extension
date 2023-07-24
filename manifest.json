@@ -1,6 +1,6 @@
 {
-  "name": "Security for Everyone ",
-  "description": "Security for Everyone extension ",
+  "name": "Memorisation Extension",
+  "description": "Memorisation Extension ",
   "version": "0.1.0",
   "manifest_version": 3,
   "icons": {
@@ -10,7 +10,6 @@
   },
   "permissions": ["tabs", "scripting", "identity", "storage"],
 
-  "host_permissions": ["https://core.securityforeveryone.com/api"],
   "optional_host_permissions": ["*://*/*"],
   "background": {
     "service_worker": "background.js"

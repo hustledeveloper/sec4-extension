@@ -94,7 +94,7 @@ select.addEventListener("change", (event) => {
 scan_butonu.addEventListener("click", () => {
   const selectedOption = document.querySelector(".suggestions option:checked");
   if (selectedOption) {
-    const url = "https://securityforeveryone.com/tools/" + selectedOption.id;
+    const url = "api link here" + selectedOption.id;
     let takeslug = selectedOption.id;
     chrome.storage.local.set({ scan_aktive: takeslug }).then(() => {});
     let takeslug_show = selectedOption.value;

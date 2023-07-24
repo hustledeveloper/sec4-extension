@@ -12,6 +12,7 @@ function isValidToken(mytoken) {
     document.getElementById("warning-message").style.display = "block";
     return;
   }
+  /*
   if (mytoken.length < 32) {
     document.getElementById("warning-message").innerHTML =
       "Token 32 karakterden küçük olamaz";
@@ -30,9 +31,13 @@ function isValidToken(mytoken) {
       "Token geçerli karakterler içermelidir";
     document.getElementById("warning-message").style.display = "block";
   }
-  if (valid) {
+  */
+ //ilerde token ile giriş sornası regex eklenecek bununla fetch atılacak şimdilik kapılar açık girerken
+  if (1) {
     let apitoken = document.querySelector("#api-token").value;
     chrome.storage.local.set({ apitoken: apitoken }).then(() => {});
     window.location.replace("./popup-sign-out.html");
   }
+  
+  
 }
