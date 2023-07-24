@@ -28,7 +28,7 @@ function findMatches(keyword, data) {
 }
 
 function displayMatches() {
-  const endpoint = `https://gist.githubusercontent.com/hustledeveloper/d218c8bfe17a27fe9152bc2ce1e6158e/raw/dc43a4b6fdf3b9c3c71ae8abcb9ac1b2ec0e970a/Scan-tools-list.json?q=${this.value}`;
+  const endpoint = `https://gist.githubusercontent.com/-list.json?q=${this.value}`;
   fetch(endpoint)
     .then((blob) => blob.json())
     .then((data) => {
